@@ -455,13 +455,6 @@
 	"ui-options-restore-desc": "Import stored builds, modules, and other preferences that were previously exported from another device or browser.",
 
 
-	"ui-help-contact": "Contact Me",
-	"ui-help-contact-discord": "discord",
-	"ui-help-contact-forum": "forum",
-	"ui-help-contact-reddit": "reddit",
-	"ui-help-contact-email": "email",
-
-
 	"ui-export-build": "Build",
 	"ui-export-url": "URL",
 	"ui-export-short": "Short",

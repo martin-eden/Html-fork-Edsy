@@ -12280,14 +12280,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIDetailsStoredModuleControls();
 		loadTranslations(true); // async
 	}; // onStorageEvent()
-	
-	
-	var onLinkEmailClick = function(e) {
-		e.preventDefault();
-		showUITextPopup('', String.fromCharCode(116,97,108,101,100,101,110,48,64,103,109,97,105,108,46,99,111,109), e.target, false); // just to dissuade any email harvesting bots
-	}; // onLinkEmailClick()
-	
-	
+
+
 	/*
 	* UI INIT
 	*/
@@ -12581,7 +12575,6 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		document.getElementById('page_body_options').addEventListener('click', onUIOptionsClick);
 		document.getElementById('options_backup').addEventListener('click', onUIOptionsBackupClick);
 		document.getElementById('options_restore').addEventListener('click', onUIOptionsRestoreClick);
-		document.getElementById('contact_email').addEventListener('click', onLinkEmailClick);
 	}; // initUIEventHandlers()
 	
 	
