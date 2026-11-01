@@ -413,20 +413,8 @@ window.edsy = new (function() {
 	var getCookie = function(name, defaultvalue) {
 		return ((document.cookie.match(new RegExp('(?:^|;)\\s*' + name + '\\s*=\\s*"?([^"\\s;]*)"?\\s*(?:;|$)')) || EMPTY_ARR)[1] || defaultvalue);
 	}; // getCookie()
-	
-	
-	var getCookies = function(pattern) {
-		var cookies = document.cookie;
-		var c = {};
-		var re = new RegExp('(?:^|;)\\s*(' + pattern + ')\\s*=\\s*"?([^"\\s;]*)"?', 'g');
-		var match;
-		while ((match = re.exec(cookies)) !== null) {
-			c[match[1]] = match[2];
-		}
-		return c;
-	}; // getCookies()
-	
-	
+
+
 	var createIcon = function(icon) {
 		return (cache.icon[icon] || cache.icon['unknown'] || document.createTextNode('?')).cloneNode(true);
 	}; // createIcon()
@@ -5852,45 +5840,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 	
 	
 	var showUIImportPopup = function() {
-		var prefix = 'edsy' + (current.dev ? 'dev' : '') + '_fdapi_cmdr_';
-		var cookies = getCookies(prefix + '[A-Za-z0-9_-]+');
-		var cmdrs = [];
-		var cmdr64 = {};
-		for (var name in cookies) {
-			var c64 = name.slice(prefix.length);
-			var c = b64Decode(c64);
-			if (c) {
-				cmdrs.push(c);
-				cmdr64[c] = c64;
-			}
-		}
 		var df = document.createDocumentFragment();
-		df.appendChild(createTranslatedElement('span', 'ui-import-header1-desc'));
-		df.appendChild(document.createElement('br'));
-		df.appendChild(createTranslatedElement('span', 'ui-import-header2-desc'));
-		var ul = document.createElement('ul');
-		if (cmdrs.length > 0) {
-			cmdrs.sort();
-			for (i = 0;  i < cmdrs.length;  i++) {
-				var li = document.createElement('li');
-				var buttonI = createTranslatedElement('button', 'ui-button-import');
-				buttonI.name = 'fdapi_import';
-				buttonI.value = cmdr64[cmdrs[i]];
-				var buttonR = createTranslatedElement('button', 'ui-button-remove');
-				buttonR.name = 'fdapi_delete';
-				buttonR.value = cmdr64[cmdrs[i]];
-				li.append(buttonI, ' ', buttonR, ' ', createTranslatedElement('span', 'ui-import-cmdr'), cmdrs[i]);
-				ul.appendChild(li);
-			}
-		}
-		var li = document.createElement('li');
-		var a = document.createElement('a');
-		a.href = 'fdapi?auth=A';
-		a.appendChild(createTranslatedElement('span', 'ui-import-authorize'+(cmdrs.length ? '-another' : '')));
-		a.append(' ', createIcon('xref'));
-		li.appendChild(a);
-		ul.appendChild(li);
-		df.appendChild(ul);
 		df.appendChild(createTranslatedElement('span', 'ui-import-footer-desc'));
 		showUITextPopup(
 				df,
@@ -5898,95 +5848,9 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 				null, false,
 				importData, true
 		);
-		for (var i = 0;  i < document.forms.popup.elements.length;  i++) {
-			var button = document.forms.popup.elements[i];
-			if (button.name === 'fdapi_import' || button.name === 'fdapi_delete' || button.name === 'fdapi_auth')
-				button.addEventListener('click', onUIPopupImportButtonClick);
-		}
 	}; // showUIImportPopup()
-	
-	
-	var importFromAPI = function(cmdr64) {
-		var request = new XMLHttpRequest();
-		request.onreadystatechange = function() {
-			if (request.readyState == 4) {
-				hideUIPopup();
-				var response = null;
-				try {
-					response = JSON.parse(request.responseText);
-					if (current.dev)
-						console.log('FDAPI: ' + request.status + '/' + response.status + ', ' + typeof(response['import']));
-				} catch (exc) {
-					response = null;
-					console.log('FDAPI: ' + request.status + '; ' + exc);
-					if (current.dev)
-						console.log(request.response);
-				}
-//request={status:200};response={location:'foo'};
-//request={status:500};response={};
-				if (request.status == 200) {
-					if (!response) {
-						alert(getTranslation('ui-import-error-connector'));
-					} else if (response['location']) {
-						var df = document.createDocumentFragment();
-						df.append(createTranslatedElement('span', 'ui-import-error-redirect'));
-						var ul = document.createElement('ul');
-						var li = document.createElement('li');
-						var a = document.createElement('a');
-						a.href = response['location'];
-						a.append(createTranslatedElement('ui-import-reauthorize'), ' ', createIcon('xref'));
-						li.appendChild(a);
-						ul.appendChild(li);
-						df.appendChild(ul);
-						showUITextPopup(
-								df,
-								null,
-								null, true,
-								false, true
-						);
-					} else if (response.status == 206 && confirm(getTranslation('ui-import-retry'))) {
-					//	setTimeout(function() { importFromAPI(cmdr64); }, 1);
-						importFromAPI(cmdr64);
-					} else if (response['import']) {
-						importData(response['import']);
-					} else {
-						alert(getTranslation('ui-import-no-data'));
-					}
-				} else {
-					var status = (response || EMPTY_OBJ)['status'];
-					var message = (status ? (getTranslation('ui-import-error-api') + ' ' + request.status + '/' + status) : (getTranslation('ui-import-error-connector') + ' ' + request.status));
-					var df = document.createDocumentFragment();
-					df.append(message, document.createElement('br'), document.createElement('br'), createTranslatedElement('span', 'ui-import-error-desc'));
-					var ul = document.createElement('ul');
-					var li = document.createElement('li');
-					var a = document.createElement('a');
-					a.href = 'fdapi?auth=I';
-					a.append(createTranslatedElement('ui-import-reauthorize'), ' ', createIcon('xref'));
-					li.appendChild(a);
-					ul.appendChild(li);
-					df.appendChild(ul);
-					showUITextPopup(df, null, null, true, false, true);
-				}
-			}
-		}; // onreadystatechange()
-		var onCancel = function() {
-			request.onreadystatechange = function() {};
-			request.abort();
-		}; // onCancel()
-		var df = document.createDocumentFragment();
-		df.append(createTranslatedElement('span', 'ui-import-querying'), document.createElement('br'));
-		var center = document.createElement('center');
-		var img = document.createElement('img');
-		img.src = 'loading.svg';
-		center.appendChild(img);
-		df.appendChild(center);
-		showUITextPopup(df, null, null, true, null, onCancel);
-		request.open('GET', 'fdapi?c=' + encodeURIComponent(cmdr64), true);
-		request.timeout = 10000;
-		request.send();
-	}; // importFromAPI()
-	
-	
+
+
 	var createUIImportedBuildHeader = function() {
 		var thead = document.createElement('thead');
 		var tr = document.createElement('tr');
@@ -6206,15 +6070,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		// identify the format by the first line
 		var eol = text.indexOf('\n');
 		var line1 = text.slice(0, (eol < 0) ? 100 : eol).trim();
-		if (line1.toUpperCase().slice(0,5) === 'FDAPI') {
-			var cmdr64 = line1.split(':')[1];
-			if (cmdr64) {
-				importFromAPI(cmdr64);
-			} else {
-				showUIImportPopup();
-			}
-			return true;
-		} else if (line1.match(/^[a-z]+:\/\/[^#]*(edshipyard|edsy)[^#]*#/i)) { // URL hash(es)
+		if (line1.match(/^[a-z]+:\/\/[^#]*(edshipyard|edsy)[^#]*#/i)) { // URL hash(es)
 			var urls = text.match(/[a-z]+:\/\/[^#]+#[^ \t\r\n#]*/ig);
 			for (var i = 0;  i < urls.length;  i++) {
 				var urlhash = urls[i].slice(urls[i].indexOf('#'));
@@ -6342,31 +6198,6 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 						importdata.buildlist[i].index = i;
 						if (importdata.buildlist[i].build)
 							curindex = i;
-					}
-				} else if ((json['name'] && json['modules']) || json['ship'] || json['ships']) { // FDAPI /profile endpoint
-					var fleetid = (json['id'] || (json['ship'] || EMPTY_OBJ)['id']);
-					if (json['name'] && json['modules']) {
-						var shipobj = json;
-						json = { ships:{} };
-						json['ships'][fleetid] = shipobj;
-					} else if (json['ship']) {
-						json['ships'] = json['ships'] || {};
-						json['ships'][fleetid] = json['ship'];
-					}
-					var fleetids = Object.keys(json['ships']);
-					fleetids.sort(sortNumbers);
-					for (var i = 0;  i < fleetids.length;  i++) {
-						var shipobj = json['ships'][fleetids[i]];
-						if (shipobj["name"] && shipobj["modules"]) {
-							var index = importdata.buildlist.length;
-							var builderrors = [];
-							var build = Build.fromCAPI(shipobj, builderrors);
-							var importhash = build ? ('fdapi|' + build.getShipID() + '|' + max(0,fleetids[i]) + '|' + hashEncodeS(build.getName().toUpperCase()) + '|' + hashEncodeS(build.getNameTag().toUpperCase())) : null;
-							importdata.buildlist[index] = { index:index, importhash:importhash, fleetid:fleetids[i], namehash:null, build:build, builderrors:builderrors };
-							importdata.warning.append(createTranslatedElement('span', 'ui-import-warning-fdapi'));
-							if (build && fleetids[i] == fleetid)
-								curindex = index;
-						}
 					}
 				} else {
 					errors.push(getTranslation('ui-import-error-unrecognized-json'));
@@ -10806,20 +10637,6 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 	var onUIPopupImportButtonClick = function(e) {
 		e.preventDefault();
 		switch (e.currentTarget.name) {
-		case 'fdapi_import':
-			hideUIPopup();
-			importData('FDAPI:' + e.currentTarget.value);
-			e.stopPropagation();
-			return false;
-			
-		case 'fdapi_delete':
-			var cookie = 'edsy' + (current.dev ? 'dev' : '') + '_fdapi_cmdr_' + e.currentTarget.value + '=; path=' + (current.dev ? '/dev' : '/') + '; max-age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; SameSite=lax';
-			document.cookie = cookie;
-			hideUIPopup();
-			showUIImportPopup();
-			e.stopPropagation();
-			return false;
-			
 		case 'import_ignore':
 		case 'import_save':
 		case 'import_saveas':
