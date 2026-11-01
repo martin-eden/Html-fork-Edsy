@@ -10942,7 +10942,6 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		//	imports: current.importLabel, // no need to migrate this; it's a minor convenience, easy enough to re-populate, and may get bloated over time
 			builds: {},
 			modules: {},
-			options: current.option,
 		};
 		for (var namehash in current.stored.shipNamehashStored[0])
 			obj.builds[namehash] = current.stored.shipNamehashStored[0][namehash].buildhash;
