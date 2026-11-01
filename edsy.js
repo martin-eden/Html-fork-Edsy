@@ -268,13 +268,11 @@ window.edsy = new (function() {
 		tempSlot: null,
 		group: null,
 		slot: null,
-		analysis_tab: null,
 		tableSort: {
 			shipyard_ships_table: {},
 			shipyard_storedbuilds_table: {},
 		},
-		counter: {},
-		retrofit: null,
+		counter: {}
 	};
 	
 	
@@ -2146,99 +2144,6 @@ window.edsy = new (function() {
 	}; // isStoredHashModified()
 	
 	
-	Slot.getRetrofitData = function(slot1, slot2, modidNum, limdisc, limdisceng, limbpgrade, limbproll, limexpeffect, limrolls) {
-		var steps = [];
-		
-		// gather attributes
-		var sgrp1 = slot1 ? slot1.getSlotGroup() : null;
-		var sgrp2 = slot2 ? slot2.getSlotGroup() : null;
-		if (sgrp1 && sgrp2 && (sgrp1 === 'ship') !== (sgrp2 === 'ship'))
-			return null;
-		var shipid1 = slot1 ? slot1.getShipID() : 0;
-		var shipid2 = slot2 ? slot2.getShipID() : 0;
-		var modid1 = slot1 ? slot1.getModuleID() : 0;
-		var modid2 = slot2 ? slot2.getModuleID() : 0;
-		var discmod1 = slot1 ? cache.discountMod[slot1.getDiscounts()] : 1;
-		var discmod2 = slot2 ? cache.discountMod[slot2.getDiscounts()] : 1;
-		var preeng1 = (slot1 && slot1.getPreEngineered()) ? cache.modulehashBuiltin[slot1.getBuiltinHash()] : 0;
-		var preeng2 = (slot2 && slot2.getPreEngineered()) ? cache.modulehashBuiltin[slot2.getBuiltinHash()] : 0;
-		var bpid1 = slot1 ? slot1.getBlueprintID() : '';
-		var bpid2 = slot2 ? slot2.getBlueprintID() : '';
-		var bpgrade1 = slot1 ? slot1.getBlueprintGrade() : 0;
-		var bpgrade2 = slot2 ? slot2.getBlueprintGrade() : 0;
-		var bproll1 = slot1 ? slot1.getBlueprintRoll() : 0;
-		var bproll2 = slot2 ? slot2.getBlueprintRoll() : 0;
-		var expid1 = slot1 ? slot1.getExpeffectID() : '';
-		var expid2 = slot2 ? slot2.getExpeffectID() : '';
-		
-		// increment module tallies
-		if (modidNum && modid1 && sgrp1 !== 'ship')
-			modidNum[modid1] = (modidNum[modid1] || 0) + 1;
-		if (modidNum && modid2 && sgrp2 !== 'ship' && modid1 != modid2)
-			modidNum[modid2] = (modidNum[modid2] || 0) + 1;
-		
-		// if we have an old module and it's different, or it's insufficiently discounted and not too engineered, or it's pre-engineered and we want different (pre-)engineering, sell it
-		if (modid1) {
-			if ((modid1 != modid2) || (discmod1 > max(cache.discountMod[limdisc], discmod2) && (!bpid2 || bpid1 != bpid2 || bpgrade1 <= limdisceng)) || (preeng1 && (preeng2 || bpid1 != bpid2 || bpgrade1 != bpgrade2 || bproll1 != bproll2))) {
-				steps.push({ sgrp:sgrp1, sid:shipid1, mid:((sgrp1 === 'ship') ? 0 : modid1), num:(modidNum || EMPTY_OBJ)[modid1], act:'Sell', discmod:discmod1, cost:{'':-slot1.getCost()} });
-				slot1 = null;
-				modid1 = preeng1 = bpgrade1 = bproll1 = 0;
-				bpid1 = expid1 = '';
-			}
-		}
-		
-		// if we have a new module, ...
-		if (modid2) {
-			// if we have no matching old module, buy one
-			if (modid1 != modid2) {
-				steps.push({ sgrp:sgrp2, sid:shipid2, mid:((sgrp2 === 'ship') ? 0 : modid2), preeng:(preeng2 ? (BUILTIN_STORED_MODULES[preeng2] || EMPTY_OBJ).name : null), num:(modidNum || EMPTY_OBJ)[modid2], act:'Buy', discmod:discmod2, cost:{'':slot2.getCost()} });
-				modid1 = modid2;
-				bpgrade1 = bproll1 = 0;
-				bpid1 = expid1 = '';
-			}
-			
-			// if we have a blueprint that isn't pre-engineered, roll it up
-			var blueprint = eddb.blueprint[bpid2];
-			if (blueprint && !preeng2) {
-				if (bpid1 != bpid2) {
-					bpid1 = bpid2;
-					bpgrade1 = 1;
-					bproll1 = 0;
-					expid1 = '';
-				} else if (bproll1 <= 0) {
-					steps.push({ sgrp:sgrp2, sid:shipid2, mid:((sgrp2 === 'ship') ? 0 : modid2), num:(modidNum || EMPTY_OBJ)[modid2], act:'Conv', bpid:bpid1, bpgrade:bpgrade1, cost:{} });
-					bpgrade1--;
-					bproll1 = 1;
-				}
-				while (bpgrade1 <= min(limbpgrade, bpgrade2)) {
-					var limit = ((bpgrade1 < min(limbpgrade, bpgrade2)) ? BPROLL_UPGRADE : min(limbproll, bproll2));
-					if (bproll1 <= 0 || bproll1 < limit) {
-					//	var rolls = max(1, round(2 * log((1 - limit) / (1 - bproll1)) / log(1 - BPGRADE_PROGRESS[bpgrade1])) / 2);
-						var rolls = max(1, round(2 * (limit - bproll1) * limrolls[bpgrade1]) / 2);
-						var mats = (blueprint.mats || EMPTY_ARR)[bpgrade1 - 1] || EMPTY_OBJ;
-						var cost = {};
-						for (var mat in mats)
-							cost[mat] = rolls * mats[mat];
-						steps.push({ sgrp:sgrp2, sid:shipid2, mid:((sgrp2 === 'ship') ? 0 : modid2), num:(modidNum || EMPTY_OBJ)[modid2], act:'Eng', bpid:bpid2, bpgrade:bpgrade1, bproll:limit, rolls:rolls, cost:cost });
-					}
-					bpgrade1++;
-					bproll1 = 0;
-				}
-			}
-			
-			// if we have an experimental, apply it
-			var expeffect = eddb.expeffect[expid2];
-			var mtype2 = (slot2.getSlotGroup() === 'hardpoint') ? 'wpn' : slot2.getModuleMtype();
-			if (expeffect && expid1 != expid2 && limexpeffect !== '' && (limexpeffect === 'all' || (','+limexpeffect+',').indexOf(mtype2) != -1)) {
-				var cost = clone({}, expeffect.mats);
-				steps.push({ sgrp:sgrp2, sid:shipid2, mid:((sgrp2 === 'ship') ? 0 : modid2), num:(modidNum || EMPTY_OBJ)[modid2], act:'Exp', expid:expid2, cost:cost });
-			}
-		}
-		
-		return steps;
-	}; // getRetrofitData()
-	
-	
 	var Build = function(shipid, stock) {
 		var ship = eddb.ship[shipid];
 		if (!ship)
@@ -2919,136 +2824,6 @@ window.edsy = new (function() {
 		getPrevStat: function(stat) {
 			return (this.prevstats || EMPTY_OBJ)[stat];
 		}, // getPrevStat()
-		
-		
-		getRetrofitData: function(base, limdisc, limdisceng, limbpgrade, limbproll, limexpeffect, limrolls) {
-			if (!base) {
-				base = new Build(this.getShipID(), true);
-			}
-			
-			// collect slots for each group (but combine military with internal for this purpose)
-			var groupSlots1 = {};
-			var groupSlots2 = {};
-			for (var sg = 0;  sg < GROUPS.length;  sg++) {
-				var slotgroup = GROUPS[sg];
-				var compgroup = ((slotgroup === 'military') ? 'internal' : slotgroup);
-				groupSlots1[compgroup] = groupSlots1[compgroup] || [];
-				groupSlots2[compgroup] = groupSlots2[compgroup] || [];
-				var slot;
-				for (var slotnum = 0;  slot = base.getSlot(slotgroup, slotnum);  slotnum++) {
-					if (slot.getModule())
-						groupSlots1[compgroup].push(slot);
-				}
-				for (var slotnum = 0;  slot = this.getSlot(slotgroup, slotnum);  slotnum++) {
-					if (slot.getModule())
-						groupSlots2[compgroup].push(slot);
-				}
-			}
-			
-			// replace the hull, if needed
-			var modidNum = {};
-			var slot1 = base.getSlot('ship', 'hull');
-			var slot2 = this.getSlot('ship', 'hull');
-			var steps = Slot.getRetrofitData(slot1, slot2, modidNum, limdisc, limdisceng, limbpgrade, limbproll, limexpeffect, limrolls);
-			
-			// process slot modules
-			for (var g = 0;  g < GROUPS.length;  g++) {
-				var slotgroup = GROUPS[g];
-				if (slotgroup === 'military')
-					continue;
-				
-				/* OLD AND BUSTED: slot-by-slot direct retrofitting
-				var groupsales = [];
-				var groupsteps = [];
-				groupSlots1[slotgroup].sort(sortSlotModules);
-				groupSlots2[slotgroup].sort(sortSlotModules);
-				var slotnum1 = 0;
-				var slotnum2 = 0;
-				do {
-					var slot1 = groupSlots1[slotgroup][slotnum1];
-					var slot2 = groupSlots2[slotgroup][slotnum2];
-					if (slot1 && slot2 && (slot1.getModuleID() == slot2.getModuleID() || (slotgroup === 'component' && slotnum1 === slotnum2))) {
-						Array.prototype.push.apply(groupsteps, Slot.getRetrofitData(slot1, slot2, modidNum, limdisc, limdisceng, limbpgrade, limbproll, limexpeffect, limrolls));
-						slotnum1++;
-						slotnum2++;
-					} else if (slot1 && (!slot2 || sortSlotModules(slot1, slot2) < 0)) {
-						Array.prototype.push.apply(groupsales, Slot.getRetrofitData(slot1, null, modidNum, limdisc, limdisceng, limbpgrade, limbproll, limexpeffect, limrolls));
-						slotnum1++;
-					} else if (slot2 && (!slot1 || sortSlotModules(slot1, slot2) > 0)) {
-						Array.prototype.push.apply(groupsteps, Slot.getRetrofitData(null, slot2, modidNum, limdisc, limdisceng, limbpgrade, limbproll, limexpeffect, limrolls));
-						slotnum2++;
-					} else if (!slot1 && !slot2) {
-						break;
-					} else {
-						console.log('retrofit error: slot '+slot1+' vs '+slot2);
-						slotnum1++;
-						slotnum2++;
-					}
-				} while (true);
-				Array.prototype.push.apply(steps, groupsales);
-				Array.prototype.push.apply(steps, groupsteps);
-				*/
-				
-				/* NEW HOTNESS: improved source-to-target retrofit matching */
-				
-				// retrofit or purchase each target module
-				var groupsteps = [];
-				for (var slotnum2 = 0;  slotnum2 < groupSlots2[slotgroup].length;  slotnum2++) {
-					var slot2 = groupSlots2[slotgroup][slotnum2];
-					if (!slot2 || !slot2.getModule())
-						continue;
-					
-					// find the best source module to retrofit from
-					var retronum = -1;
-					var retrolen = -1;
-					if (slotgroup === 'component') {
-						// for core components, it's always the matching slot regardless of modid
-						retronum = slotnum2;
-					} else {
-						// otherwise, find the easiest retrofit from a source module with the same modid, if any
-						for (var slotnum1 = 0;  slotnum1 < groupSlots1[slotgroup].length;  slotnum1++) {
-							var slot1 = groupSlots1[slotgroup][slotnum1];
-							if (slot1 && slot1.getModuleID() == slot2.getModuleID()) {
-								// don't increment modidNums yet, this is still hypothetical
-								var slotsteps = Slot.getRetrofitData(slot1, slot2, null, limdisc, limdisceng, limbpgrade, limbproll, limexpeffect, limrolls);
-								if (retronum < 0 || retrolen > slotsteps.length) {
-									retronum = slotnum1;
-									retrolen = slotsteps.length;
-								}
-							}
-						}
-					}
-					
-					// if a direct retrofit was found, log those steps and remove the source slot from later consideration
-					if (retronum >= 0) {
-						Array.prototype.push.apply(groupsteps, Slot.getRetrofitData(groupSlots1[slotgroup][retronum], slot2, modidNum, limdisc, limdisceng, limbpgrade, limbproll, limexpeffect, limrolls));
-						groupSlots1[slotgroup][retronum] = null;
-					} else {
-						// otherwise, just buy the target module
-						Array.prototype.push.apply(groupsteps, Slot.getRetrofitData(null, slot2, modidNum, limdisc, limdisceng, limbpgrade, limbproll, limexpeffect, limrolls));
-					}
-				}
-				
-				// if any source slots remain, sell them off first
-				for (var slotnum1 = 0;  slotnum1 < groupSlots1[slotgroup].length;  slotnum1++) {
-					var slot1 = groupSlots1[slotgroup][slotnum1];
-					if (slot && slot.getModule()) {
-						Array.prototype.push.apply(steps, Slot.getRetrofitData(slot1, null, modidNum, limdisc, limdisceng, limbpgrade, limbproll, limexpeffect, limrolls));
-					}
-				}
-				
-				// then append the retrofits
-				Array.prototype.push.apply(steps, groupsteps);
-			}
-			
-			// clear extraneous '#1's for modules that only appear once
-			for (var i = 0;  i < steps.length;  i++) {
-				if (steps[i].sgrp !== 'ship' && steps[i].num == 1 && modidNum[steps[i].mid] == 1)
-					steps[i].num = 0;
-			}
-			
-			return steps;
-		}, // getRetrofitData()
 		
 		
 		getHash: function() {
@@ -5477,7 +5252,6 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			if (tokens[0] === 'ship') {
 				setCurrentFit(new Build(parseInt(tokens[1]), true), '');
 				setUIPageTab('outfitting');
-				updateUIAnalysisStoredBuilds();
 			}
 		} else if (el.tagName === 'BUTTON') {
 			e.stopPropagation();
@@ -5486,7 +5260,6 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			if (tokens[1] === 'ship') {
 				setCurrentFit(new Build(el.value, true), '');
 				setUIPageTab('outfitting');
-				updateUIAnalysisStoredBuilds();
 			}
 		} else {
 			var table = el;
@@ -5516,7 +5289,6 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			if (namehash) {
 				setCurrentFitNameHash(namehash);
 				setUIPageTab('outfitting');
-				updateUIAnalysisStoredBuilds();
 			}
 		} else if (el.tagName === 'BUTTON') {
 			e.stopPropagation();
@@ -5526,7 +5298,6 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			case 'reload':
 				setCurrentFitNameHash(el.value);
 				setUIPageTab('outfitting');
-				updateUIAnalysisStoredBuilds();
 				break;
 				
 			case 'rename':
@@ -5559,7 +5330,6 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			readStoredBuilds(true);
 			updateUIShipyardStoredBuilds();
 			updateUIFitStoredBuilds();
-			updateUIAnalysisStoredBuilds();
 			writeStoredBuilds();
 		}
 	}; // onUIShipyardStoredCopyLiveClick()
@@ -6441,7 +6211,6 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			updateUIModulePickerWarnings();
 			updateUIDetailsStoredModules();
 			updateUIDetailsStoredModuleControls();
-			updateUIAnalysisStoredBuilds();
 			current.importdata = null;
 			loadTranslations(true); // async
 		} else {
@@ -7495,7 +7264,6 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			updateUIFitStoredBuilds();
 		}
 		updateUIFitStoredBuildControls(true, namehash);
-		updateUIAnalysisStoredBuilds();
 	}; // saveCurrentStoredBuild()
 	
 	
@@ -7530,7 +7298,6 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		var select = document.forms.fit.elements.outfitting_fit_stored;
 		if (select.value === oldnamehash)
 			select.value = namehash;
-		updateUIAnalysisStoredBuilds(oldnamehash, namehash);
 	}; // renameStoredBuild()
 	
 	
@@ -7556,7 +7323,6 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			updateUIFitStoredBuildControls(true);
 			select.selectedIndex = -1;
 		}
-		updateUIAnalysisStoredBuilds();
 	}; // deleteStoredBuild()
 	
 	
@@ -9525,771 +9291,6 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 	
 	
 	/*
-	* ANALYSIS UI
-	*/
-	
-	
-	var initUIAnalysisRetrofit = function() {
-		var els = document.forms.analysis.elements;
-		
-		var tbody = document.getElementById('analysis_retrofit_builds_table').tBodies[0];
-		cache.template.analysis_retrofit_builds_row = tbody.removeChild(tbody.rows[0]);
-		els.retrofit_builds_show_all.addEventListener('change', onUIAnalysisRetrofitSetupShowChange);
-		els.retrofit_builds_add.addEventListener('click', onUIAnalysisRetrofitSetupAddClick);
-		//els.retrofit_builds_add.addEventListener('change', onUIAnalysisRetrofitSetupAddChange);
-		els.retrofit_builds_run.addEventListener('click', onUIAnalysisRetrofitSetupRunClick);
-		
-		var discounts = [0,0x1,0x2,0x3,0x4,0x5,0x8,0x9,0x10,0x11,0x20,0x21,0x3F];
-		setDOMSelectLength(els.retrofit_setup_discount, discounts.length);
-		for (var i = 0;  i < discounts.length;  i++) {
-			var discountbits = discounts[i];
-			var discountmod = cache.discountMod[discountbits];
-			var option = els.retrofit_setup_discount.options[i];
-			option.value = discountbits;
-			var dec = ((discountbits & 0x1) && (discountmod > 0)) ? 1 : 0;
-			if (discountmod == 1) {
-				option.setAttribute('edsy-text', 'ui-retrofit-settings-rebuy-discounted-never');
-				option.innerText = '0% (never)';
-			} else if (discountmod == 0) {
-				option.setAttribute('edsy-text', 'ui-retrofit-settings-rebuy-discounted-always');
-				option.innerText = '100% (always)';
-			} else if (discountbits != 0x1 && discountbits & 0x1) {
-				option.setAttribute('edsy-vals', JSON.stringify({'number':(1-discountmod),'number#':dec,'number%':true,'a':0.025,'a#':1,'a%':true,'b':(1 - cache.discountMod[discountbits & ~0x1]),'b%':true}));
-				option.setAttribute('edsy-text', 'interp-number-added-a-b');
-				option.innerText = formatPctText(1 - discountmod, dec) + ' (2.5% + ' + formatPctText(1 - cache.discountMod[discountbits & ~0x1], 0) + ')';
-			} else {
-				option.setAttribute('edsy-vals', JSON.stringify({'number':(1-discountmod),'number#':dec,'number%':true}));
-				option.setAttribute('edsy-text', 'interp-number');
-				option.innerText = formatPctText(1 - discountmod, dec);
-			}
-		}
-		els.retrofit_setup_discount.selectedIndex = discounts.length - 1;
-		
-		/*
-		setDOMSelectLength(els.retrofit_setup_disceng, 1 + MAX_BLUEPRINT_GRADE);
-		setDOMSelectLength(els.retrofit_setup_bpgrade, 1 + MAX_BLUEPRINT_GRADE);
-		for (var i = 0;  i <= MAX_BLUEPRINT_GRADE;  i++) {
-			var text = 'grade ' + i + (i ? '' : ' (always ignore)');
-			els.retrofit_setup_disceng.options[i].value = i;
-			els.retrofit_setup_disceng.options[i].text = text;
-			els.retrofit_setup_bpgrade.options[i].value = i;
-			els.retrofit_setup_bpgrade.options[i].text = text;
-		}
-		els.retrofit_setup_disceng.selectedIndex = 1;
-		els.retrofit_setup_bpgrade.selectedIndex = MAX_BLUEPRINT_GRADE;
-		
-		setDOMSelectLength(els.retrofit_setup_bproll, 21);
-		for (var i = 0;  i < 21;  i++) {
-			els.retrofit_setup_bproll.options[i].value = i * 0.05;
-			els.retrofit_setup_bproll.options[i].text = formatPctText(i * 0.05, 0) + (i ? '' : ' (always ignore)');
-		}
-		els.retrofit_setup_bproll.selectedIndex = 20;
-		*/
-		
-		var tbody = document.getElementById('analysis_retrofit_steps_table').tBodies[0];
-		cache.template.analysis_retrofit_steps_row = tbody.removeChild(tbody.rows[0]);
-		els.retrofit_steps_show_all.addEventListener('change', onUIAnalysisRetrofitStepsShowChange);
-		
-		var tbody = document.getElementById('analysis_retrofit_costs_table').tBodies[0];
-		cache.template.analysis_retrofit_costs_row = tbody.removeChild(tbody.rows[1]);
-		
-		els.retrofit_export.addEventListener('click', onUIAnalysisRetrofitExportClick);
-		
-		addUIAnalysisRetrofitBuild('');
-		document.getElementById('retrofit_export').disabled = true;
-	}; // initUIAnalysisRetrofit()
-	
-	
-	var onUIAnalysisTabChange = function(e) {
-		if (e.target.name === 'tab' && e.target.checked) {
-			setUIAnalysisTab(e.target.value);
-		}
-	}; // onUIAnalysisTabChange()
-	
-	
-	var setUIAnalysisTab = function(tab) {
-		current.analysis_tab = tab;
-		document.forms.analysis.elements.tab.value = tab;
-		document.forms.analysis.className = tab;
-	}; // setUIAnalysisTab()
-	
-	
-	var updateUIAnalysisStoredBuilds = function(oldnamehash, newnamehash) {
-		/*
-		var select = document.forms.analysis.elements.retrofit_builds_add;
-		populateDOMSelectStoreds(select, current.stored.shipStoreds[0], '', 2);
-		select.selectedIndex = 0;
-		*/
-		
-		var tbody = document.getElementById('analysis_retrofit_builds_table').tBodies[0];
-		var r = tbody.rows.length;
-		while (r-- > 0) {
-			var selects = tbody.rows[r].getElementsByTagName('SELECT');
-			var namehash = selects[0].value;
-			if (oldnamehash && namehash === oldnamehash)
-				namehash = newnamehash;
-			var stored = current.stored.shipNamehashStored[0][namehash];
-			if (namehash && !stored) {
-				tbody.removeChild(tbody.rows[r]);
-			} else {
-				var shipid = stored ? stored.shipid : (current.fit ? current.fit.getShipID() : -1);
-				
-				populateDOMSelectStoreds(selects[0], current.stored.shipStoreds[0], namehash, 1);
-				if (selects[0].selectedIndex < 0)
-					selects[0].selectedIndex = 0;
-				
-				var namehash = selects[1].value;
-				if (oldnamehash && namehash === oldnamehash)
-					namehash = newnamehash;
-				populateDOMSelectStoreds(selects[1], current.stored.shipStoreds[shipid], namehash, 2);
-				if (selects[1].selectedIndex < 0)
-					selects[1].selectedIndex = 0;
-			}
-		}
-	}; // updateUIAnalysisStoredBuilds()
-	
-	
-	var onUIAnalysisRetrofitSetupShowChange = function(e) {
-		e.stopPropagation();
-		
-		var checkboxAll = document.forms.analysis.elements.retrofit_builds_show_all;
-		var checkboxes = document.getElementById('analysis_retrofit_builds_table').getElementsByTagName('INPUT');
-		if (e.target === checkboxAll) {
-			for (var i = 0;  i < checkboxes.length;  i++) {
-				if (checkboxes[i] !== checkboxAll && checkboxes[i].name.startsWith('retrofit_builds_show_')) {
-					checkboxes[i].checked = checkboxAll.checked;
-				}
-			}
-		} else if (e.target.checked != checkboxAll.checked) {
-			for (var i = 0;  i < checkboxes.length;  i++) {
-				if (checkboxes[i] !== checkboxAll && checkboxes[i].name.startsWith('retrofit_builds_show_') && checkboxes[i].checked != e.target.checked) {
-					return;
-				}
-			}
-			checkboxAll.checked = e.target.checked;
-		}
-	}; // onUIAnalysisRetrofitSetupShowhange()
-	
-	
-	var onUIAnalysisRetrofitSetupAddChange = function(e) {
-		e.stopPropagation();
-		var namehash = e.target.value;
-		e.target.selectedIndex = 0;
-		addUIAnalysisRetrofitBuild(namehash);
-	}; // onUIAnalysisRetrofitSetupAddChange()
-	
-	
-	var onUIAnalysisRetrofitSetupAddClick = function(e) {
-		e.stopPropagation();
-		e.preventDefault();
-		addUIAnalysisRetrofitBuild('');
-	}; // onUIAnalysisRetrofitSetupAddClick()
-	
-	
-	var addUIAnalysisRetrofitBuild = function(namehash) {
-		var shipid = namehash ? current.stored.shipNamehashStored[0][namehash].shipid : (current.fit ? current.fit.getShipID() : -1);
-		var n = (current.counter.analysis_retrofit || 0) + 1;
-		current.counter.analysis_retrofit = n;
-		var tbody = document.getElementById('analysis_retrofit_builds_table').tBodies[0];
-		var tr = cache.template.analysis_retrofit_builds_row.cloneNode(true);
-		tbody.appendChild(tr);
-		var els = document.forms.analysis.elements;
-		populateDOMSelectStoreds(els.retrofit_builds_target_, current.stored.shipStoreds[0], namehash, 1);
-		populateDOMSelectStoreds(els.retrofit_builds_base_, current.stored.shipStoreds[shipid], '', 2);
-		els.retrofit_builds_target_.focus();
-		els.retrofit_builds_base_.selectedIndex = 0;
-		
-		els.retrofit_builds_show_.addEventListener('change', onUIAnalysisRetrofitSetupShowChange);
-		els.retrofit_builds_target_.addEventListener('change', onUIAnalysisRetrofitSetupTargetChange);
-		els.retrofit_builds_delete_.addEventListener('click', onUIAnalysisRetrofitSetupDeleteClick);
-		
-		els.retrofit_builds_show_.name += n;
-		els.retrofit_builds_target_.name += n;
-		els.retrofit_builds_base_.name += n;
-		els.retrofit_builds_delete_.name += n;
-	}; // addUIAnalysisRetrofitBuild()
-	
-	
-	var onUIAnalysisRetrofitSetupTargetChange = function(e) {
-		e.stopPropagation();
-		
-		var namehash = e.target.value;
-		var shipid = namehash ? current.stored.shipNamehashStored[0][namehash].shipid : current.fit.getShipID();
-		var n = e.target.name.split('_')[3];
-		var els = document.forms.analysis.elements;
-		var select = els['retrofit_builds_base_' + n];
-		populateDOMSelectStoreds(select, current.stored.shipStoreds[shipid], '', 2);
-		select.selectedIndex = 0;
-	}; // onUIAnalysisRetrofitSetupTargetChange()
-	
-	
-	var onUIAnalysisRetrofitSetupDeleteClick = function(e) {
-		e.stopPropagation();
-		e.preventDefault();
-		
-		var tr = e.target;
-		while (tr && tr.tagName !== 'TR')
-			tr = tr.parentNode;
-		if (tr)
-			tr.parentNode.removeChild(tr);
-	}; // onUIAnalysisRetrofitSetupDeleteClick()
-	
-	
-	var onUIAnalysisRetrofitSetupRunClick = function(e) {
-		e.stopPropagation();
-		e.preventDefault();
-		updateUIAnalysisRetrofit();
-	}; // onUIAnalysisRetrofitSetupRunClick()
-	
-	
-	var getRetrofitStepDescription = function(step, dom) {
-		var vals=[], text=[];
-		switch (step.act) {
-		case 'Buy':
-			if (step.preeng) {
-				vals.push(null);
-				text.push('pre-eng');
-				break;
-			}
-			// fall through
-		case 'Sell':
-			vals.push({'number':(1 - step.discmod),'number%':true,'number#':1});
-			text.push('interp-number-discount');
-			break;
-		case 'Conv':
-			vals.push(null);
-			text.push('blueprint-'+step.bpid);
-			vals.push({'number':step.bpgrade});
-			text.push('interp-grade-abbr-number');
-			vals.push(null);
-			text.push('note-legacy');
-			break;
-		case 'Eng':
-			vals.push(null);
-			text.push('blueprint-'+step.bpid);
-			vals.push({'number':step.bpgrade});
-			text.push('interp-grade-abbr-number');
-			var dec = (step.rolls.toString().split('.')[1] || '').length;
-			vals.push({'number':step.rolls,'number#':dec});
-			text.push('interp-multiplier-abbr-number');
-			break;
-		case 'Exp':
-			vals.push(null);
-			text.push('expeffect-'+step.expid);
-			break;
-		}
-		if (dom) {
-			var df = document.createDocumentFragment();
-			for (var i = 0;  i < vals.length && i < text.length;  i++) {
-				if (i > 0)
-					df.append(' ');
-				df.append(createTranslatedElement('span', text[i], vals[i]));
-			}
-			return df;
-		}
-		for (var i = 0;  i < vals.length && i < text.length;  i++)
-			text[i] = getTranslation(text[i], vals[i]);
-		return text.join(' ');
-	}; // getRetrofitStepDescription()
-	
-	
-	var updateUIAnalysisRetrofit = function() {
-		// gather settings
-		var els = document.forms.analysis.elements;
-		var limdisc = els.retrofit_setup_discount.value;
-		var limdisceng = els.retrofit_setup_disceng.value;
-		var limbpgrade = els.retrofit_setup_bpgrade.value;
-		var limbproll = els.retrofit_setup_bproll.value;
-		var limexpeffect = els.retrofit_setup_expeffect.value;
-		var limrolls = [
-			0,
-			parseFloat(els.retrofit_setup_rolls1.value),
-			parseFloat(els.retrofit_setup_rolls2.value),
-			parseFloat(els.retrofit_setup_rolls3.value),
-			parseFloat(els.retrofit_setup_rolls4.value),
-			parseFloat(els.retrofit_setup_rolls5.value)
-		];
-		
-		// initialize retrofit report and store metadata
-		current.retrofit = {
-			options: {
-				rebuy_max_discount: parseFloat((1 - cache.discountMod[parseInt(els.retrofit_setup_discount.value)]).toFixed(6)),
-				rebuy_max_bpgrade: parseInt(els.retrofit_setup_disceng.value),
-				eng_max_bpgrade: parseInt(els.retrofit_setup_bpgrade.value),
-				eng_max_bproll: parseFloat(els.retrofit_setup_bproll.value),
-				eng_est_rolls: [
-					0,
-					parseFloat(els.retrofit_setup_rolls1.value),
-					parseFloat(els.retrofit_setup_rolls2.value),
-					parseFloat(els.retrofit_setup_rolls3.value),
-					parseFloat(els.retrofit_setup_rolls4.value),
-					parseFloat(els.retrofit_setup_rolls5.value)
-				],
-				exp_filter: els.retrofit_setup_expeffect.value
-			},
-			jobs: []
-		};
-		
-		// generate all retrofit reports
-		var checkboxes = document.getElementById('analysis_retrofit_builds_table').tBodies[0].getElementsByTagName('INPUT');
-		for (var i = 0;  i < checkboxes.length;  i++) {
-			if (checkboxes[i].checked && checkboxes[i].name.startsWith('retrofit_builds_show_')) {
-				var n = checkboxes[i].name.split('_')[3];
-				var namehash1 = els['retrofit_builds_base_' + n].value;
-				var namehash2 = els['retrofit_builds_target_' + n].value;
-				var stored1 = current.stored.shipNamehashStored[0][namehash1];
-				var stored2 = current.stored.shipNamehashStored[0][namehash2];
-				var build1 = (stored1 ? Build.fromHash(stored1.buildhash) : (namehash1 ? null : current.fit));
-				var build2 = (stored2 ? Build.fromHash(stored2.buildhash) : (namehash2 ? null : current.fit));
-				var steps = build2.getRetrofitData(build1, limdisc, limdisceng, limbpgrade, limbproll, limexpeffect, limrolls);
-				current.retrofit.jobs.push({ name:(stored2 ? stored2.name : false), baseline:(stored1 ? stored1.name : (namehash1 ? true : false)), sid:build2.getShipID(), steps:steps });
-			}
-		}
-		
-		// clear results table
-		var table = document.getElementById('analysis_retrofit_steps_table');
-		while (table.tBodies.length > 0)
-			table.removeChild(table.tBodies[table.tBodies.length - 1]);
-		
-		// print new results
-		table.classList.toggle('single', current.retrofit.jobs.length < 2);
-		for (var i = 0;  i < current.retrofit.jobs.length;  i++) {
-			var tbody = document.createElement('tbody');
-			table.appendChild(tbody);
-			var jobKey = ((current.retrofit.jobs[i].name === false) ? 'option-current-build' : ((current.retrofit.jobs[i].name === true) ? 'option-stock-ship' : ''));
-			var jobText = ((current.retrofit.jobs[i].name === false) ? '(Current Build)' : ((current.retrofit.jobs[i].name === true) ? '(Stock Ship)' : current.retrofit.jobs[i].name));
-			var steps = current.retrofit.jobs[i].steps;
-			for (var s = 0;  s < steps.length;  s++) {
-				var ship = eddb.ship[steps[s].sid];
-				var module = cache.shipModules[steps[s].sid][steps[s].mid] || eddb.module[steps[s].mid];
-				var tr = cache.template.analysis_retrofit_steps_row.cloneNode(true);
-				if (jobKey)
-					tr.cells[1].setAttribute('edsy-text', jobKey);
-				tr.cells[1].innerHTML = encodeHTML(jobText);
-				if (steps[s].preeng) {
-					tr.cells[2].innerText = steps[s].preeng;
-				} else if (steps[s].sgrp === 'ship') {
-					tr.cells[2].setAttribute('edsy-text', 'ship-'+steps[s].sid);
-					tr.cells[2].innerText = ship.name;
-				} else {
-					tr.cells[2].replaceChildren(getModuleLabelDOM(module));
-				}
-				if (steps[s].num) {
-					var span = createTranslatedElement('span', 'interp-index-abbr-number', {'number':steps[s].num});
-					span.innerHTML = '#' + formatNumText(steps[s].num,0);
-					tr.cells[2].append(' ', span);
-				}
-				tr.cells[3].setAttribute('edsy-text', 'ui-retrofit-action-'+steps[s].act.toLowerCase()+'-abbr');
-				tr.cells[3].innerHTML = steps[s].act;
-				tr.cells[4].replaceChildren(getRetrofitStepDescription(steps[s], true));
-				tbody.appendChild(tr);
-				els.retrofit_steps_show_.addEventListener('change', onUIAnalysisRetrofitStepsShowChange);
-				els.retrofit_steps_show_.name += (i + '_' + s);
-			}
-		}
-		updateTranslations(table);
-		
-		updateUIAnalysisRetrofitMaterials();
-		document.getElementById('retrofit_export').disabled = (current.retrofit.jobs.length < 1);
-	}; // updateUIAnalysisRetrofit()
-	
-	
-	var onUIAnalysisRetrofitStepsShowChange = function(e) {
-		e.stopPropagation();
-		
-		var checkboxAll = document.forms.analysis.elements.retrofit_steps_show_all;
-		var checkboxes = document.getElementById('analysis_retrofit_steps_table').getElementsByTagName('INPUT');
-		if (e.target === checkboxAll) {
-			for (var i = 0;  i < checkboxes.length;  i++) {
-				if (checkboxes[i] !== checkboxAll && checkboxes[i].name.startsWith('retrofit_steps_show_')) {
-					checkboxes[i].checked = checkboxAll.checked;
-				}
-			}
-		} else if (e.target.checked != checkboxAll.checked) {
-			var same = true;
-			for (var i = 0;  i < checkboxes.length;  i++) {
-				if (checkboxes[i] !== checkboxAll && checkboxes[i].name.startsWith('retrofit_steps_show_') && checkboxes[i].checked != e.target.checked) {
-					same = false;
-					break;
-				}
-			}
-			if (same)
-				checkboxAll.checked = e.target.checked;
-		}
-		
-		updateUIAnalysisRetrofitMaterials();
-	}; // onUIAnalysisRetrofitStepsShowChange()
-	
-	
-	var updateUIAnalysisRetrofitMaterials = function() {
-		// clear results table
-		var tbody = document.getElementById('analysis_retrofit_costs_table').tBodies[0];
-		while (tbody.rows.length > 1)
-			tbody.removeChild(tbody.rows[tbody.rows.length - 1]);
-		
-		// tally up results
-		var matTotal = {'':0};
-		var els = document.forms.analysis.elements;
-		for (var i = 0;  i < current.retrofit.jobs.length;  i++) {
-			var steps = current.retrofit.jobs[i].steps;
-			for (var s = 0;  s < steps.length;  s++) {
-				var checkbox = els['retrofit_steps_show_' + i + '_' + s];
-				if (checkbox.checked) {
-					for (var mat in steps[s].cost) {
-						matTotal[mat] = (matTotal[mat] || 0) + steps[s].cost[mat];
-					}
-				}
-			}
-		}
-		
-		// print total cost
-		tbody.rows[0].cells[1].innerHTML = formatPriceHTML(matTotal['']);
-		delete matTotal[''];
-		
-		// print other materials
-		var mats = Object.keys(matTotal);
-		mats.sort(sortMaterials);
-		for (var i = 0;  i < mats.length;  i++) {
-			var material = eddb.material[mats[i]];
-			var tr = cache.template.analysis_retrofit_costs_row.cloneNode(true);
-			tr.cells[0].setAttribute('edsy-text', 'material-'+mats[i]);
-			tr.cells[0].innerHTML = encodeHTML(material.name);
-			tr.cells[1].setAttribute('edsy-text', 'mattype-'+material.mattype+'-abbr');
-			tr.cells[1].innerHTML = encodeHTML(eddb.mattype[material.mattype].abbr);
-			tr.cells[2].setAttribute('edsy-vals', JSON.stringify({'number':material.rarity}));
-			tr.cells[2].setAttribute('edsy-text', 'interp-grade-abbr-number');
-			tr.cells[2].innerHTML = encodeHTML('G' + material.rarity);
-			tr.cells[3].innerHTML = formatNumHTML(ceil(matTotal[mats[i]]), 0);
-			tbody.appendChild(tr);
-		}
-	}; // updateUIAnalysisRetrofitMaterials()
-	
-	
-	var showUIRetrofitExportPopup = function(stepsText, matsText, reportJSON, inaraURL, edomhURL) {
-		var trigger = document.getElementById('retrofit_export');
-		var table = showUITablePopup(null, trigger, false, false, false);
-		table.className = '';
-		while (table.lastChild)
-			table.removeChild(table.lastChild);
-		var tbody = document.createElement('tbody');
-		
-		var tr = document.createElement('tr');
-		var td = createTranslatedElement('td', 'ui-retrofit-export-checklist')
-		tr.appendChild(td);
-		var td = document.createElement('td');
-		td.className = 'export';
-		var div = document.createElement('div');
-		div.className = 'export';
-		var textarea = document.createElement('textarea');
-		textarea.cols = 50;
-		textarea.rows = 8;
-		textarea.className = 'export';
-		textarea.name = 'export_checklist';
-		textarea.value = stepsText;
-		textarea.addEventListener('focus', onUIPopupExportFieldFocus);
-		div.appendChild(textarea);
-		td.appendChild(div);
-		tr.appendChild(td);
-		var td = document.createElement('td');
-		var button = document.createElement('button');
-		button.appendChild(createIcon('clipboard'));
-		button.addEventListener('click', onUIPopupExportCopyButtonClick);
-		td.appendChild(button);
-		tr.appendChild(td);
-		tbody.appendChild(tr);
-		
-		var tr = document.createElement('tr');
-		var td = createTranslatedElement('td', 'ui-retrofit-export-materials');
-		tr.appendChild(td);
-		var td = document.createElement('td');
-		td.className = 'export';
-		var div = document.createElement('div');
-		div.className = 'export';
-		var textarea = document.createElement('textarea');
-		textarea.cols = 50;
-		textarea.rows = 8;
-		textarea.className = 'export';
-		textarea.name = 'export_materials';
-		textarea.value = matsText;
-		textarea.addEventListener('focus', onUIPopupExportFieldFocus);
-		div.appendChild(textarea);
-		td.appendChild(div);
-		tr.appendChild(td);
-		var td = document.createElement('td');
-		var button = document.createElement('button');
-		button.appendChild(createIcon('clipboard'));
-		button.addEventListener('click', onUIPopupExportCopyButtonClick);
-		td.appendChild(button);
-		tr.appendChild(td);
-		tbody.appendChild(tr);
-		
-		var tr = document.createElement('tr');
-		var td = createTranslatedElement('td', 'ui-retrofit-export-json');
-		tr.appendChild(td);
-		var td = document.createElement('td');
-		td.className = 'export';
-		var div = document.createElement('div');
-		div.className = 'export';
-		var input = document.createElement('input');
-		input.type = 'text';
-		input.size = 50;
-		input.className = 'export';
-		input.name = 'export_json';
-		input.value = reportJSON;
-		input.addEventListener('focus', onUIPopupExportFieldFocus);
-		div.appendChild(input);
-		td.appendChild(div);
-		tr.appendChild(td);
-		var td = document.createElement('td');
-		var button = document.createElement('button');
-		button.appendChild(createIcon('clipboard'));
-		button.addEventListener('click', onUIPopupExportCopyButtonClick);
-		td.appendChild(button);
-		tr.appendChild(td);
-		tbody.appendChild(tr);
-		
-		var tr = document.createElement('tr');
-		var td = createTranslatedElement('td', 'ui-retrofit-export-external');
-		tr.appendChild(td);
-		var td = document.createElement('td');
-		td.className = 'export';
-		var div = document.createElement('div');
-		div.className = 'export';
-		var link = document.createElement('a');
-		link.className = 'button text';
-		link.href = inaraURL;
-		link.target = '_blank';
-		var img = document.createElement('img');
-		img.src = 'inara.png';
-		link.append(img, ' ', createTranslatedElement('span', 'ui-export-search-inara'));
-		div.appendChild(link);
-		var link = document.createElement('a');
-		link.className = 'button text';
-		link.target = '_blank';
-		var img = document.createElement('img');
-		img.src = 'edomh.png';
-		img.className = 'iconsvg';
-		var span = createTranslatedElement('span', 'ui-export-edomh');
-		if (edomhURL) {
-			link.href = edomhURL;
-		} else {
-			var abbr = document.createElement('abbr');
-			abbr.setAttribute('edsy-title', 'ui-retrofit-export-warning-edomh-multiple');
-			abbr.title = getTranslation('ui-retrofit-export-warning-edomh-multiple');
-			abbr.append(span, createIcon('warning'));
-			span = abbr;
-		}
-		link.append(img, ' ', span);
-		div.appendChild(link);
-		td.appendChild(div);
-		tr.appendChild(td);
-		var td = document.createElement('td');
-		tr.appendChild(td);
-		tbody.appendChild(tr);
-		
-		table.appendChild(tbody);
-		document.forms.popup.elements.export_checklist.focus();
-		document.forms.popup.elements.export_checklist.select();
-		return true;
-	}; // showUIRetrofitExportPopup()
-	
-	
-	var onUIAnalysisRetrofitExportClick = function(e) {
-		e.stopPropagation();
-		e.preventDefault();
-		if (!current.retrofit || current.retrofit.jobs.length < 1)
-			return;
-		
-		// compile all enabled retrofit steps
-		var els = document.forms.analysis.elements;
-		var exportJSON = {
-			retrofitOptions: current.retrofit.options,
-			retrofits: [],
-		};
-		var cols = [
-			getTranslation('ui-retrofit-checklist-build'),
-			getTranslation('ui-retrofit-checklist-module'),
-			getTranslation('ui-retrofit-checklist-action'),
-			getTranslation('ui-retrofit-checklist-details')
-		];
-		var stepsText = [cols.join('\t')];
-		var fdidShips = {};
-		var fdidModules = {};
-		var matTotal = {'':0};
-		for (var i = 0;  i < current.retrofit.jobs.length;  i++) {
-			
-			var target = current.retrofit.jobs[i].name;
-			target = ((target === false) ? getTranslation('option-current-build') : ((target === true) ? getTranslation('option-stock-ship') : target));
-			var baseline = current.retrofit.jobs[i].baseline;
-			baseline = ((baseline === false) ? getTranslation('option-current-build') : ((baseline === true) ? getTranslation('option-stock-ship') : baseline));
-			var retroJSON = {
-				target    : target,
-				baseline  : baseline,
-				ship      : eddb.ship[current.retrofit.jobs[i].sid].fdname,
-				steps     : [],
-				cost      : 0,
-				materials : {},
-			};
-			exportJSON.retrofits.push(retroJSON);
-			cols[0] = target;
-			var steps = current.retrofit.jobs[i].steps;
-			for (var s = 0;  s < steps.length;  s++) {
-				var ship = eddb.ship[steps[s].sid];
-				var module = cache.shipModules[steps[s].sid][steps[s].mid] || eddb.module[steps[s].mid];
-				var checkbox = els['retrofit_steps_show_' + i + '_' + s];
-				
-				var stepJSON = { enabled:!!checkbox.checked };
-				if (steps[s].sgrp === 'ship') {
-					stepJSON.ship = ship.fdname;
-					if (steps[s].act === 'Sell') {
-						stepJSON.action = 'sell';
-						stepJSON.discount = parseFloat((1 - steps[s].discmod).toFixed(6));
-					} else if (steps[s].act === 'Buy') {
-						stepJSON.action = 'buy';
-						stepJSON.discount = parseFloat((1 - steps[s].discmod).toFixed(6));
-					}
-				} else {
-					stepJSON.module = module.fdname;
-					stepJSON.index = steps[s].num;
-					if (steps[s].act === 'Sell') {
-						stepJSON.action = 'sell';
-						stepJSON.discount = parseFloat((1 - steps[s].discmod).toFixed(6));
-					} else if (steps[s].act === 'Buy') {
-						stepJSON.action = 'buy';
-						stepJSON.discount = parseFloat((1 - steps[s].discmod).toFixed(6));
-					} else if (steps[s].act === 'Conv') {
-						stepJSON.action = 'convert';
-						stepJSON.blueprint = eddb.blueprint[steps[s].bpid].fdname;
-						stepJSON.grade = steps[s].bpgrade;
-					} else if (steps[s].act === 'Eng') {
-						stepJSON.action = 'engineer';
-						stepJSON.blueprint = eddb.blueprint[steps[s].bpid].fdname;
-						stepJSON.grade = steps[s].bpgrade;
-						stepJSON.progress = steps[s].bproll;
-						stepJSON.rolls = steps[s].rolls;
-					} else if (steps[s].act === 'Exp') {
-						stepJSON.action = 'experimental';
-						stepJSON.experimental = eddb.expeffect[steps[s].expid].fdname;
-					}
-				}
-				if (stepJSON.action)
-					retroJSON.steps.push(stepJSON);
-				else if (current.dev) console.log('invalid retrofit step: '+JSON.stringify(steps[s]));
-				
-				if (checkbox.checked) {
-					cols[1] = ((steps[s].sgrp === 'ship') ? getTranslation('ship-'+steps[s].sid) : (getModuleLabel(module) + (steps[s].num ? (' ' + getTranslation('interp-index-abbr-number', {'number':steps[s].num})) : '')));
-					cols[2] = getTranslation('ui-retrofit-action-'+steps[s].act.toLowerCase()+'-abbr');
-					cols[3] = getRetrofitStepDescription(steps[s], false);
-					stepsText.push(cols.join('\t'));
-					
-					if (steps[s].act === 'Buy') {
-						if (steps[s].sgrp === 'ship' && ship.fdid) {
-							fdidShips[ship.fdid] = true;
-						} else if (steps[s].sgrp !== 'ship' && module.fdid && module.tag !== 'C' && module.tag !== 'P' && module.tag !== 'T') {
-							fdidModules[module.fdid] = true;
-						}
-					}
-					
-					retroJSON.cost += (steps[s].cost[''] || 0);
-					for (var mat in steps[s].cost) {
-						matTotal[mat] = (matTotal[mat] || 0) + steps[s].cost[mat];
-						var material = eddb.material[mat];
-						if (material)
-							retroJSON.materials[material.fdname] = (retroJSON.materials[material.fdname] || 0) + steps[s].cost[mat];
-					}
-				}
-			}
-		}
-		stepsText.push('');
-		
-		// compile materials report
-		cols = [
-			getTranslation('ui-retrofit-materials-item'),
-			getTranslation('ui-retrofit-materials-type'),
-			getTranslation('ui-retrofit-materials-level'),
-			getTranslation('ui-retrofit-materials-quantity')
-		];
-		var matsText = [cols.join('\t')];
-		cols = [
-			getTranslation('ui-retrofit-materials-credits'),
-			'',
-			'',
-			formatNumText(matTotal[''] || 0)
-		];
-		matsText.push(cols.join('\t'));
-		delete matTotal[''];
-		var mats = Object.keys(matTotal);
-		mats.sort(sortMaterials);
-		for (var i = 0;  i < mats.length;  i++) {
-			var material = eddb.material[mats[i]];
-			if (material) {
-				cols[0] = getTranslation('material-'+mats[i]);
-				cols[1] = getTranslation('mattype-'+material.mattype+'-abbr');
-				cols[2] = getTranslation('interp-grade-abbr-number', {'number':material.rarity});
-				cols[3] = formatNumText(ceil(matTotal[mats[i]]));
-				matsText.push(cols.join('\t'));
-			}
-		}
-		
-		// finalize Inara link
-		var inaraURL = '';
-		var ids = Object.keys(fdidShips);
-		if (ids.length > 0) {
-			ids.sort();
-			inaraURL += (inaraURL ? '&' : '?') + 's=' + ids.join(',');
-		}
-		ids = Object.keys(fdidModules);
-		if (ids.length > 0) {
-			ids.sort();
-			inaraURL += (inaraURL ? '&' : '?') + 'm=' + ids.join(',');
-		}
-		if (inaraURL) {
-			inaraURL = 'https://inara.cz/inapi/outfitsearch.php' + inaraURL;
-		}
-		
-		// create EDOMH link, if possible
-		var edomhURL = null;
-		if (exportJSON.retrofits.length == 1) {
-			var json = exportJSON.retrofits[0];
-			var obj = {
-				"version": 1,
-				"ship": (json.ship || '').toLowerCase(),
-				"name": (json.target || ''),
-				"items": [],
-			};
-			// iterate backwards to retain only the final engineering step for each module
-			var m=null, i=null;
-			for (var s = json.steps.length - 1;  s >= 0;  s--) {
-				if (json.steps[s].action === 'engineer' && (m !== json.steps[s].module || i !== json.steps[s].index)) {
-					m = json.steps[s].module;
-					i = json.steps[s].index;
-					obj.items.push({
-						"item": (json.steps[s].module || '').toLowerCase(),
-						"blueprint": (json.steps[s].blueprint || '').toLowerCase(),
-						"grade": json.steps[s].grade,
-						"highestGradePercentage": (json.steps[s].progress ? parseFloat(json.steps[s].progress.toFixed(6)) : 0),
-					});
-				} else if (json.steps[s].action === 'experimental') {
-					obj.items.push({
-						"item": (json.steps[s].module || '').toLowerCase(),
-						"blueprint": (json.steps[s].experimental || '').toLowerCase(),
-					});
-				}
-			}
-			// encode
-			if (obj.items.length > 0) {
-				edomhURL = "edomh://edsy/?" + b64Encode(pako.deflate(JSON.stringify(obj), {to:'string'}));
-			} else {
-				edomhURL = '';
-			}
-		}
-		
-		// show popup
-		showUIRetrofitExportPopup(stepsText.join('\n'), matsText.join('\n'), JSON.stringify(exportJSON), inaraURL, edomhURL);
-	}; // onUIAnalysisRetrofitExportClick()
-	
-	
-	/*
 	* OPTIONS UI
 	*/
 	
@@ -11120,7 +10121,6 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		switch (el.id) {
 		case 'outfitting_fit_stored_reload':
 			setCurrentFitNameHash(namehash);
-			updateUIAnalysisStoredBuilds();
 			break;
 			
 		case 'outfitting_fit_stored_save':
@@ -11156,7 +10156,6 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 					document.getElementById('fit_header_export').style.display = (inaraURL ? '' : 'none');
 					document.forms.fit.elements.export_inara.style.display = (inaraURL ? '' : 'none');
 				}
-				updateUIAnalysisStoredBuilds();
 			}
 		}
 	}; // onUIFitSettingsStoredChange()
@@ -11992,7 +10991,6 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		readStoredBuilds();
 		updateUIShipyardStoredBuilds();
 		updateUIFitStoredBuilds();
-		updateUIAnalysisStoredBuilds();
 		readStoredModules();
 		updateUIModulePickerStoredModules();
 		updateUIDetailsStoredModules();
@@ -12289,7 +11287,6 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		document.forms.stats.elements.stats_cur_cargo.addEventListener('change', onUIStatsInputChange);
 		document.getElementById('outfitting_fit_crewdist').addEventListener('click', onUIPowerDistClick);
 		document.getElementById('outfitting_fit_powerdist').addEventListener('click', onUIPowerDistClick);
-		document.getElementById('analysis_tabs').addEventListener('change', onUIAnalysisTabChange);
 		document.getElementById('page_body_options').addEventListener('change', onUIOptionsChange);
 		document.getElementById('page_body_options').addEventListener('click', onUIOptionsClick);
 		document.getElementById('options_backup').addEventListener('click', onUIOptionsBackupClick);
@@ -12303,7 +11300,6 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		setUIShipyardTab('ships');
 		setUIModuleTab('SLOT');
 		updateUIFitColumns();
-		setUIAnalysisTab('retrofit');
 		
 		// check for initial import or build hash
 		var buffer_storage, buffer_cookie;
@@ -12349,7 +11345,6 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			initUIShipyardStoredBuilds,
 			initUIFitSlots,
 			initUIDetails,
-			initUIAnalysisRetrofit,
 			initUIOptions,
 			
 			// initialize storage
@@ -12359,7 +11354,6 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			readStoredImports,
 			readStoredBuilds,
 			updateUIShipyardStoredBuilds,
-			updateUIAnalysisStoredBuilds,
 			readStoredModules,
 			updateUIModulePickerStoredModules,
 			
