@@ -12337,17 +12337,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		document.getElementById('popup_cancel').addEventListener('click', onUIPopupButtonClick);
 		document.getElementById('popup_okay').addEventListener('click', onUIPopupButtonClick);
 		
-		// check all source file versions
-		if (!verifyVersionSync()) {
-			document.forms.popup.addEventListener('submit', onFormSubmit);
-			showUITextPopup(
-					("<h1>" + getTranslation('message-version') + "</h1><h3>" + getTranslation('message-version-desc') + "</h3>"),
-					"",
-					null, true,
-					function() { window.location = 'update.html'; }, null
-			);
-			return false;
-		}
+		verifyVersionSync();
 		
 		// process remaining initialization asynchronously so that the loading animation can run
 		var steps = [

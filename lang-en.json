@@ -509,8 +509,6 @@
 	"ui-import-error-duplicate": "Cannot import multiple builds with the same label.",
 
 
-	"message-version": "A new version is available!",
-	"message-version-desc": "Click Okay to update, or force-refresh in your browser (ctrl+F5, Apple+r, Command+r, etc)",
 	"message-hash-errors": "Build hash loaded with errors",
 	"message-hash-invalid": "Invalid build hash",
 	"message-build-save": "Choose a label for the stored build",
