@@ -5750,68 +5750,6 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		tbody.appendChild(tr);
 		
 		var tr = document.createElement('tr');
-		var td = createTranslatedElement('td', 'ui-export-short');
-		tr.appendChild(td);
-		var td = document.createElement('td');
-		td.className = 'export';
-		var div = document.createElement('div');
-		div.className = 'export';
-		/* v.gd disabled
-		var button = document.createElement('button');
-		button.append(
-			createTranslatedElement('span', 'ui-button-generate'),
-			' ',
-			'(v.gd)'
-		);
-		button.name = 'export_short_gen_button_v.gd';
-		button.className = 'text';
-		button.addEventListener('click', onUIPopupExportShortButtonClick);
-		div.appendChild(button);
-		*/
-		/* ulvis.net disabled
-		var button = document.createElement('button');
-		button.append(
-			createTranslatedElement('span', 'ui-button-generate'),
-			' ',
-			'(ulvis.net)'
-		);
-		button.name = 'export_short_gen_button_ulvis.net';
-		button.className = 'text';
-		button.addEventListener('click', onUIPopupExportShortButtonClick);
-		div.append(' ', button);
-		*/
-		var button = document.createElement('button');
-		button.append(
-			createTranslatedElement('span', 'ui-button-generate'),
-			' ',
-			'(zip1.io)'
-		);
-		button.name = 'export_short_gen_button_zip1.io';
-		button.className = 'text';
-		button.addEventListener('click', onUIPopupExportShortButtonClick);
-		div.append(' ', button);
-		var input = document.createElement('input');
-		input.style.display = 'none';
-		input.type = 'text';
-		input.size = 50;
-		input.className = 'export';
-		input.name = 'export_short';
-		input.value = 'short';
-		input.addEventListener('focus', onUIPopupExportFieldFocus);
-		div.appendChild(input);
-		td.appendChild(div);
-		tr.appendChild(td);
-		var td = document.createElement('td');
-		var button = document.createElement('button');
-		button.name = 'export_short_button';
-		button.style.display = 'none';
-		button.appendChild(createIcon('clipboard'));
-		button.addEventListener('click', onUIPopupExportCopyButtonClick);
-		td.appendChild(button);
-		tr.appendChild(td);
-		tbody.appendChild(tr);
-		
-		var tr = document.createElement('tr');
 		var td = createTranslatedElement('td', 'ui-export-text');
 		tr.appendChild(td);
 		var td = document.createElement('td');
@@ -10904,44 +10842,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		}
 		return true;
 	}; // onUIPopupImportButtonClick()
-	
-	
-	var onUIPopupExportShortButtonClick = function(e) {
-		var service = e.currentTarget.name.split('_').pop();
-		var button = e.currentTarget;
-		button.disabled = true;
-		button.innerText = getTranslation('ui-export-generating') + ' (' + service + ')';
-		
-		var request = new XMLHttpRequest();
-		request.onreadystatechange = function() {
-			if (request.readyState == 4) {
-				if (request.status == 200) {
-					var div = button;
-					while (div && div.tagName !== 'DIV') {
-						div = div.parentNode;
-					}
-					var buttons = div.getElementsByTagName('BUTTON');
-					for (var b = 0;  b < buttons.length;  b++)
-						buttons[b].style.display = 'none';
-					document.forms.popup.elements.export_short.style.display = 'inline-block';
-					document.forms.popup.elements.export_short_button.style.display = 'inline-block';
-					document.forms.popup.elements.export_short.value = request.responseText.split('\n',1)[0];
-					document.forms.popup.elements.export_short.focus();
-					document.forms.popup.elements.export_short.select();
-				} else {
-					button.innerText = getTranslation('api-error');
-					console.log("ERROR: failed to get shortlink: " + request.status + ", " + request.responseText);
-				}
-			}
-		}; // onreadystatechange()
-		
-		request.open('POST', 'shortlink', true);
-		request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		request.timeout = 10000;
-		request.send('service=' + encodeURIComponent(service) + '&url=' + encodeURIComponent(current.fit.getEDSYURL()));
-	}; // onUIPopupExportShortButtonClick()
-	
-	
+
+
 	var onUIPopupExportFieldFocus = function(e) {
 		if (e.target.select)
 			e.target.select();
