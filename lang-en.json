@@ -1,17 +1,6 @@
 {
 
-	"language-cs": "Czech",
-	"language-de": "German",
 	"language-en": "English",
-	"language-es": "Spanish",
-	"language-fr": "French",
-	"language-hu": "Hungarian",
-	"language-it": "Italian",
-	"language-ja": "Japanese",
-	"language-nl": "Dutch",
-	"language-pt": "Portuguese, Brazilian",
-	"language-ru": "Russian",
-	"language-zh": "Chinese, Simplified",
 
 
 	"ui-shipyard": "Shipyard",
@@ -457,8 +446,7 @@
 	"ui-options-appearance-greens": "Greens",
 	"ui-options-appearance-yellows": "Yellows",
 	"ui-options-language": "Language",
-	"ui-options-language-desc": "Select your language/locale. Many languages have very incomplete translations;",
-	"ui-options-language-help": "you can help!",
+	"ui-options-language-desc": "Select your language/locale",
 	"ui-options-language-default": "(Browser Default)",
 	"ui-options-backup": "Backup All Data",
 	"ui-options-backup-desc": "Export all stored builds, modules, and other preferences in a structured format suitable for backup or transfer to another device or browser.",

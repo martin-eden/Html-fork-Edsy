@@ -140,18 +140,7 @@ window.edsy = new (function() {
 		303100 : { name:"3A Shield Gen, KR+TR",                  modulehash:"J7PcG-bG0044sPc8wPccupDgvcQ",                     tag:'C' }, // CG reward
 	};
 	var LANG_NAMES = { // TODO cn? ko? nl? pl?
-		"cs": "Čeština",
-		"de": "Deutsch",
 		"en": "English",
-		"es": "Español",
-		"fr": "Français",
-		"it": "Italiano",
-		"hu": "Magyar",
-	//	"nl": "Nederlands",
-		"ja": "日本語",
-		"pt": "Português, Brasileiro",
-		"ru": "Русский",
-		"zh": "简体中文",
 	};
 	var LANGS = Object.keys(LANG_NAMES);
 	var LANG_DEFAULT = 'en';
@@ -4766,13 +4755,6 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 	
 	
 	var initCache = function() {
-		// sort languages
-		LANGS.sort(function(l1,l2) {
-			var n1 = LANG_NAMES[l1];
-			var n2 = LANG_NAMES[l2];
-			return ((n1 < n2) ? -1 : ((n1 > n2) ? 1 : (n1 && n2) ? 0 : (n1 ? -1 : (n2 ? 1 : 0))));
-		});
-		
 		// initialize and tag ships
 		cache.ships = Object.keys(eddb.ship);
 		for (var sid in eddb.ship)
