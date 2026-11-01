@@ -775,11 +775,9 @@ TABLE.striped .togglebutton INPUT:active + DIV .iconsvg {
 
 #page_body.shipyard #page_body_loading,
 #page_body.outfitting #page_body_loading,
-#page_body.analysis #page_body_loading,
 #page_body.options #page_body_loading,
 #page_body:not(.shipyard) #page_body_shipyard,
 #page_body:not(.outfitting) #page_body_outfitting,
-#page_body:not(.analysis) #page_body_analysis,
 #page_body:not(.options) #page_body_options {
 	display: none;
 }
@@ -866,28 +864,6 @@ TABLE.striped .togglebutton INPUT:active + DIV .iconsvg {
 	display: flex;
 	flex-direction: column;
 	margin: 0.25em;
-}
-
-
-#page_body_analysis {
-	flex: 1 0 10px;
-	min-width: 0;
-	max-width: 70em;
-	display: flex;
-	flex-direction: column;
-	margin: 0.25em;
-}
-
-#analysis_tabs {
-	flex: 0 0 auto;
-}
-
-#analysis_container {
-	flex: 1 0 10px;
-	width: 100%;
-	min-width: 0;
-	border: 2px solid var(--colororange5);
-	background-color: var(--colorblack);
 }
 
 
@@ -3084,157 +3060,6 @@ BODY.onlybest.experimental #outfitting_modules.SLOT #outfitting_modules_picker.s
 	right: 0;
 	top: 50%;
 	margin-top: -0.4em;
-}
-
-
-/*
-* ANALYSIS BLOCK
-*/
-
-
-#analysis_tabs {
-	display: flex;
-	flex-direction: row;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	cursor: arrow;
-}
-
-#analysis_tabs LABEL {
-	flex: 0 0 auto;
-	margin-left: 0.2em;
-}
-#analysis_tabs LABEL:first-child {
-	margin-left: 0;
-}
-
-#analysis_tabs SPAN {
-	flex: 1 0 0px;
-}
-
-#analysis_tabs .togglebutton INPUT + DIV.togglebox {
-	border-bottom: none;
-	padding: 0 0.5em;
-}
-
-#page_body_analysis:not(.compare) #analysis_compare_container,
-#page_body_analysis:not(.retrofit) #analysis_retrofit_container {
-	display: none;
-}
-
-#analysis_container {
-	display: flex;
-	flex-direction: row;
-}
-
-#analysis_retrofit_container {
-	flex: 1 0 10px;
-	display: flex;
-	flex-direction: column;
-	padding: 0.25em;
-}
-
-#analysis_retrofit_container .analysis_retrofit_section {
-	flex: 1 0 10px;
-	display: flex;
-	flex-direction: row;
-}
-#analysis_retrofit_container .analysis_retrofit_section:first-child {
-	flex: 0 1 auto;
-}
-
-#analysis_retrofit_container .analysis_retrofit_panel {
-	flex: 1 1 auto;
-	margin: 0.25em;
-	display: flex;
-	flex-direction: column;
-}
-
-#analysis_retrofit_container .analysis_retrofit_panel .scroller {
-	flex: 1 0 10px;
-}
-
-#analysis_retrofit_container #analysis_retrofit_setup {
-	flex: 0 1 auto;
-}
-
-#analysis_retrofit_container #analysis_retrofit_setup TD {
-	white-space: nowrap;
-}
-
-#analysis_retrofit_container .analysis_retrofit_divider {
-	flex: 0 0 auto;
-	margin-bottom: 0.25em;
-	display: flex;
-	flex-direction: row;
-}
-
-#analysis_retrofit_container .analysis_retrofit_divider > HEADER {
-	flex: 1 0 auto;
-	background-color: var(--colorgrey4);
-	color: var(--colorblack);
-	text-align: center;
-	font-weight: bold;
-}
-
-#analysis_retrofit_container .analysis_retrofit_divider > BUTTON {
-	flex: 0 0 auto;
-	align-self: center;
-	margin-left: 0.25em;
-	padding: 0.125rem;
-	line-height: 0;
-}
-
-#analysis_retrofit_container TABLE {
-	width: 100%;
-	min-width: 0;
-	border: none;
-	border-right: 0.25em solid black;
-}
-
-#analysis_retrofit_container TABLE TD {
-	font: var(--fonttext);
-}
-#analysis_retrofit_setup TABLE TD {
-	padding: 0.125em 0.25em;
-}
-#analysis_retrofit_container TABLE.striped THEAD TD,
-#analysis_retrofit_builds TABLE.striped TBODY TD:first-child {
-	vertical-align: middle;
-}
-
-#analysis_retrofit_container TABLE.single TH.retrofit_steps_build,
-#analysis_retrofit_container TABLE.single TD.retrofit_steps_build {
-	display: none;
-}
-
-#analysis_retrofit_container TABLE LABEL {
-	width: 100%;
-}
-
-#analysis_retrofit_container TABLE SELECT {
-	width: 100%;
-}
-
-#analysis_retrofit_setup INPUT {
-	text-align: center;
-}
-
-#analysis_retrofit_container .analysis_retrofit_buttons {
-	flex: 0 0 auto;
-	display: flex;
-	flex-direction: row;
-	margin: 0.25em 0;
-}
-
-#analysis_retrofit_container .analysis_retrofit_buttons BUTTON {
-	flex: 1 0 auto;
-	align-self: stretch;
-	margin: 0 0.25em;
-	padding: 0.125rem;
-	line-height: 0;
 }
 
 
