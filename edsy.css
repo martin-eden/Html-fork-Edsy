@@ -55,15 +55,15 @@ Frontier Customer Services (https://forums.frontier.co.uk/threads/elite-dangerou
 
 @font-face {
 	font-family: 'EuroCaps';
-	src: url('EuroCaps.woff2') format('woff2'), url('EuroCaps.woff') format('woff'), url('EuroCaps.ttf') format('truetype');
+	src: url('EuroCaps.woff2') format('woff2');
 }
 @font-face {
 	font-family: 'Sintony';
-	src: local('Sintony'), url('Sintony.woff2') format('woff2'), url('Sintony.woff') format('woff'), url('Sintony.ttf') format('truetype');
+	src: local('Sintony'), url('Sintony.woff2') format('woff2');
 }
 @font-face {
 	font-family: 'Telegrama';
-	src: local('Telegrama'), url('Telegrama.woff2') format('woff2'), url('Telegrama.woff') format('woff'), url('Telegrama.ttf') format('truetype');
+	src: local('Telegrama'), url('Telegrama.woff2') format('woff2');
 }
 
 
