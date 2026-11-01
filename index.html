@@ -221,7 +221,7 @@ Frontier Customer Services (https://forums.frontier.co.uk/threads/elite-dangerou
 				<form id="page_tabs" name="header">
 					<label class="togglebutton"><input name="tab" type="radio" value="shipyard"><div><svg class="iconsvg shipyard"><use xlink:href="#icon_shipyard"/></svg><span edsy-text="ui-shipyard">Shipyard</span></div></label>
 					<label class="togglebutton"><input name="tab" type="radio" value="outfitting"><div><svg class="iconsvg turreted"><use xlink:href="#icon_turreted"/></svg><span edsy-text="ui-outfitting">Outfitting</span></div></label>
-					<label class="togglebutton"><input name="tab" type="radio" value="options"><div><svg class="iconsvg unknown"><use xlink:href="#icon_unknown"/></svg><svg class="iconsvg repair"><use xlink:href="#icon_repair"/></svg><span edsy-text="ui-help">Help</span></div></label>
+					<label class="togglebutton"><input name="tab" type="radio" value="options"><div><svg class="iconsvg repair"><use xlink:href="#icon_repair"/></svg><span edsy-text="ui-settings">Settings</span></div></label>
 				</form>
 				<div id="header_version">
 					<abbr id="query_start" edsy-title="ui-query-desc" title="Drag this icon over abbreviated page elements to see more details">
@@ -866,7 +866,22 @@ Frontier Customer Services (https://forums.frontier.co.uk/threads/elite-dangerou
 				<form id="page_body_options" name="options">
 					<div id="options_container">
 						<section>
-							<header edsy-text="ui-options">Options</header>
+							<div>
+								<button id="options_backup" name="backup" edsy-text="ui-options-backup">Backup All Data</button>
+							</div>
+							<div>
+								<button id="options_restore" name="restore" edsy-text="ui-options-restore">Restore Data</button>
+							</div>
+							<div>
+								<b edsy-text="ui-options-language">Language</b>
+								&mdash;
+								<span edsy-text="ui-options-language-desc">Select your language/locale</span>
+								<dl>
+									<dd><select name="language">
+										<option value="" edsy-text="ui-options-language-default">(Browser Default)</option>
+									</select></dd>
+								</dl>
+							</div>
 							<div id="options_insurance">
 								<b edsy-text="ui-options-insurance">Insurance Level</b>
 								&mdash;
@@ -1025,26 +1040,6 @@ Frontier Customer Services (https://forums.frontier.co.uk/threads/elite-dangerou
 										</tr>
 									</tbody>
 								</table>
-							</div>
-							<div>
-								<b edsy-text="ui-options-language">Language</b>
-								&mdash;
-								<span edsy-text="ui-options-language-desc">Select your language/locale</span>
-								<dl>
-									<dd><select name="language">
-										<option value="" edsy-text="ui-options-language-default">(Browser Default)</option>
-									</select></dd>
-								</dl>
-							</div>
-							<div>
-								<button id="options_backup" name="backup" edsy-text="ui-options-backup">Backup All Data</button>
-								&mdash;
-								<span edsy-text="ui-options-backup-desc">Export all stored builds, modules, and other preferences in a structured format suitable for backup or transfer to another device or browser.</span>
-							</div>
-							<div>
-								<button id="options_restore" name="restore" edsy-text="ui-options-restore">Restore Data</button>
-								&mdash;
-								<span edsy-text="ui-options-restore-desc">Import stored builds, modules, and other preferences that were previously exported from another device or browser.</span>
 							</div>
 						</section>
 						<footer><!-- edsy-text="not-localized" -->
