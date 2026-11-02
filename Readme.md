@@ -6,6 +6,8 @@ Fork of `talenden`'s `EDSY`.
 
 EDSY is game tool for `Elite Dangerous`. I really like it's minimalistic interface.
 
+https://martin-eden.github.io/Html-fork-Edsy/
+
 
 ## Why forked
 
