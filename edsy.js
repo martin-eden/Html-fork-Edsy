@@ -2094,28 +2094,6 @@ window.edsy = new (function() {
 		}, // exportJournal()
 		
 		
-		exportEDOMH: function() {
-			var ship = eddb.ship[this.build.getShipID()];
-			var module = this.getModule();
-			var blueprint = eddb.blueprint[this.bpid];
-			if (!ship || !module || !this.isModified() || !blueprint || !this.bproll)
-				return null;
-			
-			var obj = {
-				"item": (module.fdname || '').toLowerCase(),
-				"blueprint": (blueprint.fdname || '').toLowerCase(),
-				"grade": this.bpgrade,
-				"highestGradePercentage": (this.bproll ? parseFloat(this.bproll.toFixed(6)) : 0),
-			}
-			
-			var expeffect = eddb.expeffect[this.expid];
-			if (expeffect) {
-				obj["experimental"] = (expeffect.fdname || '').toLowerCase();
-			}
-			
-			return obj;
-		}, // exportEDOMH()
-		
 	}; // Slot.prototype
 	
 	
@@ -3024,45 +3002,6 @@ window.edsy = new (function() {
 				]
 			);
 		}, // exportSLEF()
-		
-		
-		exportEDOMH: function() {
-			var ship = eddb.ship[this.shipid];
-			if (!ship)
-				return '';
-			
-			var obj = {
-				"version": 1,
-				"ship": (ship.fdname || '').toLowerCase(),
-				"name": (this.name || ''),
-				"items": [],
-			};
-			
-			var slot = null;
-			var slotobj = null;
-			for (var groupnum = 0;  groupnum < GROUPS.length;  groupnum++) {
-				for (var slotnum = 0;  slot = this.getSlot(GROUPS[groupnum], slotnum);  slotnum++) {
-					// repeating the structure separately for blueprint and experimental seems weird to me, but it's how they want it *shrug*
-					slotobj = slot.exportEDOMH();
-					if (slotobj) {
-						if (slotobj["experimental"]) {
-							delete slotobj["experimental"];
-							obj["items"].push(slotobj);
-							slotobj = slot.exportEDOMH();
-							slotobj["blueprint"] = slotobj["experimental"];
-							delete slotobj["grade"];
-							delete slotobj["highestGradePercentage"];
-							delete slotobj["experimental"];
-						}
-						obj["items"].push(slotobj);
-					}
-				}
-			}
-			
-			if (obj["items"].length < 1)
-				return null;
-			return obj;
-		}, // exportEDOMH()
 		
 	}; // Build.prototype
 	
@@ -5559,7 +5498,6 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		
 		var url_inara_search = current.fit.getInaraSearchURL();
 		var url_inara_export = current.fit.getInaraBuildURL();
-		var url_edomh_export = current.fit.exportEDOMH();
 		
 		var tr = document.createElement('tr');
 		var td = createTranslatedElement('td', 'ui-export-external');
@@ -5586,16 +5524,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			button.addEventListener('click', onUIFitExportInaraButtonClick);
 			div.appendChild(button);
 		}
-		var link = document.createElement('a');
-		link.className = 'button text';
-		if (url_edomh_export) {
-			link.href = "edomh://edsy/?" + b64Encode(pako.deflate(JSON.stringify(url_edomh_export), {to:'string'}));;
-			link.target = '_blank';
-		}
-		var img = document.createElement('img');
-		img.src = 'edomh.png';
-		link.append(img, ' ', createTranslatedElement('span', 'ui-export-edomh'));
-		div.appendChild(link);
+
 		td.appendChild(div);
 		tr.appendChild(td);
 		var td = document.createElement('td');
@@ -5812,15 +5741,6 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 	
 	
 	var importData = function(text, msieURLtrunc) {
-		// if it's valid (optionally URI-encoded) base64, assume it's also gzipped
-		var b64text = null;
-		try {
-			b64text = decodeURIComponent(text.replace(/[ \t\r\n]+/g, ''));
-			var gztext = pako.inflate(b64Decode(b64text), {to:'string'});
-			text = gztext;
-		} catch (exc) {
-			b64text = null;
-		}
 		text = text.trim();
 		if (!text)
 			return true;
