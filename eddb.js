@@ -10,9 +10,9 @@ Frontier Customer Services (https://forums.frontier.co.uk/threads/elite-dangerou
 */
 'use strict';
 var eddb = {
-	version : 424029903,
-	edsy_versions_db : [424019901,424019901,424029903,424029901], /* HTML,CSS,DB,JS */
-	edsy_lastmodified_db : 20261111,
+	version : 424029904,
+	edsy_versions_db : [424019901,424019901,424029904,424029901], /* HTML,CSS,DB,JS */
+	edsy_lastmodified_db : 20261121,
 	ship : {
 		 1 : {
 			fdid:128049249, fdname:'SideWinder', eddbid:18,
@@ -214,7 +214,7 @@ var eddb = {
 			fdid:128672255, fdname:'Viper_MkIV', eddbid:28,
 			id:28, stype:'co', name:'Viper Mk IV', class:1, cost:290680, retail:437930,
 			topspd:280, bstspd:360, mnv:3, shields:160, armour:150, mass:190, fwdacc:55, revacc:30, latacc:25,
-			minthrust:64.815, boostcost:10, boostint:5, boostdur:3.1, boostmul:7, pitch:33, yaw:13, roll:90, pitchacc:200, yawacc:100, rollacc:220, minpitch:25,
+			minthrust:64.25, boostcost:10, boostint:5, boostdur:3.1, boostmul:7, pitch:33, yaw:13, roll:90, pitchacc:200, yawacc:100, rollacc:220, minpitch:25,
 			heatcap:209, heatdismin:1.82, heatdismax:28.98, fuelcost:50, fuelreserve:0.46, hardness:35, masslock:7, crew:1, // verify masslock
 			slots:{
 				hardpoint:[2,2,1,1],
@@ -448,7 +448,7 @@ var eddb = {
 			fdid:128672276, fdname:'Asp_Scout', eddbid:24,
 			id:45, stype:'ex', name:'Asp Scout', class:2, cost:3811220, retail:3961160,
 			topspd:270, bstspd:360, mnv:5, shields:120, armour:180, mass:140, fwdacc:40, revacc:30, latacc:20,
-			minthrust:50.0, boostcost:13, boostint:4.5, boostdur:2.5, boostmul:4, pitch:40, yaw:18, roll:110, pitchacc:NaN, yawacc:NaN, rollacc:NaN, minpitch:35, // TODO: *acc
+			minthrust:81.5, boostcost:13, boostint:4.5, boostdur:2.5, boostmul:4, pitch:40, yaw:18, roll:110, pitchacc:NaN, yawacc:NaN, rollacc:NaN, minpitch:35, // TODO: *acc
 			heatcap:210, heatdismin:1.80, heatdismax:29.65, fuelcost:50, fuelreserve:0.47, hardness:52, masslock:8, crew:2, // verify masslock
 			slots:{
 				hardpoint:[2,2,1,1],
@@ -609,7 +609,7 @@ var eddb = {
 				component:[1,6,6,5,5,6,4,4],
 				military :[4,4,4],
 				internal :[6,5,4,2,2,1],
-			},f
+			},
 			stock:{
 				hardpoint:[62160,0,62160,0,0,0],
 				utility  :[0,0,0,0],
@@ -1187,7 +1187,7 @@ var eddb = {
 			fdid:129030680, fdname:'Mandalay',
 			id:46, stype:'ex', name:'Mandalay', class:2, cost:16527690, retail:17639220,
 			topspd:280, bstspd:350, mnv:5, shields:220, armour:230, mass:190, fwdacc:35, revacc:30, latacc:20,
-			minthrust:71.5, boostcost:14, boostint:5, boostdur:3.1, boostmul:7, pitch:35, yaw:28, roll:96, pitchacc:NaN, yawacc:NaN, rollacc:NaN, minpitch:24.5, minyaw:16, // verify: minpitch // TODO: *acc
+			minthrust:71.5, boostcost:14, boostint:5, boostdur:3.1, boostmul:7, pitch:35, yaw:28, roll:96, pitchacc:NaN, yawacc:NaN, rollacc:NaN, minpitch:27.25, // TODO: *acc
 			heatcap:245, heatdismin:2.23, heatdismax:51.00, fuelcost:50, fuelreserve:0.5, hardness:55, masslock:11, crew:2,
 			slots:{
 				hardpoint:[2,2,2,2,1,1],
@@ -1379,7 +1379,7 @@ var eddb = {
 			id:29, stype:'co', name:'Kestrel Mk II', class:1, cost:13776380, retail:14273820,
 			topspd:270, bstspd:360, mnv:8, shields:225, armour:70, mass:190, fwdacc:55, revacc:41, latacc:40,
 			minthrust:89, boostcost:14, boostint:4.5, boostdur:2.6, boostmul:7.2, pitch:50, yaw:24, roll:120, pitchacc:NaN, yawacc:NaN, rollacc:NaN, minpitch:40, // TODO: *acc
-			heatcap:276, heatdismin:NaN, heatdismax:39.85, fuelcost:50, fuelreserve:0.61, hardness:55, masslock:11, crew:1, // TODO: heatdismin
+			heatcap:276, heatdismin:1.98, heatdismax:39.85, fuelcost:50, fuelreserve:0.61, hardness:55, masslock:11, crew:1,
 			slots:{
 				hardpoint:[3,3,3,1,1],
 				utility  :[0,0,0,0],
@@ -1994,7 +1994,7 @@ var eddb = {
 	//	misc_rf4 : { name:'Reinforced', maxgrade:4, mass:[30,60,90,120], integ:[60,120,180,240], mats:[ {nic:1}, {nic:1, shem:1}, {nic:1, shem:1, tun:1}, {zin:1, tun:1, mol:1} ], fdname:'Misc_Reinforced' },
 		misc_sh : { name:'Shielded', maxgrade:5, integ:[60,120,180,240,300], pwrdraw:[20,40,60,80,100], mats:[ {woshem:1}, {car:1, shem:1}, {car:1, shem:1, hideco:1}, {van:1, shse:1, prco:1}, {tun:1, cosh:1, codyco:1} ], fdname:'Misc_Shielded' },
 	//	misc_sh4 : { name:'Shielded', maxgrade:4, integ:[60,120,180,240], pwrdraw:[20,40,60,80], mats:[ {woshem:1}, {car:1, shem:1}, {car:1, shem:1, hideco:1}, {van:1, shse:1, prco:1} ], fdname:'Misc_Shielded' },
-		misc_agzr : { name:'Anti-Guardian Zone Resistance', maxgrade:1, mats:[ {hasufr:2},{cacr:1},{tacoch:1} ], fdname:'GuardianModule_Sturdy' }, // TODO: fdname
+		misc_agzr : { name:'Anti-Guardian Zone Resistance', maxgrade:1, mats:[ {hasufr:2},{cacr:1},{tacoch:1} ], fdname:'GuardianModule_Sturdy' },
 		
 		wpn_dscr : { name:'Double Screaming', maxgrade:5, mass:[15,20,30,45.1,60], pwrdraw:[5,6.7,10,15,20], maximumrng:[-2.5,-2.5,-3.3,-5,-7.5], bstrof:[1.4,5,7.7,12.3,18], bstsize:[2,2,2,2,2], ammoclip:[33.3,33.3,33.3,100,166.6], ammomax:[6.66,22.2,33.9,51.1,67.8], mats:[ {}, {car:1, mesc:1, meeq:1}, {car:1, meeq:1, tin:1}, {van:1, crinfi:1, meco:1, sefipa:1}, {hideco:1, meco:1, confco:1, moemfi:1} ], fdname:'Weapon_DoubleScreaming' }, // TODO: verify bstrof, merccoin 0,10,15,25,50
 		wpn_ds : { name:'Double Shot', maxgrade:5, maximumrng:[-2,-4,-6,-8,-10], bstrof:[6,8,10,12,14], bstsize:[2,2,2,2,2], ammoclip:[15,20,25,30,35], mats:[ {car:1}, {car:1, meeq:1}, {car:1, meeq:1, crinfi:1}, {van:1, meco:1, sefipa:1}, {hideco:1, confco:1, moemfi:1} ], fdname:'Weapon_DoubleShot' },
@@ -2541,8 +2541,8 @@ var eddb = {
 			modulenames:{'Frame Shift Drive (SCO)':1},
 			keyattrs:['fsdoptmass','maxfuel','scospd','scoheat'],
 			modifiable:['mass','integ','pwrdraw','boottime','fsdoptmass','fsdheat','maxfuel'],
-			blueprints:['cfsd_fb','cfsd_ir','cfsd_sh'], // TODO verify
-			expeffects:['cfsdx_dc','cfsdx_db','cfsdx_mm','cfsdx_sd','cfsdx_ts'], // TODO verify
+			blueprints:['cfsd_fb','cfsd_ir','cfsd_sh'],
+			expeffects:['cfsdx_dc','cfsdx_db','cfsdx_mm','cfsdx_sd','cfsdx_ts'],
 		},
 		
 		cls : {
@@ -2911,7 +2911,7 @@ var eddb = {
 		81240 : { mtype:'hmtl',cost:   22580, namekey:81140, name:'Mining Laser',                          mount:'F', class:2, rating:'D', mass: 2.00, integ:51, pwrdraw:0.75, boottime:0, dps: 4.000, damage: 4.000, distdraw:3.000, thmload:4.00, pierce: 18, maximumrng: 500,               rof:  1/0, bstint:0    ,                                                                          brcdmg: 0.600, brcpct:15, minbrc:10, maxbrc:20,             thmwgt:100,                                 dmgfall: 300, noblueprints:{'*':1}, noexpeffects:{'*':1}, fdid:128049526, fdname:'Hpt_MiningLaser_Fixed_Medium', eddbid:889 },
 		81242 : { mtype:'hmtl',cost:   32580, namekey:81140, name:'Mining Laser',                          mount:'T', class:2, rating:'D', mass: 2.00, integ:51, pwrdraw:0.75, boottime:0, dps: 4.000, damage: 4.000, distdraw:3.000, thmload:4.00, pierce: 18, maximumrng: 500,               rof:  1/0, bstint:0    ,                                                                          brcdmg: 0.600, brcpct:15, minbrc:10, maxbrc:20,             thmwgt:100,                                 dmgfall: 300, noblueprints:{'*':1}, noexpeffects:{'*':1}, fdid:128740820, fdname:'Hpt_MiningLaser_Turret_Medium', eddbid:1588 },
 		81144 : { mtype:'hmtl',cost:   33860,                name:'Mining Lance Beam Laser',      tag:'P', mount:'F', class:1, rating:'D', mass: 2.00, integ:40, pwrdraw:0.70, boottime:0, dps: 8.000, damage: 8.000, distdraw:1.750, thmload:6.00, pierce: 18, maximumrng:2000,               rof:  1/0, bstint:0    ,                                                                          brcdmg: 1.200, brcpct:15, minbrc:10, maxbrc:20,             thmwgt:100,                                 dmgfall: 500, noblueprints:{'*':1}, noexpeffects:{'*':1}, fdid:128671340, fdname:'Hpt_MiningLaser_Fixed_Small_Advanced', eddbid:1479 }, // powerplay
-		80339 : { mtype:'hmtl',cost:  149910, namekey:80339, name:'Mining Volley Repeater',                mount:'F', class:3, rating:'C', mass: 8.00, integ:61, pwrdraw:1.50, boottime:0, dps: 6.0  , damage: 0.3  , distdraw:0.30 , thmload:0.4 , pierce: 18, maximumrng: 500, shotspd: 167,rof:20.0  , bstint:0.05 ,                                                             rldtime:0.0, brcdmg: 0.03 , brcpct:10, minbrc:10, maxbrc:20, jitter:2.19,thmwgt:100,                                 dmgfall: 500, noblueprints:{'*':1}, noexpeffects:{'*':1}, reserved:{38:1,18:1}, fdid:129036137, fdname:'Hpt_MiningToolV2_Fixed_Large' }, // rldtime:4.0 advertised, but not actual // TODO: locked to ship or any Mk II Mining slot?
+		80339 : { mtype:'hmtl',cost:  149910, namekey:80339, name:'Mining Volley Repeater',                mount:'F', class:3, rating:'C', mass: 8.00, integ:61, pwrdraw:1.50, boottime:0, dps: 6.0  , damage: 0.3  , distdraw:0.30 , thmload:0.4 , pierce: 18, maximumrng: 500, shotspd: 167,rof:20.0  , bstint:0.05 ,                                                             rldtime:0.0, brcdmg: 0.03 , brcpct:10, minbrc:10, maxbrc:20, jitter:2.19,thmwgt:100,                                 dmgfall: 500, noblueprints:{'*':1}, noexpeffects:{'*':1}, reserved:{38:1,18:1}, fdid:129036137, fdname:'Hpt_MiningToolV2_Fixed_Large' }, // rldtime:4.0 advertised, but not actual
 		
 		// TODO: renumber to 8?xxx?
 		81225 : { mtype:'hmtm',cost:  153110,                name:'Seismic Charge Launcher',               mount:'F', class:2, rating:'B', mass: 4.00, integ:51, pwrdraw:1.20, boottime:0, dps:15.000, damage:15.000, duration:2.0, dmgmul:1.0, distdraw:0.240, thmload:3.60, pierce:35, maximumrng:1000, shotspd:350, rof:1.000, bstint:1.000, ammoclip: 1, ammomax:  72,          rldtime:1.0, brcdmg: 3.000, brcpct:20, minbrc: 0, maxbrc: 0,             expwgt:100,                                                             fdid:128915460, fdname:'Hpt_Mining_SeismChrgWarhd_Fixed_Medium', eddbid:1791 },
