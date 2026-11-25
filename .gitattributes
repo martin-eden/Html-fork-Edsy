@@ -3,7 +3,4 @@
 *.js text eol=crlf
 *.css text eol=crlf
 *.json text eol=crlf
-*.md text eol=crlf
-*.txt text eol=crlf
-*.yml text eol=crlf
 *.svg text eol=crlf
