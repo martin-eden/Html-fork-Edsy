@@ -1,0 +1,35 @@
+#!/bin/sh
+
+#
+# Apply common-sense text cleanup
+#
+
+#
+# Author: Martin Eden
+# Last mod.: 2026-11-25
+#
+
+set -e -u
+
+cd "$(dirname "$0")"
+
+run_inplace() {
+  tmp=/tmp/run_inplace.tmp
+  $1 $2 > $tmp
+  cp $tmp $2
+  rm $tmp
+}
+
+process_textfile() {
+  run_inplace textfile_tools/rtrim $1
+  run_inplace textfile_tools/tab_to_spc $1
+  run_inplace textfile_tools/indent_to_tabs $1
+}
+
+process_textfile ../deploy/edsy.js
+process_textfile ../deploy/eddb.js
+process_textfile ../deploy/edsy.css
+process_textfile ../deploy/index.html
+process_textfile ../deploy/loading.svg
+
+# 2026-11-25
