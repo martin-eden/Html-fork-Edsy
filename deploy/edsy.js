@@ -6864,14 +6864,6 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 	
 	var updateUIFitHash = function(buildhash) {
 		updateUIFitTitle();
-		if (current.hashlock)
-			return false;
-		buildhash = window.location.protocol + '//' + window.location.host + window.location.pathname + '#/L=' + (buildhash || current.fit.getHash());
-		if (cache.feature.history) {
-			window.history.replaceState(null, null, buildhash);
-		} else {
-			window.location.replace(buildhash);
-		}
 		return true;
 	}; // updateUIFitHash()
 	
