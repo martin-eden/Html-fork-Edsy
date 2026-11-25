@@ -12,7 +12,7 @@ Frontier Customer Services (https://forums.frontier.co.uk/threads/elite-dangerou
 window.edsy = new (function() {
 	var VERSIONS = [424019901,424019901,424029901,424029901]; /* HTML,CSS,DB,JS */
 	var LASTMODIFIED = 20261020;
-	
+
 	var EMPTY_OBJ = {};
 	var EMPTY_ARR = [];
 	var EXPERIMENTAL_IMPORT = {};
@@ -25,7 +25,7 @@ window.edsy = new (function() {
 	var CORE_SLOT_FDNAME = ['Armour', 'PowerPlant', 'MainEngines', 'FrameShiftDrive', 'LifeSupport', 'PowerDistributor', 'Radar', 'FuelTank'];
 	var CORE_SLOT_ABBR = ['BH','PP','TH','FD','LS','PD','SS','FT'];
 	var CORE_ABBR_SLOT = { BH:0,PP:1,TH:2,FD:3,LS:4,PD:5,SS:6,FT:7,
-	                            RB:1,TM:2,FH:3,EC:4,PC:5,     FS:7 };
+															RB:1,TM:2,FH:3,EC:4,PC:5,     FS:7 };
 	var BOOST_MARGIN = 0;
 	var SHIP_HATCH_ID = 49180;
 	var MAX_SLOT_CLASS = 8;
@@ -37,9 +37,9 @@ window.edsy = new (function() {
 	var MAX_MALFUNCTION_PWRCAP = 0.4;
 	var MIN_MODIFIER = 0.00005;
 	var MIN_BPROLL = 0.00025;
-//	var BPGRADE_PROGRESS = [0.99, 0.99, 0.65, 0.5, 0.35, 0.25];
+//  var BPGRADE_PROGRESS = [0.99, 0.99, 0.65, 0.5, 0.35, 0.25];
 	var BPROLL_UPGRADE = 0.8;
-//	var BPROLL_LIMIT = 0.95;
+//  var BPROLL_LIMIT = 0.95;
 	var DISCOUNTS = [30,20,15,10,5,2.5];
 	var HASH_VERSION = 20;
 	var ICON_MOUNT = { F:'fixed', G:'gimballed', T:'turreted' };
@@ -77,11 +77,11 @@ window.edsy = new (function() {
 		842200 : { name:"2B/F Rail, HC+LR, FeedCas",             modulehash:"JKZyG-ZI0080-Cp8zCpT000Yyv4b000f000iu00r900",     tag:'C' }, // CG reward
 		842201 : { name:"2B/F Rail, \"Enduring Feedback\"",      modulehash:"JKZyG-iI_W90tCp8naNCraNKypDSoPcYoPceoPcilxwqv7i", tag:'M' }, // merccoin
 		842240 : { name:"2B/F Imperial Hammer, HC, SupPen",      modulehash:"JKa0G-ZP0060zcQ8u00EsPcYuDrb000f000",             tag:'C' }, // CG reward
-		
-	//	862280 : { name:"2B/T Flak, Green",                      modulehash:"JL3KG-bG_W1A-wu",                                 tag:'T' }, // tech broker?
-	//	862281 : { name:"2B/T Flak, Pink",                       modulehash:"JL3KG-dG_W1A-wu",                                 tag:'T' }, // tech broker?
-	//	862282 : { name:"2B/T Flak, Red",                        modulehash:"JL3KG-fG_W1A-wu",                                 tag:'T' }, // tech broker?
-	//	862283 : { name:"2B/T Flak, Yellow",                     modulehash:"JL3KG-hG_W1A-wu",                                 tag:'T' }, // tech broker?
+
+	//  862280 : { name:"2B/T Flak, Green",                      modulehash:"JL3KG-bG_W1A-wu",                                 tag:'T' }, // tech broker?
+	//  862281 : { name:"2B/T Flak, Pink",                       modulehash:"JL3KG-dG_W1A-wu",                                 tag:'T' }, // tech broker?
+	//  862282 : { name:"2B/T Flak, Red",                        modulehash:"JL3KG-fG_W1A-wu",                                 tag:'T' }, // tech broker?
+	//  862283 : { name:"2B/T Flak, Yellow",                     modulehash:"JL3KG-hG_W1A-wu",                                 tag:'T' }, // tech broker?
 		822230 : { name:"2B Seeker \"V1\", HC+LW, ThmCas",       modulehash:"JK4lG-ZQ0072-Cp6ypDAsPcIwPcUoPcX000b000",         tag:'T' }, // human tech broker
 		822234 : { name:"2B Seeker, \"Lightweight Thermal\"",    modulehash:"JK4lG-iQ0072nmf6qpDAf7iIj7iUb4SWrLLal77",         tag:'M' }, // merccoin
 		822231 : { name:"2B Seeker, HC+RF, Drag",                modulehash:"HK4lG-2R00612008u00GwghUsPcX400b400",             tag:'C' }, // CG reward // TODO: get sample to test import
@@ -91,13 +91,13 @@ window.edsy = new (function() {
 		823132 : { name:"3A Seeker, HC+Std, FSDInt",             modulehash:"JK69G-ZK00910pD50008upDCvcQMoPcOwPcUoPcX000b000", tag:'C' }, // CG reward
 		823136 : { name:"3A Seeker, \"Exposing\"",               modulehash:"JK69G-mR_W80vcQ8q00Ej7iL0AFUiUkWrLLalAmgkPc",     tag:'M' }, // merccoin
 		823135 : { name:"3A Seeker, \"Lockdown\"",               modulehash:"JK69G-kK_W90upD4oPc8mpDCiUkMb7iOj7iUb7iWrLLanJ_", tag:'M' }, // merccoin
-		
+
 		510600 : { name:"0F ECM, LW+Shd",                        modulehash:"FCTqG03G0032_pD50009000",                         tag:'C' }, // CG reward // TODO: get sample to test import
 		520900 : { name:"0I Heat Sink, ACx2",                    modulehash:"JCjwG-YG002P000S_00",                             tag:'T' }, // Sirus tech broker
 		570100 : { name:"0A KWS, FS+LR",                         modulehash:"JDwoG-ZG0056y008y00GzCpMupDQ_Pc",                 tag:'C' }, // CG reward
 		570300 : { name:"0C KWS, FS+LR",                         modulehash:"JDx6G-ZG0056y008y00GzCpMupDQ_Pc",                 tag:'C' }, // CG reward
 		530900 : { name:"0I/T Point Defence, LW+Foc",            modulehash:"JCzYG-bG0042_pD6y00GkPcL000",                     tag:'C' }, // CG reward
-		
+
 		453100 : { name:"3A Power Dist, SF+EF",                  modulehash:"JB3_G-hG006Iu00MsPcOxCpSwPcWxCpawPc",             tag:'C' }, // CG reward
 		453101 : { name:"3A Power Dist, \"Support\"",            modulehash:"JB3_G-oG_W6Il-CMkPcOjmfSj7iWjmfaj7i",             tag:'M' }, // merccoin
 		453400 : { name:"3D Power Dist, SF+EF",                  modulehash:"JB4SG-hG006Iu00MsPcOxCpSwPcWxCpawPc",             tag:'C' }, // CG reward
@@ -123,20 +123,20 @@ window.edsy = new (function() {
 		435110 : { name:"5A SCO \"V1\", IR+FB",                  modulehash:"JAdtG-bG0060upD6upD8qpDE_PcGzcQKsPc",             tag:'T' }, // CG reward / human tech broker
 		436110 : { name:"6A SCO \"V1\", IR+FB",                  modulehash:"JAfRG-bG0060upD6upD8qpDE_PcGzcQKsPc",             tag:'T' }, // CG reward / human tech broker
 		437110 : { name:"7A SCO \"V1\", IR+FB",                  modulehash:"JAg-G-bG0060upD6upD8qpDE_PcGzcQKsPc",             tag:'T' }, // CG reward / human tech broker
-		
-		  5510 : { name:"5E Anti-Corrosion Cargo (Cap: 32)",     modulehash:"H08d00",                                          tag:'C' }, // CG reward
-		  6510 : { name:"6E Anti-Corrosion Cargo (Cap: 64)",     modulehash:"H0AB00",                                          tag:'C' }, // CG reward
-		
-		  5500 : { name:"5E Cargo Rack, ECR (Cap: 43)",          modulehash:"J08cG-ZG0010vW0",                                 tag:'C' }, // CG reward
-		  5501 : { name:"5E Cargo Rack, \"Extended\" (Cap: 33)", modulehash:"J08cG-aG_W10hxw",                                 tag:'M' }, // merccoin
-		  6500 : { name:"6E Cargo Rack, ECR (Cap: 86)",          modulehash:"J0AAG-ZG0010vW0",                                 tag:'C' }, // CG reward
-		  6501 : { name:"6E Cargo Rack, \"Extended\" (Cap: 66)", modulehash:"J0AAG-aG_W10hxw",                                 tag:'M' }, // merccoin
-		
+
+			5510 : { name:"5E Anti-Corrosion Cargo (Cap: 32)",     modulehash:"H08d00",                                          tag:'C' }, // CG reward
+			6510 : { name:"6E Anti-Corrosion Cargo (Cap: 64)",     modulehash:"H0AB00",                                          tag:'C' }, // CG reward
+
+			5500 : { name:"5E Cargo Rack, ECR (Cap: 43)",          modulehash:"J08cG-ZG0010vW0",                                 tag:'C' }, // CG reward
+			5501 : { name:"5E Cargo Rack, \"Extended\" (Cap: 33)", modulehash:"J08cG-aG_W10hxw",                                 tag:'M' }, // merccoin
+			6500 : { name:"6E Cargo Rack, ECR (Cap: 86)",          modulehash:"J0AAG-ZG0010vW0",                                 tag:'C' }, // CG reward
+			6501 : { name:"6E Cargo Rack, \"Extended\" (Cap: 66)", modulehash:"J0AAG-aG_W10hxw",                                 tag:'M' }, // merccoin
+
 		 85400 : { name:"5D Module Reinforcement, \"Heavy Duty\"",modulehash:"J25SG-aG_W30u004gPc8gPc",                        tag:'M' }, // merccoin
-		
+
 		111300 : { name:"1I DSS \"V1\", ERx2",                   modulehash:"J2jwG-fG001P000",                                 tag:'T' }, // human tech broker
 		111301 : { name:"1I DSS, \"Long Range\"",                modulehash:"J2jwG-gG_W1OoPc",                                 tag:'M' }, // merccoin
-		
+
 		303100 : { name:"3A Shield Gen, KR+TR",                  modulehash:"J7PcG-bG0044sPc8wPccupDgvcQ",                     tag:'C' }, // CG reward
 	};
 	var LANG_NAMES = { // TODO cn? ko? nl? pl?
@@ -144,7 +144,7 @@ window.edsy = new (function() {
 	};
 	var LANGS = Object.keys(LANG_NAMES);
 	var LANG_DEFAULT = 'en';
-	
+
 	var UNIT_ABBR_TRANSLATIONS = {
 		"%": "unit-percent-abbr",
 		"&deg;": "unit-degrees-abbr",
@@ -168,7 +168,7 @@ window.edsy = new (function() {
 		"/s": "unit-per-second-abbr",
 		"x": "unit-multiplier-abbr",
 	};
-	
+
 	var cache = {
 		reEscapeHTML: new RegExp('[&<>"\'/°]', 'g'),
 		fnEscapeHTML: function(m) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&apos;','/':'&sol;','°':'&deg;'}[m] || m; },
@@ -205,7 +205,6 @@ window.edsy = new (function() {
 		beta: false,
 		locale: undefined,
 		lang: LANG_DEFAULT,
-		hashlock: false,
 		popup: {
 			element: null,
 			trigger: null,
@@ -274,8 +273,8 @@ window.edsy = new (function() {
 		},
 		counter: {}
 	};
-	
-	
+
+
 	var
 		LN2 = Math.LN2,
 		LN10 = Math.LN10,
@@ -322,21 +321,21 @@ window.edsy = new (function() {
 			return false;
 		}
 	;
-	
-	
+
+
 	/*
 	* UTILITY FUNCTIONS
 	*/
-	
-	
+
+
 	var setDOMSelectLength = function(select, length) {
 		while (select.length < length)
 			select.options.add(document.createElement('option'));
 		while (select.length > length)
 			select.options.remove(select.options.length - 1);
 	}; // setDOMSelectLength()
-	
-	
+
+
 	var populateDOMSelectStoreds = function(select, storeds, namehash, offset) {
 		var selectedIndex = (select.selectedIndex ? -1 : 0);
 		storeds = storeds || EMPTY_ARR;
@@ -351,8 +350,8 @@ window.edsy = new (function() {
 		select.selectedIndex = selectedIndex;
 		return true;
 	}; // populateDOMSelectStoreds()
-	
-	
+
+
 	var setClipboardString = function(string) {
 		var el = document.createElement('textarea');
 		el.value = string;
@@ -371,8 +370,8 @@ window.edsy = new (function() {
 		document.body.removeChild(el);
 		return ok;
 	}; // setClipboardString()
-	
-	
+
+
 	var isDropEffectCopy = function(e) {
 		// Fixes browser bug in Chrome on Windows where dropEffect is always "none".
 		// The original bug report [1] was merged into another issue [2] but that
@@ -401,13 +400,13 @@ window.edsy = new (function() {
 		// This is the actual fix.
 		return !!e.ctrlKey;
 	} // isDropEffectCopy()
-	
-	
+
+
 	var encodeHTML = function(text) {
 		return text.replaceAll(cache.reEscapeHTML, cache.fnEscapeHTML);
 	}; // encodeHTML()
-	
-	
+
+
 	var getCookie = function(name, defaultvalue) {
 		return ((document.cookie.match(new RegExp('(?:^|;)\\s*' + name + '\\s*=\\s*"?([^"\\s;]*)"?\\s*(?:;|$)')) || EMPTY_ARR)[1] || defaultvalue);
 	}; // getCookie()
@@ -416,8 +415,8 @@ window.edsy = new (function() {
 	var createIcon = function(icon) {
 		return (cache.icon[icon] || cache.icon['unknown'] || document.createTextNode('?')).cloneNode(true);
 	}; // createIcon()
-	
-	
+
+
 	/* TODO not needed?
 	var appendTextLines = function(el, text, lines) {
 		lines = lines || ceil(text.length / 80);
@@ -439,7 +438,7 @@ window.edsy = new (function() {
 		el.append(text);
 	}; // appendTextLines()
 	*/
-	
+
 	var formatNumText = ((window.Intl && window.Intl.NumberFormat)
 		? (
 			function(num, dec) {
@@ -461,8 +460,8 @@ window.edsy = new (function() {
 			}
 		)
 	); // formatNumText()
-	
-	
+
+
 	var parseNumText = function(text) {
 		if (!cache.parseNumText) {
 			if (window.Intl && window.Intl.NumberFormat) {
@@ -494,8 +493,8 @@ window.edsy = new (function() {
 		}
 		return cache.parseNumText(text);
 	}; // parseNumText()
-	
-	
+
+
 	var formatPctText = ((window.Intl && window.Intl.NumberFormat)
 		? (
 			function(num, dec) {
@@ -509,8 +508,8 @@ window.edsy = new (function() {
 			}
 		)
 	); // formatPctText()
-	
-	
+
+
 	var formatNumHTML = function(num, dec) {
 		if (num === undefined)
 			return '';
@@ -526,8 +525,8 @@ window.edsy = new (function() {
 			html = '<abbr class="unknown" edsy-title="unknown" title="Unknown!">' + html + '</abbr>';
 		return html;
 	}; // formatNumHTML()
-	
-	
+
+
 	var formatPctHTML = function(num, dec) {
 		if (num === undefined)
 			return '';
@@ -543,21 +542,21 @@ window.edsy = new (function() {
 			html = '<abbr class="unknown" edsy-title="unknown" title="Unknown!">' + html + '</abbr>';
 		return html;
 	}; // formatPctHTML()
-	
-	
+
+
 	var formatTimeHTML = function(sec, brief) {
 		if (sec !== sec)
 			return formatNumHTML(NaN, 1);
 		if (!isFinite(sec))
 			return formatNumHTML(sec, 0);
-		
+
 		var s = (sec % 60);
 		var m = (sec / 60) | 0;
 		var h = (m / 60) | 0;
 		m = (m % 60) | 0;
-		
-	//	return ((sec >= 10) ? ((h ? (h.toFixed(0) + ':') : '') + ((h && m < 10) ? '0' : '') + m.toFixed(0) + ':' + (((h || m) && s < 10) ? '0' : '') + s.toFixed(0)) : s.toFixed(1));
-		
+
+	//  return ((sec >= 10) ? ((h ? (h.toFixed(0) + ':') : '') + ((h && m < 10) ? '0' : '') + m.toFixed(0) + ':' + (((h || m) && s < 10) ? '0' : '') + s.toFixed(0)) : s.toFixed(1));
+
 		if (brief) {
 			if (h) return (((h < 10) ? formatNumHTML(h+(m/60), 1) : formatNumHTML(h, 0)) + '<small class="semantic" edsy-text="unit-hours-abbr">h</small>');
 			if (m) return (((m < 10) ? formatNumHTML(m+(s/60), 1) : formatNumHTML(m, 0)) + '<small class="semantic" edsy-text="unit-minutes-abbr">m</small>');
@@ -570,8 +569,8 @@ window.edsy = new (function() {
 		html += (formatNumHTML(s, (sec < 10) ? 1 : 0) + '<small class="semantic" edsy-text="unit-seconds-abbr">s</small>');
 		return html;
 	}; // formatTimeHTML()
-	
-	
+
+
 	var formatPriceHTML = function(num, brief) {
 		if (num !== num || !isFinite(num))
 			return formatNumHTML(num, 0);
@@ -599,8 +598,8 @@ window.edsy = new (function() {
 			'<small edsy-text="unit-credits-abbr">Cr</small>'
 		].join('');
 	}; // formatPriceHTML()
-	
-	
+
+
 	var formatAttrLabelHTML = function(attr) {
 		var attribute = (cache.attribute[attr] || EMPTY_OBJ);
 		return [
@@ -611,8 +610,8 @@ window.edsy = new (function() {
 			'>' + (attribute.abbr || attr) + '</abbr>:'
 		].join('');
 	}; // formatAttrLabelHTML()
-	
-	
+
+
 	var formatAttrHTML = function(attr, value, dec) {
 		var attribute = (cache.attribute[attr] || EMPTY_OBJ);
 		if (dec === undefined)
@@ -625,8 +624,8 @@ window.edsy = new (function() {
 			return formatTimeHTML(value);
 		return (((dec !== undefined) ? formatNumHTML(value, dec) : value) + ((attribute.unit && isFinite(value)) ? ('<small edsy-text="' + (UNIT_ABBR_TRANSLATIONS[attribute.unit] || '') + '">' + attribute.unit + '</small>') : ''));
 	}; // formatAttrHTML()
-	
-	
+
+
 	var HASH_NUM_CHR = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_-';
 	var HASH_CHR_NUM = {};
 	for (var i = 0;  i < HASH_NUM_CHR.length;  i++)
@@ -635,8 +634,8 @@ window.edsy = new (function() {
 	var HASHT_CHR_NUM = {};
 	for (var i = 0;  i < HASHT_NUM_CHR.length;  i++)
 		HASHT_CHR_NUM[HASHT_NUM_CHR[i]] = i;
-	
-	
+
+
 	var hashEncode = function(n, l) {
 		var h = '';
 		while (n) {
@@ -647,16 +646,16 @@ window.edsy = new (function() {
 			h = HASH_NUM_CHR[0] + h;
 		return h;
 	}; // hashEncode()
-	
-	
+
+
 	var hashDecode = function(h) {
 		var n=0, i=0;
 		while (i < h.length)
 			n = (n << 6) | (HASH_CHR_NUM[h[i++]] || 0);
 		return n;
 	}; // hashDecode()
-	
-	
+
+
 	var hashEncodeS = function(s) {
 		var h='', i=0, c;
 		for (var i = 0;  i < s.length;  i++) {
@@ -667,8 +666,8 @@ window.edsy = new (function() {
 		}
 		return h;
 	}; // hashEncodeS()
-	
-	
+
+
 	var hashDecodeS = function(h) {
 		var s='', i=1, c1, c2;
 		for (var i = 1;  i < h.length;  i += 2) {
@@ -678,8 +677,8 @@ window.edsy = new (function() {
 		}
 		return s;
 	}; // hashDecodeS()
-	
-	
+
+
 	var hashEncodeT = function(t) {
 		var h='', i=0, c;
 		for (var i = 0;  i < t.length;  i++) {
@@ -693,8 +692,8 @@ window.edsy = new (function() {
 		}
 		return h;
 	}; // hashEncodeT()
-	
-	
+
+
 	var hashDecodeT = function(h) {
 		var t='', i=0, c1, c2;
 		while (i < h.length) {
@@ -712,18 +711,18 @@ window.edsy = new (function() {
 		}
 		return t;
 	}; // hashDecodeT()
-	
-	
+
+
 	var fixed20Encode = function(n) {
 		return min(max((n * (1 << 17) + 0.5) | 0, 0), 0xFFFFF);
 	}; // fixed20Encode()
-	
+
 
 	var fixed20Decode = function(n) {
 		return (1.0 * n / (1 << 17));
 	}; // fixed20Decode()
-	
-	
+
+
 	var float20Encode = function(f) {
 		// this is a custom 20-bit floating point format based on the design of IEEE 16- and 32-bit floats
 		// yes, it's probably a little silly to invent a custom data type just for a fan site,
@@ -765,44 +764,44 @@ window.edsy = new (function() {
 		m &= ((1 << 14) - 1);
 		return (s << 19) | (e << 14) | m;
 	}; // float20Encode()
-	
-	
+
+
 	var float20Decode = function(b) {
 		var s = (b >> 19) & 1;
 		var e = (b >> 14) & ((1 << 5) - 1);
 		var m = b & ((1 << 14) - 1);
 		return (e >= ((1 << 5) - 1)) ? (m ? NaN : (s ? -Infinity : Infinity)) : ((s ? -1 : 1) * pow(2.0, e - ((1 << 5) - 2) + (e == 0)) * ((e ? (1 << 14) : 0) | m));
 	}; // float20Decode()
-	
-	
+
+
 	var b64Encode = function(t) {
 		return btoa(t).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '');
 	}; // b64Encode()
-	
-	
+
+
 	var b64Decode = function(t) {
 		return atob((t + '===').slice(0, t.length + ((4 - (t.length % 4)) % 4)).replace(/-/g, '+').replace(/_/g, '/'));
 	}; // b64Decode()
-	
-	
+
+
 	/*
 	* GAME FORMULAS
 	*/
-	
-	
+
+
 	var getJumpFuelCost = function(dist, mass, curfuel, fsdfuel, fsdopt, fsdmul, fsdpower, jumpbst) {
 		// https://forums.frontier.co.uk/threads/mass-effect-on-hyperspace-range.32734/#post-643461
 		var maxdist = getJumpDistance(mass, curfuel, fsdfuel, fsdopt, fsdmul, fsdpower, jumpbst);
 		return pow(dist / maxdist, fsdpower) * min(curfuel, fsdfuel);
 	}; // getJumpFuelCost()
-	
-	
+
+
 	var getJumpDistance = function(mass, curfuel, fsdfuel, fsdopt, fsdmul, fsdpower, jumpbst) {
 		// https://forums.frontier.co.uk/threads/mass-effect-on-hyperspace-range.32734/#post-643461
 		return pow(min(curfuel, fsdfuel) / fsdmul, 1 / fsdpower) * fsdopt / (mass + curfuel) + jumpbst;
 	}; // getJumpDistance()
-	
-	
+
+
 	var getJumpRange = function(mass, curfuel, fsdfuel, fsdopt, fsdmul, fsdpower, jumpbst) {
 		var range = 0;
 		while (curfuel >= 0.000001) {
@@ -811,14 +810,14 @@ window.edsy = new (function() {
 		}
 		return range;
 	}; // getJumpRange()
-	
-	
+
+
 	var getMassCurveMultiplier = function(mass, minMass, optMass, maxMass, minMul, optMul, maxMul) {
 		// https://forums.frontier.co.uk/threads/the-one-formula-to-rule-them-all-the-mechanics-of-shield-and-thruster-mass-curves.300225/
 		return (minMul + pow(min(1.0, (maxMass - mass) / (maxMass - minMass)), log((optMul - minMul) / (maxMul - minMul)) / (optMass == minMass ? 1 : log((maxMass - optMass) / (maxMass - minMass)))) * (maxMul - minMul));
 	}; // getMassCurveMultiplier()
-	
-	
+
+
 	var getEffectiveDamageResistance = function(baseres, extrares, exemptres, bestres) {
 		// https://forums.frontier.co.uk/threads/kinetic-resistance-calculation.266235/post-4230114
 		// https://forums.frontier.co.uk/threads/shield-booster-mod-calculator.286097/post-4998592
@@ -841,28 +840,28 @@ window.edsy = new (function() {
 //TODO console.log("gEDR("+baseres+","+extrares+","+exemptres+","+bestres+") = "+effective);
 		return effective;
 	}; // getEffectiveDamageResistance()
-	
-	
+
+
 	var getEffectiveShieldBoostMultiplier = function(shieldbst) {
 		// https://forums.frontier.co.uk/threads/very-experimental-shield-change.314820/post-4895068
 		var i = (1 + (shieldbst / 100));
-	//	i = min(i, (1 - exp(-0.7 * i)) * 2.5); // proposed during 2.3 beta, but not implemented
+	//  i = min(i, (1 - exp(-0.7 * i)) * 2.5); // proposed during 2.3 beta, but not implemented
 		return i;
 	}; // getEffectiveShieldBoostMultiplier()
-	
-	
+
+
 	var getPipDamageResistance = function(sys) {
 		// https://forums.frontier.co.uk/threads/2-3-the-commanders-changelog.341916/
 		return 60 * pow(sys / MAX_POWER_DIST, 0.85);
 	}; // getPipDamageResistance()
-	
-	
+
+
 	var getEquilibriumHeatLevel = function(heatdismax, thmload) {
 		// https://forums.frontier.co.uk/threads/research-detailed-heat-mechanics.286628/post-6399855
 		return sqrt(thmload / heatdismax);
 	}; // getEquilibriumHeatLevel()
-	
-	
+
+
 	var getTimeUntilHeatLevel = function(heatcap, heatdismax, thmload, heatlevel0, heatlevel) {
 		// https://forums.frontier.co.uk/threads/research-detailed-heat-mechanics.286628/post-6519883
 		heatdismax /= heatcap;
@@ -876,8 +875,8 @@ window.edsy = new (function() {
 		var C = -atanh(heatlevel0 * sqrtAdivB) / sqrtAmulB
 		return ((atanh(heatlevel * sqrtAdivB) / sqrtAmulB) + C);
 	}; // getTimeUntilHeatLevel()
-	
-	
+
+
 	var getHeatLevelAtTime = function(heatcap, heatdismax, thmload, heatlevel0, seconds) {
 		// https://forums.frontier.co.uk/threads/research-detailed-heat-mechanics.286628/post-6519883
 		heatdismax /= heatcap;
@@ -891,19 +890,19 @@ window.edsy = new (function() {
 		var C = -atanh(heatlevel0 * sqrtAdivB) / sqrtAmulB
 		return (tanh((seconds - C) * sqrtAmulB) / sqrtAdivB);
 	}; // getHeatLevelAtTime()
-	
-	
+
+
 	var getEffectiveWeaponThermalLoad = function(thmload, distdraw, wepcap, weplvl) {
 		// https://forums.frontier.co.uk/threads/research-detailed-heat-mechanics.286628/post-6408594
 		return (thmload * (1 + 4 * min(max(1 - (wepcap * weplvl - distdraw) / wepcap, 0), 1)));
 	}; // getEffectiveWeaponThermalLoad()
-	
-	
+
+
 	/*
 	* SHIP BUILDS
 	*/
-	
-	
+
+
 	var Slot = function(build, slotgroup, slotnum, modid) {
 		if (!build || !(build instanceof Build))
 			throw 'invalid parent build';
@@ -936,38 +935,38 @@ window.edsy = new (function() {
 				throw 'invalid initial module id #' + modid;
 		}
 	}; // Slot
-	
-	
+
+
 	Slot.prototype = {
-		
+
 		getSlotGroup: function() {
 			return this.slotgroup;
 		}, // getSlotGroup()
-		
-		
+
+
 		getSlotNum: function() {
 			return this.slotnum;
 		}, // getSlotNum()
-		
-		
+
+
 		getSlotSize: function() {
 			var ship = eddb.ship[this.build.getShipID()];
 			return (ship ? ship.slots[this.slotgroup][this.slotnum] : MAX_SLOT_CLASS);
 		}, // getSlotSize()
-		
-		
+
+
 		clearHash: function() {
 			this.hash = null;
 			if (this.slotgroup) this.build.clearHash();
 		}, // clearHash()
-		
-		
+
+
 		clearStats: function() {
 			this.clearHash();
 			if (this.slotgroup) this.build.clearStats();
 		}, // clearStats()
-		
-		
+
+
 		isModuleIDValid: function(modid) {
 			if (this.slotgroup === 'ship') return ((this.slotnum === 'hull' && modid == this.build.getShipID()) || (this.slotnum === 'hatch' && modid == SHIP_HATCH_ID)); // ship pseudogroup can only contain hull or cargo hatch
 			if (!modid) return (this.slotgroup !== 'component'); // core components cannot be empty
@@ -976,8 +975,8 @@ window.edsy = new (function() {
 			if (this.slotgroup && !((this.slotgroup === 'component') ? eddb.group.component[this.slotnum] : eddb.group[this.slotgroup]).mtypes[module.mtype]) return false; // group does not allow the module type
 			return true;
 		}, // isModuleIDValid()
-		
-		
+
+
 		isModuleIDAllowed: function(modid) {
 			if (!this.isModuleIDValid(modid)) return false; // module must be valid to be allowed
 			if (!this.slotgroup || this.slotgroup === 'ship' || !modid) return true; // detached slots, ship pseudogroup slots, and empty slots are always allowed if they're valid
@@ -1003,8 +1002,8 @@ window.edsy = new (function() {
 			if (modid == 80339 && shipid == 18 && (this.slotnum < 3 || this.slotnum > 4)) return false;
 			return true;
 		}, // isModuleIDAllowed()
-		
-		
+
+
 		isEnough: function() {
 			if (!this.slotgroup || this.slotgroup === 'ship' || !this.modid) return true; // detached slots, ship pseudogroup slots, and empty slots are always enough if they're allowed
 			var ship = eddb.ship[this.build.getShipID()];
@@ -1013,8 +1012,8 @@ window.edsy = new (function() {
 			if (this.module.mtype === 'isg' && ship.mass > this.getEffectiveAttrValue('genmaxmass')) return false; // ship mass exceeds shieldgen maximum
 			return true;
 		}, // isEnough()
-		
-		
+
+
 		swapWith: function(slot2) {
 			if (!slot2 || !(slot2 instanceof Slot) || (slot2.build !== this.build) || !this.slotgroup || (this.slotgroup === 'ship') || !slot2.slotgroup || (slot2.slotgroup === 'ship'))
 				return false;
@@ -1030,28 +1029,28 @@ window.edsy = new (function() {
 			slot2.slotnum = slotnum1;
 			return true;
 		}, // swapWith()
-		
-		
+
+
 		getShipID: function() {
 			return this.build.getShipID();
 		}, // getShipID()
-		
-		
+
+
 		getModuleID: function() {
 			return this.modid;
 		}, // getModuleID()
-		
-		
+
+
 		getModule: function() {
 			return this.module;
 		}, // getModule()
-		
-		
+
+
 		getModuleMtype: function() {
 			return (this.module || EMPTY_OBJ).mtype;
 		}, // getModuleMtype()
-		
-		
+
+
 		setModuleID: function(modid, experimental) {
 			if (!(experimental ? this.isModuleIDValid(modid) : this.isModuleIDAllowed(modid)))
 				return false;
@@ -1069,36 +1068,36 @@ window.edsy = new (function() {
 			this.clearStats();
 			return true;
 		}, // setModuleID()
-		
-		
+
+
 		hasActualCost: function() {
 			return (this.cost > 0);
 		}, // hasActualCost()
-		
-		
+
+
 		getDiscounts: function() {
 			return this.discounts;
 		}, // getDiscounts()
-		
-		
+
+
 		setDiscounts: function(discounts) {
 			this.discounts = (this.getBaseCost() ? (discounts & 0x3F) : 0);
 			this.cost = 0;
 			this.clearStats();
 			return true;
 		}, // setDiscounts()
-		
-		
+
+
 		getBaseCost: function() {
 			return this.getBaseAttrValue('cost');
 		}, // getBaseCost()
-		
-		
+
+
 		getCost: function() {
 			return (this.hasActualCost() ? this.cost : this.getEffectiveAttrValue('cost'));
 		}, // getCost()
-		
-		
+
+
 		setCost: function(cost) {
 			cost = parseInt(round(min(max(cost, 0), 9999999999)));
 			var base = this.getBaseCost();
@@ -1107,13 +1106,13 @@ window.edsy = new (function() {
 			this.clearStats();
 			return true;
 		}, // setCost()
-		
-		
+
+
 		getPowered: function() {
 			return !!this.getPowerLock() || this.powered;
 		}, // getPowered()
-		
-		
+
+
 		setPowered: function(powered) {
 			powered = !!powered;
 			if (powered != (!!this.getPowerLock() || powered))
@@ -1122,18 +1121,18 @@ window.edsy = new (function() {
 			this.clearStats();
 			return true;
 		}, // setPowered()
-		
-		
+
+
 		getPowerLock: function() {
 			return (this.module || EMPTY_OBJ).powerlock;
 		}, // getPowerLock()
-		
-		
+
+
 		getPriority: function() {
 			return this.getPowerLock() || this.priority;
 		}, // getPriority()
-		
-		
+
+
 		setPriority: function(priority) {
 			priority = min(max(priority | 0, 1), MAX_POWER_PRIORITY);
 			if (priority != (this.getPowerLock() || priority))
@@ -1142,8 +1141,8 @@ window.edsy = new (function() {
 			this.clearStats();
 			return true;
 		}, // setPriority()
-		
-		
+
+
 		changePriority: function(delta) {
 			let priority = this.priority;
 			if (delta >= 0) {
@@ -1153,20 +1152,20 @@ window.edsy = new (function() {
 			}
 			return this.setPriority(priority);
 		}, // changePriority()
-		
-		
+
+
 		setPreEngineered: function(preeng) {
 			this.preeng = preeng ? 1 : 0;
 			this.clearHash();
 			return true;
 		}, // setPreEngineered()
-		
-		
+
+
 		getPreEngineered: function() {
 			return this.preeng;
 		}, // getPreEngineered()
-		
-		
+
+
 		setBlueprint: function(bpid, bpgrade, bproll) {
 			if (!this.modid || (this.slotgroup === 'ship'))
 				return false;
@@ -1246,43 +1245,43 @@ window.edsy = new (function() {
 			}
 			return true;
 		}, // setBlueprint()
-		
-		
+
+
 		getBlueprintID: function() {
 			return this.bpid;
 		}, // getBlueprintID()
-		
-		
+
+
 		setBlueprintID: function(bpid) {
 			return this.setBlueprint(bpid, this.bpgrade, this.bproll);
 		}, // setBlueprintID()
-		
-		
+
+
 		getBlueprintGrade: function() {
 			return this.bpgrade;
 		}, // getBlueprintGrade()
-		
-		
+
+
 		setBlueprintGrade: function(bpgrade) {
 			return this.setBlueprint(this.bpid, bpgrade, this.bproll);
 		}, // setBlueprintGrade()
-		
-		
+
+
 		getBlueprintRoll: function() {
 			return this.bproll;
 		}, // getBlueprintRoll()
-		
-		
+
+
 		setBlueprintRoll: function(bproll) {
 			return this.setBlueprint(this.bpid, this.bpgrade, bproll);
 		}, // setBlueprintRoll()
-		
-		
+
+
 		getExpeffectID: function() {
 			return this.expid;
 		}, // getExpeffectID()
-		
-		
+
+
 		setExpeffectID: function(expid) {
 			if (!this.modid || (this.slotgroup === 'ship'))
 				return false;
@@ -1301,18 +1300,18 @@ window.edsy = new (function() {
 			this.clearStats();
 			return true;
 		}, // setExpeffectID()
-		
-		
+
+
 		isModifiable: function() {
 			return !!(this.modid && (this.slotgroup !== 'ship') && eddb.mtype[this.module.mtype].modifiable && (!this.module.noblueprints || !this.module.noblueprints['*']));
 		}, // isModifiable()
-		
-		
+
+
 		isModified: function() {
 			return !!(this.attrModifier || this.expid);
 		}, // isModified()
-		
-		
+
+
 		getAttrValue: function(attr, modified) {
 			switch (attr) {
 			case 'fpc':
@@ -1325,7 +1324,7 @@ window.edsy = new (function() {
 					return ammoclip;
 				}
 				return this.getAttrValue('bstsize', modified);
-				
+
 			case 'spc':
 			case 'sspc':
 				var dmgmul = this.getAttrValue('dmgmul', modified);
@@ -1345,13 +1344,13 @@ window.edsy = new (function() {
 					spc *= ceil(ammoclip / bstsize);
 				}
 				return spc + max(0, rldtime - duration - bstint);
-				
+
 			case 'rof':
 				return (this.getAttrValue('fpc', modified) / this.getAttrValue('spc', modified));
-				
+
 			case 'srof':
 				return (this.getAttrValue('sfpc', modified) / this.getAttrValue('sspc', modified));
-				
+
 			case 'dps':
 			case 'sdps':
 				var damage = this.getAttrValue('damage', modified);
@@ -1359,19 +1358,19 @@ window.edsy = new (function() {
 				var rounds = this.getAttrValue('rounds', modified);
 				var rof = this.getAttrValue((attr === 'sdps') ? 'srof' : 'rof', modified);
 				return (damage * dmgmul * rounds * (isFinite(rof) ? rof : 1));
-				
+
 			case 'eps':
 			case 'seps':
 				var distdraw = this.getAttrValue('distdraw', modified);
 				var rof = this.getAttrValue((attr === 'seps') ? 'srof' : 'rof', modified);
 				return (distdraw * (isFinite(rof) ? rof : 1));
-				
+
 			case 'hps':
 			case 'shps':
 				var thmload = this.getAttrValue('thmload', modified);
 				var rof = this.getAttrValue((attr === 'shps') ? 'srof' : 'rof', modified);
 				return (thmload * (isFinite(rof) ? rof : 1));
-				
+
 			case 'engminmul':
 			case 'engoptmul':
 			case 'engmaxmul':
@@ -1381,26 +1380,26 @@ window.edsy = new (function() {
 				var rot = this.getAttrValue(attr+'rot', modified);
 				return (spd + acc + rot) / 3.0;
 			}
-			
+
 			return getModuleAttrValue(this.module, attr, modified ? this.getEffectiveAttrModifier(attr) : undefined);
 		}, // getAttrValue()
-		
-		
+
+
 		getBaseAttrValue: function(attr) {
 			return this.getAttrValue(attr, false);
 		}, // getBaseAttrValue()
-		
-		
+
+
 		getEffectiveAttrValue: function(attr) {
 			return this.getAttrValue(attr, true);
 		}, // getEffectiveAttrValue()
-		
-		
+
+
 		isAttrOverridden: function(attr) {
 			return !!((this.attrOverride || EMPTY_OBJ)[attr]);
 		}, // isAttrOverridden()
-		
-		
+
+
 		getAllBaseAttrModifiers: function() {
 			if (!this.attrModifier)
 				return null;
@@ -1409,13 +1408,13 @@ window.edsy = new (function() {
 				m[attr] = this.attrModifier[attr];
 			return m;
 		}, // getAllBaseAttrModifiers()
-		
-		
+
+
 		getBaseAttrModifier: function(attr) {
 			return ((this.attrModifier || EMPTY_OBJ)[attr] || 0);
 		}, // getBaseAttrModifier()
-		
-		
+
+
 		getRelatedAttrModifier: function(attr) {
 			switch (attr) {
 			case 'cost':
@@ -1427,10 +1426,10 @@ window.edsy = new (function() {
 					return 0;
 				var modifier = (value / base) - 1;
 				return (abs(modifier) < MIN_MODIFIER) ? 0 : modifier; // TODO: check for within 10?
-				
+
 			case 'brcdmg':
 				return this.getEffectiveAttrModifier('damage');
-				
+
 			case 'rof':
 			case 'srof':
 				// can't just combine modifiers, they're too interrelated
@@ -1441,7 +1440,7 @@ window.edsy = new (function() {
 					return 0;
 				var modifier = (value / base) - 1;
 				return (abs(modifier) < MIN_MODIFIER) ? 0 : modifier;
-				
+
 			case 'dps':
 			case 'sdps':
 				return getAttrModifierSum(attr,
@@ -1454,24 +1453,24 @@ window.edsy = new (function() {
 					),
 					this.getEffectiveAttrModifier(attr === 'sdps' ? 'srof' : 'rof')
 				);
-				
+
 			case 'eps':
 			case 'seps':
 				return getAttrModifierSum(attr,
 					this.getEffectiveAttrModifier('distdraw'),
 					this.getEffectiveAttrModifier(attr === 'seps' ? 'srof' : 'rof')
 				);
-				
+
 			case 'hps':
 			case 'shps':
 				return getAttrModifierSum(attr,
 					this.getEffectiveAttrModifier('thmload'),
 					this.getEffectiveAttrModifier(attr === 'shps' ? 'srof' : 'rof')
 				);
-				
+
 			case 'shotspd':
 				return max(0, this.getEffectiveAttrModifier('maximumrng'));
-				
+
 			case 'engminmass':
 			case 'engmaxmass':
 				// TODO: verify all combinations
@@ -1480,7 +1479,7 @@ window.edsy = new (function() {
 				// thrusters modern negative optmass: negative minmass, negative maxmass
 				// thrusters modern positive optmass: positive minmass, positive maxmass
 				return this.getEffectiveAttrModifier('engoptmass');
-				
+
 			case 'engminmul':
 			case 'engmaxmul':
 			case 'engminbst':
@@ -1496,10 +1495,10 @@ window.edsy = new (function() {
 			case 'optmulrot':
 			case 'maxmulrot':
 				return this.getEffectiveAttrModifier('engoptmul');
-				
+
 			case 'maxrng':
 				return this.getEffectiveAttrModifier('typemis');
-				
+
 			case 'genminmass':
 				// TODO: verify all combinations
 				// shieldgen legacy negative optmass:
@@ -1507,7 +1506,7 @@ window.edsy = new (function() {
 				// shieldgen modern negative optmass: negative minmass
 				// shieldgen modern positive optmass:
 				return this.getEffectiveAttrModifier('genoptmass');
-				
+
 			case 'genmaxmass':
 				// TODO: verify all combinations
 				// shieldgen legacy negative optmass:
@@ -1515,16 +1514,16 @@ window.edsy = new (function() {
 				// shieldgen modern negative optmass: unchanged maxmass
 				// shieldgen modern positive optmass:
 				return max(0, this.getEffectiveAttrModifier('genoptmass'));
-				
+
 			case 'genminmul':
 			case 'genmaxmul':
 				return this.getEffectiveAttrModifier('genoptmul');
 			}
-			
+
 			return 0;
 		}, // getRelatedAttrModifier()
-		
-		
+
+
 		getExperimentalAttrModifier: function(attr) {
 			var modExp = ((eddb.expeffect[this.expid] || EMPTY_OBJ)[attr] || 0);
 			if (modExp) {
@@ -1533,19 +1532,19 @@ window.edsy = new (function() {
 			}
 			return modExp;
 		}, // getExperimentalAttrModifier()
-		
-		
+
+
 		getEffectiveAttrModifier: function(attr) {
 			// get base, related and experimental modifiers
 			var modBase = this.getBaseAttrModifier(attr);
 			var modRel = this.getRelatedAttrModifier(attr);
 			var modExp = this.getExperimentalAttrModifier(attr);
-			
+
 			// apply these modifiers in reverse; usually it doesn't matter, but for modset we want base to override related which overrides experimental
 			return getAttrModifierSum(attr, getAttrModifierSum(attr, modExp, modRel), modBase);
 		}, // getEffectiveAttrModifier()
-		
-		
+
+
 		setEffectiveAttrModifier: function(attr, modifier) {
 			if (attr === 'cost') {
 				return this.setDiscounts(getClosestDiscount(1 + (modifier || 0)));
@@ -1568,17 +1567,17 @@ window.edsy = new (function() {
 				modifier = (((ammoclip || bstsize) / (rof * (1 + (modifier || 0))) - max(0, rldtime - duration - bstint)) / ceil((ammoclip || bstsize) / bstsize) - duration - (bstsize - 1) / bstrof) / bstint - 1;
 				// TODO: how to handle bstint also appearing inside the max() when setting srof?
 			}
-			
+
 			// get related and experimental modifiers
 			var modRel = this.getRelatedAttrModifier(attr);
 			var modExp = this.getExperimentalAttrModifier(attr);
-			
+
 			// set the base modifier
 			var basemodifier = getAttrModifierDifference(attr, modifier, getAttrModifierSum(attr, modExp, modRel));
 			return this.setAttrModifier(attr, basemodifier);
 		}, // setEffectiveAttrModifier()
-		
-		
+
+
 		setAttrModifier: function(attr, modifier) {
 			if (!this.module)
 				return false;
@@ -1630,11 +1629,11 @@ window.edsy = new (function() {
 				this.attrOverride[attr] = true;
 				this.clearStats();
 			}
-			
+
 			return true;
 		}, // setAttrModifier()
-		
-		
+
+
 		getHash: function(stored) {
 			/*
 			module hash format (HASH_VERSION=20):
@@ -1668,7 +1667,7 @@ window.edsy = new (function() {
 				return '';
 			if (!this.hash) {
 				var modidhash = hashEncode(this.modid & 0x1FFFF, 3);
-				
+
 				var costed = this.hasActualCost();
 				var costhash = '';
 				if (costed) {
@@ -1681,7 +1680,7 @@ window.edsy = new (function() {
 				} else {
 					costhash = hashEncode(this.discounts, 1);
 				}
-				
+
 				var mtype = (eddb.mtype[this.module.mtype] || EMPTY_OBJ);
 				var preeng = (this.preeng ? 1 : 0);
 				var bpidx = ((mtype.blueprints || EMPTY_ARR).indexOf(this.bpid) + 1);
@@ -1705,7 +1704,7 @@ window.edsy = new (function() {
 				var engbits = (((preeng & 0x1) << 11) | ((bpidx & 0xF) << 7) | ((this.bpgrade & 0x7) << 4) | (expidx & 0xF));
 				var enghash = ((engbits || nummods) ? (hashEncode(engbits, 2) + hashEncode(bproll, 2) + hashEncode(nummods & 0x1F, 1) + modulehash) : '');
 				var b_enghash = ((engbits || b_nummods) ? (hashEncode(engbits, 2) + hashEncode(0, 2) + hashEncode(b_nummods & 0x1F, 1) + b_modulehash) : ''); // ignore bproll, include all modifiers
-				
+
 				var slotbits = ((costed ? 0x20 : 0) | (enghash ? 0x10 : 0) | (this.getPowered() ? 0 : 0x8) | ((this.getPriority() - 1) & 0x7));
 				this.hash = (modidhash + hashEncode(slotbits, 1) + costhash + enghash);
 				this.storedhash = (hashEncode(HASH_VERSION, 1) + modidhash + hashEncode(slotbits & 0x30, 1) + costhash + enghash); // ignore slotbits 0x0F (powered, priority)
@@ -1713,18 +1712,18 @@ window.edsy = new (function() {
 			}
 			return (stored ? (stored > 1 ? this.builtinhash : this.storedhash) : this.hash);
 		}, // getHash()
-		
-		
+
+
 		getStoredHash: function() {
 			return this.getHash(1);
 		}, // getStoredHash()
-		
-		
+
+
 		getBuiltinHash: function() {
 			return this.getHash(2);
 		}, // getBuiltinHash()
-		
-		
+
+
 		setHash: function(hash, version, errors, experimental) {
 			var errortag;
 			if (errors) errortag = (this.slotgroup ? ('Slot ' + this.slotgroup + ' ' + ((this.slotgroup === 'component') ? CORE_SLOT_ABBR[this.slotnum].toLowerCase() : (isNaN(this.slotnum) ? this.slotnum : (this.slotnum * 1 + 1))) + ': ') : '');
@@ -1734,7 +1733,7 @@ window.edsy = new (function() {
 			}
 			var idmap = Build.getHashVersionMap(version);
 			var i = 0;
-			
+
 			// module id
 			var modid = ((version < 12 && this.slotgroup === 'ship' && this.slotnum === 'hatch') ? SHIP_HATCH_ID : hashDecode(hash.slice(i, (i += ((version < 9 && this.slotgroup === 'component') ? 2 : 3)))));
 			if (this.slotgroup === 'hardpoint') {
@@ -1751,7 +1750,7 @@ window.edsy = new (function() {
 			} else if (experimental === EXPERIMENTAL_IMPORT && !this.setModuleID(modid)) {
 				if (errors) errors.push(errortag + getModuleLabel(this.getModule()) + ' requires Experimental Mode');
 			}
-			
+
 			// slot bits: costed/discounted, engineered, powered, priority
 			var slotbits = ((version >= 8) ? hashDecode(hash.slice(i, (i += 1))) : 0);
 			var costed = ((version >= 15) ? (slotbits & 0x20) : 0);
@@ -1766,7 +1765,7 @@ window.edsy = new (function() {
 			if (!this.setPriority(priority) && (version >= 16 || !this.getPowerLock())) {
 				if (errors) errors.push(errortag + 'Invalid power priority setting: ' + priority);
 			}
-			
+
 			// cost/discount bits
 			if (costed) {
 				var costbits = hashDecode(hash.slice(i, (i += 1)));
@@ -1781,7 +1780,7 @@ window.edsy = new (function() {
 					if (errors) errors.push(errortag + 'Invalid discounts: ' + discounts);
 				}
 			}
-			
+
 			// engineering bits
 			var mtypeid = (this.module || EMPTY_OBJ).mtype;
 			var mtype = (eddb.mtype[mtypeid] || EMPTY_OBJ);
@@ -1815,7 +1814,7 @@ window.edsy = new (function() {
 					nummods = (engbits & 0x3F);
 				}
 				expid = (idmap.expeffect[mtypeid] || mtype.expeffects || EMPTY_ARR)[expidx - 1];
-				
+
 				// convert surface scanner blueprints
 				if (version < 13 && mtypeid === 'iss' && bpid && bpgrade > 0) {
 					preeng = 0;
@@ -1824,7 +1823,7 @@ window.edsy = new (function() {
 					bproll = 1.0;
 					nummods = 0;
 				}
-				
+
 				// set blueprint, grade, roll
 				if (!this.setPreEngineered(preeng)) {
 					if (errors) errors.push(errortag + 'Cannot set pre-engineered: '+preeng);
@@ -1835,7 +1834,7 @@ window.edsy = new (function() {
 				if (!this.setExpeffectID(expid)) {
 					if (errors) errors.push(errortag + 'Invalid experimental effect: '+expid);
 				}
-				
+
 				// attr mods
 				var v9rof = 0;
 				while (nummods-- > 0) {
@@ -1892,12 +1891,12 @@ window.edsy = new (function() {
 					}
 				}
 			}
-			
+
 			this.clearStats();
 			return true;
 		}, // setHash()
-		
-		
+
+
 		setStoredHash: function(modulehash, errors, experimental) {
 			var version = hashDecode(modulehash.slice(0,1));
 			var powered = this.getPowered();
@@ -1907,15 +1906,15 @@ window.edsy = new (function() {
 			this.setPriority(priority);
 			return ok;
 		}, // setStoredHash()
-		
-		
+
+
 		exportText: function() {
 			var module = this.getModule();
 			if (!module)
 				return '';
 			var buffer = [];
 			var tag, line;
-			
+
 			// slot tag, module label, powered, priority
 			switch (this.getSlotGroup()) {
 			case 'hardpoint':  line = getTranslation('size-'+this.getSlotSize()+'-abbr');              break;
@@ -1929,7 +1928,7 @@ window.edsy = new (function() {
 			if (this.getEffectiveAttrValue('pwrdraw'))
 				line += ' [' + (this.getPowered() ? '+' : '-') + formatNumText(this.getPriority(),0) + ']';
 			buffer.push(line);
-			
+
 			// module modification?
 			if (this.isModified()) {
 				var tag = ((this.getSlotGroup() === 'component' || this.getSlotGroup() === 'military') ? '**: ' : '*: ');
@@ -1992,17 +1991,17 @@ window.edsy = new (function() {
 						buffer.push(tag + line.slice(2));
 				}
 			}
-			
+
 			return buffer.join('\n');
 		}, // exportText()
-		
-		
+
+
 		exportJournal: function() {
 			var ship = eddb.ship[this.build.getShipID()];
 			var module = this.getModule();
 			if (!ship || !module)
 				return null;
-			
+
 			var slotsize = this.getSlotSize();
 			var slotname = null;
 			if (ship.slotnames && ship.slotnames[this.slotgroup]) {
@@ -2031,7 +2030,7 @@ window.edsy = new (function() {
 					return null;
 				}
 			}
-			
+
 			// slot and module
 			var obj = {
 				"Slot": slotname,
@@ -2040,7 +2039,7 @@ window.edsy = new (function() {
 				"Priority": parseInt(this.getPriority() - 1),
 				"Value": parseInt(this.getCost()),
 			};
-			
+
 			// engineering?
 			if (this.isModified()) {
 				var obj_eng = obj["Engineering"] = {};
@@ -2089,20 +2088,20 @@ window.edsy = new (function() {
 					}
 				}
 			}
-			
+
 			return obj;
 		}, // exportJournal()
-		
-		
+
+
 	}; // Slot.prototype
-	
-	
+
+
 	Slot.getModuleIDStoredHash = function(modid) {
 		// HASH_VERSION=20
 		return (hashEncode(HASH_VERSION, 1) + hashEncode(modid & 0x1FFFF, 3) + hashEncode(0, 2)); // slotbits(!costed), discountbits
 	}; // getModuleIDStoredHash()
-	
-	
+
+
 	Slot.getStoredHashModuleID = function(modulehash) {
 		var version = hashDecode(modulehash.slice(0,1));
 		if (version < 9)
@@ -2111,8 +2110,8 @@ window.edsy = new (function() {
 		var modid = hashDecode(modulehash.slice(1, 4));
 		return (idmap.module[modid] || modid);
 	}; // getStoredHashModuleID()
-	
-	
+
+
 	Slot.isStoredHashModified = function(modulehash) {
 		var version = hashDecode(modulehash.slice(0,1));
 		if (version < 9)
@@ -2120,8 +2119,8 @@ window.edsy = new (function() {
 		var slotbits = hashDecode(modulehash.slice(4, 5));
 		return (slotbits & 0x10);
 	}; // isStoredHashModified()
-	
-	
+
+
 	var Build = function(shipid, stock) {
 		var ship = eddb.ship[shipid];
 		if (!ship)
@@ -2157,15 +2156,15 @@ window.edsy = new (function() {
 			}
 		}
 	}; // Build
-	
-	
+
+
 	Build.prototype = {
-		
+
 		clearHash: function() {
 			this.hash = null;
 		}, // clearHash()
-		
-		
+
+
 		clearStats: function() {
 			this.clearHash();
 			if (this.stats) {
@@ -2173,54 +2172,54 @@ window.edsy = new (function() {
 				this.stats = null;
 			}
 		}, // clearStats()
-		
-		
+
+
 		clearPrevStats: function() {
 			this.prevstats = null;
 		}, // clearPrevStats()
-		
-		
+
+
 		getShipID: function() {
 			return this.shipid;
 		}, // getShipID()
-		
-		
+
+
 		getModule: function(modid) {
 			return ((cache.shipModules[this.shipid] || EMPTY_OBJ)[modid] || eddb.module[modid]);
 		}, // getModule()
-		
-		
+
+
 		getName: function() {
 			return this.name || '';
 		}, // getName()
-		
-		
+
+
 		setName: function(name) {
 			this.name = (name || '').slice(0,22);
 			this.clearHash();
 			return true;
 		}, // setName()
-		
-		
+
+
 		getNameTag: function() {
 			return this.nametag || '';
 		}, // getNameTag()
-		
-		
+
+
 		setNameTag: function(nametag) {
 			this.nametag = (nametag || '').slice(0,6);
 			this.clearHash();
 			return true;
 		}, // setNameTag()
-		
-		
+
+
 		getInaraBuildURL: function() {
 			if (!this.inaraAcct || !this.inaraShip)
 				return null;
 			return ('https://inara.cz/cmdr-fleet/'+this.inaraAcct+'/'+this.inaraShip+'/');
 		}, // getInaraBuildURL()
-		
-		
+
+
 		setInaraXref: function(acct, ship) {
 			acct = acct ? parseInt(acct) : null;
 			ship = ship ? parseInt(ship) : null;
@@ -2230,11 +2229,11 @@ window.edsy = new (function() {
 			this.inaraShip = ship;
 			return true;
 		}, // setInaraXref()
-		
-		
+
+
 		getInaraSearchURL: function() {
 			var sid = this.getShipID();
-			
+
 			// pre-flag stock modules that will come with the ship anyway
 			var ship = eddb.ship[sid];
 			var fdidFlag = {};
@@ -2249,7 +2248,7 @@ window.edsy = new (function() {
 					}
 				}
 			}
-			
+
 			// identify all other modules in this build
 			var fdidList = [];
 			for (var slotgroup in this.slots) {
@@ -2267,11 +2266,11 @@ window.edsy = new (function() {
 			}
 			return ('https://inara.cz/inapi/outfitsearch.php?m=' + fdidList.join(',') + (eddb.ship[sid].fdid ? ('&s=' + eddb.ship[sid].fdid) : ''));
 		}, // getInaraSearchURL()
-		
-		
+
+
 		getEDDBioURL: function() {
 			var sid = this.getShipID();
-			
+
 			// pre-flag stock modules that will come with the ship anyway
 			var ship = eddb.ship[sid];
 			var idFlag = {};
@@ -2287,7 +2286,7 @@ window.edsy = new (function() {
 					}
 				}
 			}
-			
+
 			// identify all other modules in this build
 			var idList = [];
 			for (var slotgroup in this.slots) {
@@ -2305,8 +2304,8 @@ window.edsy = new (function() {
 			}
 			return ('https://eddb.io/station?m=' + idList.join(',') + (eddb.ship[sid].eddbid ? ('&s=' + eddb.ship[sid].eddbid) : ''));
 		}, // getEDDBioURL()
-		
-		
+
+
 		getCrewDist: function(dist) {
 			if (dist)
 				return this.crewdist[dist];
@@ -2316,8 +2315,8 @@ window.edsy = new (function() {
 				wep:this.crewdist.wep,
 			};
 		}, // getCrewDist()
-		
-		
+
+
 		setCrewDist: function(sys, eng, wep) {
 			var maxcrew = (this.getSlot('ship', 'hull').getEffectiveAttrValue('crew') - 1);
 			this.crewdist.sys = sys = min(max(sys | 0, 0), maxcrew);
@@ -2326,8 +2325,8 @@ window.edsy = new (function() {
 			this.clearStats();
 			return true;
 		}, // setCrewDist()
-		
-		
+
+
 		changeCrewDist: function(dist, delta) {
 			var maxcrew = (this.getSlot('ship', 'hull').getEffectiveAttrValue('crew') - 1);
 			var curcrew = (this.crewdist.sys + this.crewdist.eng + this.crewdist.wep);
@@ -2363,15 +2362,15 @@ window.edsy = new (function() {
 				this.changePowerDist(dist, num);
 			return this.setCrewDist(this.crewdist.sys, this.crewdist.eng, this.crewdist.wep);
 		}, // changeCrewDist()
-		
-		
+
+
 		getPowerDist: function(dist) {
 			if (dist)
 				return this.powerdist[dist];
 			return { sys:this.powerdist.sys, eng:this.powerdist.eng, wep:this.powerdist.wep };
 		}, // getPowerDist()
-		
-		
+
+
 		getEffectivePowerDist: function(dist) {
 			if (dist)
 				return min(MAX_POWER_DIST, this.powerdist[dist] + (this.crewdist[dist] << 1));
@@ -2381,8 +2380,8 @@ window.edsy = new (function() {
 				wep:min(MAX_POWER_DIST, this.powerdist.wep + (this.crewdist.wep << 1)),
 			};
 		}, // getEffectivePowerDist()
-		
-		
+
+
 		setPowerDist: function(sys, eng, wep) {
 			this.powerdist.sys = sys = min(max(sys | 0, 0                                           ), MAX_POWER_DIST);
 			this.powerdist.eng = eng = min(max(eng | 0, 0, (TOTAL_POWER_DIST - MAX_POWER_DIST) - sys), MAX_POWER_DIST, TOTAL_POWER_DIST - sys);
@@ -2390,8 +2389,8 @@ window.edsy = new (function() {
 			this.clearStats();
 			return true;
 		}, // setPowerDist()
-		
-		
+
+
 		changePowerDist: function(sys0, delta) {
 			if (!(sys0 in this.powerdist))
 				return false;
@@ -2407,8 +2406,8 @@ window.edsy = new (function() {
 			this.clearStats();
 			return true;
 		}, // changePowerDist()
-		
-		
+
+
 		swapSlots: function(slotgroup1, slotnum1, slotgroup2, slotnum2) {
 			if (!this.slots[slotgroup1] || !this.slots[slotgroup2] || slotgroup1 === 'ship' || slotgroup2 === 'ship')
 				return false;
@@ -2425,8 +2424,8 @@ window.edsy = new (function() {
 			}
 			return true;
 		}, // swapSlots()
-		
-		
+
+
 		copySlot: function(slotgroup1, slotnum1, slotgroup2, slotnum2) {
 			if (!this.slots[slotgroup1] || !this.slots[slotgroup2] || slotgroup1 === 'ship' || slotgroup2 === 'ship')
 				return false;
@@ -2441,18 +2440,18 @@ window.edsy = new (function() {
 			this.clearStats();
 			return true;
 		}, // copySlot()
-		
-		
+
+
 		getDetachedSlot: function() {
 			return new Slot(this);
 		}, // getDetachedSlot()
-		
-		
+
+
 		getSlot: function(slotgroup, slotnum) {
 			return (this.slots[slotgroup] || EMPTY_OBJ)[slotnum];
 		}, // getSlot()
-		
-		
+
+
 		getLimitedSlots: function() {
 			var limitSlots = {};
 			for (var slotgroup in this.slots) {
@@ -2470,8 +2469,8 @@ window.edsy = new (function() {
 			}
 			return limitSlots;
 		}, // getLimitedSlots()
-		
-		
+
+
 		updateStats: function() {
 			var stats = this.stats = {
 				cost: 0,
@@ -2490,7 +2489,7 @@ window.edsy = new (function() {
 				thmload_iscb: 0,
 				spinup_iscb: 0,
 				jumpbst: 0,
-				fuelcap: 0, 
+				fuelcap: 0,
 				cargocap: 0,
 				cabincap: 0,
 				scooprate: 0,
@@ -2532,12 +2531,12 @@ window.edsy = new (function() {
 			var thmmod_usb = 1;
 			var expmod_usb = 1;
 			var caumod_usb = 1;
-			
+
 			// ship hull
 			var slot_hull = this.getSlot('ship', 'hull');
 			stats.cost += slot_hull.getCost();
 			stats.mass += slot_hull.getEffectiveAttrValue('mass');
-			
+
 			// cargo hatch
 			var slot = this.getSlot('ship', 'hatch');
 			stats.cost += slot.getCost();
@@ -2550,7 +2549,7 @@ window.edsy = new (function() {
 				stats.pwrdraw_ret[0] += pwrdraw;
 				stats.pwrdraw_ret[priority] += pwrdraw;
 			}
-			
+
 			// all other modules
 			var wepcap = this.getSlot('component', CORE_ABBR_SLOT.PD).getEffectiveAttrValue('wepcap');
 			var weapons = [];
@@ -2570,7 +2569,7 @@ window.edsy = new (function() {
 						stats.cabincap += slot.getEffectiveAttrValue('cabincap');
 						stats.hullbst += slot.getEffectiveAttrValue('hullbst');
 						stats.hullrnf += slot.getEffectiveAttrValue('hullrnf');
-						
+
 						if (slotgroup === 'hardpoint') {
 							stats.cost_rearm += (slot.getEffectiveAttrValue('ammoclip') + slot.getEffectiveAttrValue('ammomax')) * (slot.getEffectiveAttrValue('ammocost') || 0);
 						} else if (slotgroup === 'utility') {
@@ -2596,7 +2595,7 @@ window.edsy = new (function() {
 						} else if (mtypeid === 'iscb') {
 							stats.cost_restock += (slot.getEffectiveAttrValue('ammoclip') + slot.getEffectiveAttrValue('ammomax')) * (slot.getEffectiveAttrValue('ammocost') || 0);
 						}
-						
+
 						var pwrdraw = slot.getEffectiveAttrValue('pwrdraw');
 						if (!pwrdraw || slot.getPowered()) {
 							var priority = slot.getPriority();
@@ -2606,12 +2605,12 @@ window.edsy = new (function() {
 								stats.pwrdraw_ret[0] += pwrdraw;
 								stats.pwrdraw_ret[priority] += pwrdraw;
 							}
-							
+
 							stats.jumpbst   += slot.getEffectiveAttrValue('jumpbst');
 							stats.scooprate += slot.getEffectiveAttrValue('scooprate');
 							stats.shieldbst += slot.getEffectiveAttrValue('shieldbst');
 							stats.shieldrnf += slot.getEffectiveAttrValue('shieldrnf');
-							
+
 							if (slotgroup === 'hardpoint') {
 								var thmload = slot.getEffectiveAttrValue('thmload');
 								var distdraw = slot.getEffectiveAttrValue('distdraw');
@@ -2623,11 +2622,11 @@ window.edsy = new (function() {
 								var sspc = slot.getEffectiveAttrValue('sspc') || 1;
 								var sfpc = slot.getEffectiveAttrValue('sfpc');
 								var sdps = slot.getEffectiveAttrValue('sdps');
-								
+
 								thmload *= sfpc / sspc;
 								stats.thmload_hardpoint_wepfull += getEffectiveWeaponThermalLoad(thmload, distdraw, wepcap, 1.0);
 								stats.thmload_hardpoint_wepempty += getEffectiveWeaponThermalLoad(thmload, distdraw, wepcap, 0.0);
-								
+
 								stats.dps += sdps;
 								stats.dps_abs += sdps * (slot.getEffectiveAttrValue('abswgt') / 100.0);
 								stats.dps_thm += sdps * (slot.getEffectiveAttrValue('thmwgt') / 100.0);
@@ -2635,7 +2634,7 @@ window.edsy = new (function() {
 								stats.dps_exp += sdps * (slot.getEffectiveAttrValue('expwgt') / 100.0);
 								stats.dps_axe += sdps * (slot.getEffectiveAttrValue('axewgt') / 100.0);
 								stats.dps_cau += sdps * (slot.getEffectiveAttrValue('cauwgt') / 100.0);
-								
+
 								weapons.push( {key:spc, spc:spc, eps:eps, seps:seps} );
 								var ammotime = ammoclip ? (sspc * ((ammoclip + ammomax) / sfpc)) : 1/0;
 								if (distdraw) {
@@ -2663,7 +2662,7 @@ window.edsy = new (function() {
 								var spinup = slot.getEffectiveAttrValue('spinup');
 								stats.thmload_iscb += scbheat / spinup;
 								stats.spinup_iscb = max(stats.spinup_iscb, spinup);
-								
+
 								var shieldrnfps = (slot.getEffectiveAttrValue('scbdur') * slot.getEffectiveAttrValue('shieldrnfps'));
 								var ammo = (slot.getEffectiveAttrValue('ammoclip') + slot.getEffectiveAttrValue('ammomax'));
 								stats.shieldrnfps += shieldrnfps;
@@ -2675,12 +2674,12 @@ window.edsy = new (function() {
 					}
 				}
 			}
-			
+
 			// derived Totals stats
 			stats.mass_hull = slot_hull.getEffectiveAttrValue('mass');
 			stats.mass_unladen = stats.mass + stats.fuelcap;
 			stats.mass_laden = stats.mass_unladen + stats.cargocap;
-			
+
 			// derived FSD stats
 			var slot = this.getSlot('component', CORE_ABBR_SLOT.FD);
 			var fsdopt = slot.getEffectiveAttrValue('fsdoptmass');
@@ -2696,7 +2695,7 @@ window.edsy = new (function() {
 			stats._jump_max      = getJumpDistance(stats.mass                 , min(stats.fuelcap, fsdfuel), fsdfuel, fsdopt, fsdmul, fsdpower, stats.jumpbst);
 			stats._range_laden   = getJumpRange(stats.mass + stats.cargocap, stats.fuelcap, fsdfuel, fsdopt, fsdmul, fsdpower, stats.jumpbst);
 			stats._range_unladen = getJumpRange(stats.mass                 , stats.fuelcap, fsdfuel, fsdopt, fsdmul, fsdpower, stats.jumpbst);
-			
+
 			// derived Thruster stats
 			var boostcost = slot_hull.getEffectiveAttrValue('boostcost');
 			var topspd = slot_hull.getEffectiveAttrValue('topspd');
@@ -2713,7 +2712,7 @@ window.edsy = new (function() {
 			var effmulspd = (getMassCurveMultiplier(stats.mass + stats.fuelcap, minmass, optmass, maxmass, minmulspd, optmulspd, maxmulspd) / 100);
 			stats._speed = (topspd * effmulspd);
 			stats._boost = ((engcap >= (boostcost + BOOST_MARGIN)) ? (bstspd * effmulspd) : 0);
-			
+
 			// derived Shield stats
 			var mass_hull = slot_hull.getEffectiveAttrValue('mass');
 			var shields = slot_hull.getEffectiveAttrValue('shields');
@@ -2743,7 +2742,7 @@ window.edsy = new (function() {
 			} else {
 				stats._shields = 0;
 			}
-			
+
 			// derived Armour stats
 			var armour = slot_hull.getEffectiveAttrValue('armour');
 			var slot = this.getSlot('component', CORE_ABBR_SLOT.BH);
@@ -2759,7 +2758,7 @@ window.edsy = new (function() {
 			stats._aexpres = getEffectiveDamageResistance(expres, (1 - expmod_ihrp) * 100, 0, (1 - expmin_ihrp) * 100);
 			stats._acaures = getEffectiveDamageResistance(caures, (1 - caumod_ihrp) * 100, 0, (1 - caumin_ihrp) * 100);
 //TODO console.log("---");
-			
+
 			// derived Weapon stats
 			var slot = this.getSlot('component', CORE_ABBR_SLOT.PD);
 			var wepcap = slot.getEffectiveAttrValue('wepcap');
@@ -2790,20 +2789,20 @@ window.edsy = new (function() {
 			stats.wepchg_sustain_cur = min(max(wepchg * powerdistWepMul / seps, 0), 1);
 			stats.wepchg_sustain_max = min(max(wepchg                   / seps, 0), 1);
 		}, // updateStats()
-		
-		
+
+
 		getStat: function(stat) {
 			if (!this.stats)
 				this.updateStats();
 			return this.stats[stat];
 		}, // getStat()
-		
-		
+
+
 		getPrevStat: function(stat) {
 			return (this.prevstats || EMPTY_OBJ)[stat];
 		}, // getPrevStat()
-		
-		
+
+
 		getHash: function() {
 			if (!this.hash) {
 				var slot = this.getSlot('ship', 'hull');
@@ -2843,19 +2842,19 @@ window.edsy = new (function() {
 			}
 			return this.hash;
 		}, // getHash()
-		
-		
+
+
 		getEDSYURL: function() {
 			return window.location.protocol + '//' + window.location.host + window.location.pathname + '#/L=' + this.getHash();
 		}, // getEDSYURL()
-		
-		
+
+
 		exportText: function() {
 			var ship = eddb.ship[this.shipid];
 			if (!ship)
 				return '';
 			var buffer = [];
-			
+
 			// ship hull and cargo hatch
 			var line = '[' + getTranslation('ship-'+this.shipid);
 			if (this.nametag || this.name) {
@@ -2870,7 +2869,7 @@ window.edsy = new (function() {
 			if (slot.getModule())
 				line += ' [' + (slot.getPowered() ? '+' : '-') + formatNumText(slot.getPriority(),0) + ']';
 			buffer.push(line);
-			
+
 			// slots
 			for (var groupnum = 0;  groupnum < GROUPS.length;  groupnum++) {
 				var newgroup = true;
@@ -2887,7 +2886,7 @@ window.edsy = new (function() {
 					}
 				}
 			}
-			
+
 			// stats
 			buffer.push('');
 			buffer.push('---');
@@ -2924,7 +2923,7 @@ window.edsy = new (function() {
 			var cost = this.getStat('cost');
 			stats.push([getTranslation('stat-price'),   (formatNumText(cost, 0) + ' ' + getTranslation('unit-credits-abbr'))]);
 			stats.push([getTranslation('stat-rebuy'),   (formatNumText(cost * 0.05, 0) + ' ' + getTranslation('unit-credits-abbr') + ' @ ' + formatPctText(0.95,0) + ' ' + getTranslation('insurance'))]);
-			
+
 			var l = 0;
 			for (var s = 0;  s < stats.length;  s++)
 				l = max(l, (stats[s][0] || '').length);
@@ -2932,13 +2931,13 @@ window.edsy = new (function() {
 				buffer.push((stats[s][0] || '').padEnd(l) + ': ' + stats[s][1]);
 			return buffer.join('\n');
 		}, // exportText()
-		
-		
+
+
 		exportJournal: function() {
 			var ship = eddb.ship[this.shipid];
 			if (!ship)
 				return '';
-			
+
 			// ship hull
 			var slot = this.getSlot('ship', 'hull');
 			var obj = {
@@ -2958,7 +2957,7 @@ window.edsy = new (function() {
 				"Rebuy": parseInt(this.getStat('cost') * (1 - (current.option.insurance / 10000.0))),
 				"Modules": [],
 			};
-			
+
 			// cargo hatch
 			var slot = this.getSlot('ship', 'hatch');
 			if (slot.getModule()) {
@@ -2969,7 +2968,7 @@ window.edsy = new (function() {
 					"Priority": parseInt(slot.getPriority() - 1),
 				});
 			}
-			
+
 			// slots
 			var milslots = [];
 			for (var groupnum = 0;  groupnum < GROUPS.length;  groupnum++) {
@@ -2983,11 +2982,11 @@ window.edsy = new (function() {
 			}
 			if (milslots.length > 0)
 				obj.Modules = obj.Modules.concat(milslots);
-			
+
 			return obj;
 		}, // exportJournal()
-		
-		
+
+
 		exportSLEF: function() {
 			return JSON.stringify(
 				[
@@ -3002,18 +3001,18 @@ window.edsy = new (function() {
 				]
 			);
 		}, // exportSLEF()
-		
+
 	}; // Build.prototype
-	
-	
+
+
 	Build.getHashShipID = function(buildhash) {
 		var version = hashDecode(buildhash.slice(0, 1));
 		var idmap = Build.getHashVersionMap(version);
 		var shipid = hashDecode(buildhash.slice(1, 1 + ((version >= 12) ? 1 : 2)));
 		return (idmap.ship[shipid] || shipid);
 	}; // getHashShipID()
-	
-	
+
+
 	Build.fromHash = function(buildhash, errors) {
 		// identify version and hash chunks
 		var version = hashDecode(buildhash.slice(0, 1));
@@ -3029,7 +3028,7 @@ window.edsy = new (function() {
 			name      : ((version >= 12) ? chunks[6] : ''),
 			nametag   : ((version >= 12) ? chunks[7] : ''),
 		};
-		
+
 		// ship chunk
 		var i = 0;
 		var shipid = hashDecode(hashgroup.ship.slice(i, i += ((version >= 12) ? 1 : 2)));
@@ -3070,7 +3069,7 @@ window.edsy = new (function() {
 		if (slot) {
 			slot.setHash(hashgroup.ship.slice(i), version, errors, current.option.experimental || EXPERIMENTAL_IMPORT);
 		} else if (errors) errors.push('Invalid slot: ship hatch');
-		
+
 		for (var g = 0;  g < GROUPS.length;  g++) {
 			var slotgroup = GROUPS[g];
 			if (!hashgroup[slotgroup])
@@ -3125,15 +3124,15 @@ window.edsy = new (function() {
 				}
 			}
 		}
-		
+
 		if (hashgroup.name)
 			build.setName(hashDecodeT(hashgroup.name));
 		if (hashgroup.nametag)
 			build.setNameTag(hashDecodeT(hashgroup.nametag));
 		return build;
 	}; // Build.fromHash()
-	
-	
+
+
 	Build.getHashVersionMap = function(version) {
 		var idmap = cache.hashVersionMap[version];
 		if (!idmap) {
@@ -3158,23 +3157,23 @@ window.edsy = new (function() {
 				idmap.slotnum[32] = { hardpoint:[2,3,4,0,1] }; // Type-6 hardpoint UUUSS -> SSUUU
 				// accidentally used octal notation for some module IDs
 				idmap.utility = {
-				//	00090:  90,
-					  560:1060,
-				//	02090:2090,
-				//	03090:3090,
+				//  00090:  90,
+						560:1060,
+				//  02090:2090,
+				//  03090:3090,
 				};
 				idmap.internal = {
 					// Auto Field-Maintenance Units
-					  616:1150,   608:1140,   600:1130,   592:1120,   584:1110,
-					  680:1250,   672:1240,   664:1230,   656:1220,   648:1210,
-					  744:1350,   736:1340,   728:1330,   720:1320,   712:1310,
-					  808:1450,   800:1440,   792:1430,   784:1420,   776:1410,
-					  872:1550,   864:1540,   856:1530,   848:1520,   840:1510,
-					  936:1650,   926:1640,   920:1630,   912:1620,   904:1610,
+						616:1150,   608:1140,   600:1130,   592:1120,   584:1110,
+						680:1250,   672:1240,   664:1230,   656:1220,   648:1210,
+						744:1350,   736:1340,   728:1330,   720:1320,   712:1310,
+						808:1450,   800:1440,   792:1430,   784:1420,   776:1410,
+						872:1550,   864:1540,   856:1530,   848:1520,   840:1510,
+						936:1650,   926:1640,   920:1630,   912:1620,   904:1610,
 					 1000:1750,   992:1740,   984:1730,   976:1720,   968:1710,
-				//	01850:1850, 01840:1840, 01830:1830, 01820:1820, 01810:1810,
+				//  01850:1850, 01840:1840, 01830:1830, 01820:1820, 01810:1810,
 					// Cargo Racks
-					  104:150,    168:250,    232:350,    296:450,    360:550,    424:650,    488:750, // 00850:850,
+						104:150,    168:250,    232:350,    296:450,    360:550,    424:650,    488:750, // 00850:850,
 					// Docking Computers
 					 1640:3150,
 					// Refineries
@@ -3204,7 +3203,7 @@ window.edsy = new (function() {
 				};
 			case 8:
 				// in v9 we're unifying the mID space, requiring lots of changes to avoid conflicts
-				
+
 				// miscelanneous hardpoints -> 8xxxx
 				idmap.hardpoint = {
 					22161:62171, // 1F/G Pulse Laser from v6, just in case
@@ -3215,7 +3214,7 @@ window.edsy = new (function() {
 					40140:84140, 40220:84220, 40224:84224, // Rail Guns
 					51193:85193, 51293:85293, // Torpedo Pylons
 				};
-				
+
 				// thermal and kinetic weapons -> 6xxxx - 7xxxx
 				var mapBatch = [
 					20150, 20151, 20162, 20240, 20241, 20252, 20330, 20331, 20332, 20410, 20411, 20154, // Beam Lasers
@@ -3229,13 +3228,13 @@ window.edsy = new (function() {
 					idmap.hardpoint[mapBatch[i]] = mapBatch[i] + 40000;
 				}
 				idmap.hardpoint[30144] = 72144; // Enforcer Cannon is not actually a Cannon but a Multi-cannon
-				
+
 				// Chaff, ECM, Heat Sink, Point Defence, Shield Boosters -> 50xxx - 54xxx
 				var mapBatch = [90, 1060, 2090, 3090, 4050, 4040, 4030, 4020, 4010];
 				for (var i = 0;  i < mapBatch.length;  i++) {
 					idmap.utility[mapBatch[i]] = mapBatch[i] + 50000;
 				}
-				
+
 				// Manifest, Wake, Kill Warrant Scanners -> 55xxx - 57xxx
 				var mapBatch = [
 					14050, 14040, 14030, 14020, 14010,
@@ -3245,7 +3244,7 @@ window.edsy = new (function() {
 				for (var i = 0;  i < mapBatch.length;  i++) {
 					idmap.utility[mapBatch[i]] = mapBatch[i] + 41000;
 				}
-				
+
 				// all core components -> 40xxx - 47xxx
 				var mapBatch = [
 					131, 122, 113, 114, 115, // Bulkheads
@@ -3264,7 +3263,7 @@ window.edsy = new (function() {
 						idmap.component[slot][mapBatch[i]] = 40000 + (1000 * slot) + mapBatch[i];
 					}
 				}
-				
+
 				// Frame Shift Drive Interdictors, Hatch Breaker Limpet Controllers -> 25xxx - 26xxx
 				var mapBatch = [
 					40150, 40140, 40130, 40120, 40110,
@@ -3279,7 +3278,7 @@ window.edsy = new (function() {
 				for (var i = 0;  i < mapBatch.length;  i++) {
 					idmap.internal[mapBatch[i]] = mapBatch[i] - 15000;
 				}
-				
+
 				// optional Fuel Tanks -> 47xxx
 				var mapBatch = [21130, 21230, 21330, 21430, 21530, 21630, 21730, 21830];
 				for (var i = 0;  i < mapBatch.length;  i++) {
@@ -3371,8 +3370,8 @@ window.edsy = new (function() {
 		}
 		return idmap;
 	}; // Build.getHashVersionMap()
-	
-	
+
+
 	Build.fromJournal = function(json, errors, slefheader) {
 		var fdevmap = getFdevImportMap();
 		var shipid = fdevmap.ship[json.Ship.trim().toUpperCase()];
@@ -3381,7 +3380,7 @@ window.edsy = new (function() {
 			if (errors) errors.push('Invalid ship: ' + json.Ship);
 			return null;
 		}
-		
+
 		var build = new Build(shipid);
 		if (json.ShipName && !build.setName(json.ShipName)) {
 			if (errors) errors.push('Invalid ship name: ' + json.ShipName);
@@ -3396,7 +3395,7 @@ window.edsy = new (function() {
 				if (errors) errors.push('Invalid Inara xref: ' + inaraAcct + '/' + inaraShip);
 			}
 		}
-		
+
 		// build and align slot index maps
 		var extravalue = 0;
 		var groupSlotnames = { ship:[] };
@@ -3459,7 +3458,7 @@ if(false && current.dev) console.log("Build.fromJournal(): matched slot "+slotna
 				} else if (errors) errors.push(modulejson.Slot + ': Invalid module: ' + modulejson.Item);
 			}
 		}
-		
+
 		// get the hull and module costs
 		if ('HullValue' in json) {
 			// this does not seem to be modified by HullHealth
@@ -3470,7 +3469,7 @@ if(false && current.dev) console.log("Build.fromJournal(): matched slot "+slotna
 		}
 		var modulesValueExpected = json['ModulesValue'];
 		var modulesValueActual = 0;
-		
+
 		for (var slotgroup in eddb.group) {
 			if (slotgroup !== 'component') {
 				// sort by descending size, then ascending index
@@ -3499,7 +3498,7 @@ if(false && current.dev) console.log("Build.fromJournal(): matched slot "+slotna
 				}
 			}
 		}
-		
+
 		// map and decode import slots
 		for (var slotgroup in eddb.group) {
 			for (var i = 0, s = 0;  i < groupSlotnames[slotgroup].length && s < groupSlotnums[slotgroup].length;  i++, s++) {
@@ -3542,19 +3541,19 @@ if(false && current.dev) console.log("Build.fromJournal(): matched slot "+slotna
 											if (errors) errors.push(modulejson.Slot + ': Invalid blueprint: ' + modulejson.Engineering.BlueprintName);
 										}
 									} else if (modulejson.Engineering.BlueprintName && errors) errors.push(modulejson.Slot + ': Unknown blueprint: ' + modulejson.Engineering.BlueprintName);
-									
+
 									var expid = fdevmap.expeffect[(modulejson.Engineering.ExperimentalEffect || '').trim().toUpperCase()];
 									if (expid) {
 										if (!slot.setExpeffectID(expid)) {
 											if (errors) errors.push(modulejson.Slot + ': Invalid experimental: ' + modulejson.Engineering.ExperimentalEffect);
 										}
 									} else if (modulejson.Engineering.ExperimentalEffect && errors) errors.push(modulejson.Slot + ': Unknown experimental: ' + modulejson.Engineering.ExperimentalEffect);
-									
+
 									// if there are any individual attribute modifiers, apply them over the blueprint baseline
 									if ((modulejson.Engineering.Modifiers || EMPTY_ARR).length > 0) {
 										var bpmods = slot.getAllBaseAttrModifiers();
 if (false && current.dev) console.log(json.Ship+' '+modulejson.Item+' '+bpid+' g'+bpgrade+' @'+bproll+': '+ JSON.stringify(bpmods)); // TODO DEBUG
-										
+
 										// if there's a DPS modifier, it's redundant with Damage and/or ROF modifiers *except for beam weapons* -- in that case, it's the only one present
 										// if there's a ROF modifier, handle it last so it takes into account bstsize/bstrof
 										var modlist = [];
@@ -3586,7 +3585,7 @@ if (false && current.dev) console.log(json.Ship+' '+modulejson.Item+' '+bpid+' g
 										if (modjson_rof) {
 											modlist.push(modjson_rof);
 										}
-										
+
 										// apply modifiers
 										for (var m = 0;  m < modlist.length;  m++) {
 											var modjson = modlist[m];
@@ -3617,7 +3616,7 @@ if (attrroll && abs(attrroll - bproll) > 0.0001) console.log(json.Ship+' '+modul
 												}
 											} else if (attr !== null && errors) errors.push(modulejson.Slot + ': Modifier #' + (m+1) + ': Unknown attribute: ' + modjson.Label);
 										}
-										
+
 										// check for blueprint modifiers that weren't specified individually; if any, this is probably a special pre-engineered module
 										for (var attr in (bpmods || EMPTY_OBJ)) {
 											if (bpmods[attr]) {
@@ -3627,7 +3626,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 											}
 										}
 									}
-									
+
 									// if the resulting builtinhash matches an actual builtin, reset slot hash to that builtin (to apply its pre-eng, price, powered, priority, etc)
 									var builtin = cache.modulehashBuiltin[slot.getBuiltinHash()];
 									if (builtin && !slot.setStoredHash(BUILTIN_STORED_MODULES[builtin].modulehash)) {
@@ -3636,11 +3635,11 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 								}
 							} else if (errors) errors.push(modulejson.Slot + ': Invalid module: ' + modulejson.Item);
 						} else if (!modid && modulejson.Item && errors) errors.push(modulejson.Slot + ': Unknown module: ' + modulejson.Item);
-						
+
 						if (!slot.setPowered(modulejson.On)) {
 							if (errors) errors.push(modulejson.Slot + ': Invalid powered setting: ' + modulejson.On);
 						}
-						
+
 						if (!slot.setPriority(parseInt(modulejson.Priority) + 1)) {
 							if (errors) errors.push(modulejson.Slot + ': Invalid priority setting: ' + modulejson.Priority);
 						}
@@ -3648,7 +3647,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 				}
 			}
 		}
-		
+
 		// check modules value
 		if (!isNaN(modulesValueExpected) && !isNaN(modulesValueActual) && modulesValueExpected != modulesValueActual && modulesValueActual > 0) {
 			var discounts = getClosestDiscount(modulesValueExpected / modulesValueActual);
@@ -3663,11 +3662,11 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 				if (errors) errors.push(getTranslation('interp-estimated-percent-discount', {'percent':(1 - cache.discountMod[discounts]),'percent%':true,'percent#':1}));
 			}
 		}
-		
+
 		return build;
 	}; // Build.fromJournal()
-	
-	
+
+
 	Build.fromCAPI = function(shipobj, errors, unknowns) {
 		var fdevmap = getFdevImportMap();
 		var shipid = fdevmap.ship[shipobj["name"].trim().toUpperCase()];
@@ -3679,7 +3678,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			"ShipIdent": shipobj["shipID"],
 			"HullValue": (shipobj["value"] || EMPTY_OBJ)["hull"],
 			"ModulesValue": (shipobj["value"] || EMPTY_OBJ)["modules"],
-		//	"Rebuy": undefined, // not returned by CAPI
+		//  "Rebuy": undefined, // not returned by CAPI
 		};
 		for (var slotname in (shipobj["modules"] || EMPTY_OBJ)) {
 			var slotobj = shipobj["modules"][slotname];
@@ -3688,7 +3687,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 				var eventslotobj = {
 					"Slot": slotname,
 					"Item": moduleobj["name"],
-				//	"ItemID": moduleobj["id"], // not actually part of the Journal Loadout spec
+				//  "ItemID": moduleobj["id"], // not actually part of the Journal Loadout spec
 					"On": moduleobj["on"],
 					"Priority": moduleobj["priority"],
 					"Health": parseFloat(moduleobj["health"]) / 1000000,
@@ -3709,13 +3708,13 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 						"BlueprintID": (engineerobj || EMPTY_OBJ)["recipeID"], // before 2.3
 						"BlueprintName": ((engineerobj || EMPTY_OBJ)["recipeName"] || (moduleobj || EMPTY_OBJ)["recipeName"]),
 						"Level": ((engineerobj || EMPTY_OBJ)["recipeLevel"] || (moduleobj || EMPTY_OBJ)["recipeLevel"]),
-					//	"Quality": undefined, // not returned by CAPI
+					//  "Quality": undefined, // not returned by CAPI
 						"Modifiers": [],
 					};
-					
+
 					var modifiers = {};
 					var mod_weapon_falloffrange_from_range = false;
-					
+
 					if (modifierobj) { // after 2.4
 						for (var field in modifierobj) {
 							// 'field' has OutfittingFieldType_ / Override_ prefix
@@ -3745,7 +3744,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 							}
 						}
 					}
-					
+
 					if (modifierarr) { // before 2.3
 						for (var m = 0;  m < modifierarr.length;  m++) {
 							var field = modifierarr[m].name;
@@ -3775,7 +3774,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 							}
 						}
 					}
-					
+
 					if (specialobj) {
 						for (var field in specialobj) {
 							if (module.mtype === 'hrg' && (field === 'special_feedback_cascade' || field === 'special_plasma_slug' || field === 'special_super_penetrator'))
@@ -3804,7 +3803,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 							}
 						}
 					}
-					
+
 					if (mod_weapon_falloffrange_from_range && modifiers['maximumrng']) {
 						modifiers['dmgfall'] = getModuleAttrModifier(module, 'dmgfall', getModuleAttrValue(module, 'maximumrng', modifiers['maximumrng']));
 					}
@@ -3818,7 +3817,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 						modifiers['rof'] = getModuleAttrModifier(module, 'rof', rof);
 						delete modifiers['bstint'];
 					}
-					
+
 					for (var attr in modifiers) {
 						var modifier = modifiers[attr];
 						var field = fdevmap.attrField[attr];
@@ -3829,7 +3828,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 							});
 						}
 					}
-					
+
 					eventslotobj["Engineering"] = eventengobj;
 				}
 				if (!eventobj["Modules"])
@@ -3839,20 +3838,20 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		return Build.fromJournal(eventobj, errors);
 	}; // Build.fromCAPI()
-	
-	
+
+
 	/*
 	* MODULES & ATTRIBUTES
 	*/
-	
-	
+
+
 	var getAttrValue = function(attr, value, modifier) {
 		var attribute = cache.attribute[attr];
 		if (attribute) {
 			// fall back on attribute default value
 			if (value === undefined && !isNaN(attribute.default))
 				value = attribute.default;
-			
+
 			// apply modifier?
 			if (modifier && !isNaN(value) && (value || attribute.modset || attribute.modadd || attribute.modmod)) {
 				if (attribute.modset) {
@@ -3864,7 +3863,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 				} else {
 					value = value * (1 + modifier);
 				}
-				
+
 				// apply constraints
 				if (attribute.step)
 					value = round(value / attribute.step) * attribute.step;
@@ -3876,8 +3875,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		return value;
 	}; // getAttrValue()
-	
-	
+
+
 	var getAttrModifier = function(attr, base, value) {
 		var attribute = cache.attribute[attr];
 		if (!attribute || isNaN(value) || value == base)
@@ -3890,16 +3889,16 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			return (((1 + (value / attribute.modmod)) / (1 + (base / attribute.modmod))) - 1);
 		return ((value / base) - 1);
 	}; // getAttrModifier()
-	
-	
+
+
 	var getAttrModifierDirection = function(attr, modifier) {
 		if (!modifier || isNaN(modifier))
 			return 0;
 		var attribute = cache.attribute[attr];
 		return (modifier * (attribute.modmod || 1) * (attribute.bad ? -1 : 1));
 	}; // getAttrModifierDirection()
-	
-	
+
+
 	var getAttrModifierSum = function(attr, modifier1, modifier2) {
 		if (!modifier1 || !modifier2)
 			return (modifier2 || modifier1);
@@ -3911,8 +3910,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		// modmod and standard
 		return ((1 + modifier1) * (1 + modifier2) - 1);
 	}; // getAttrModifierSum()
-	
-	
+
+
 	var getAttrModifierDifference = function(attr, modifier1, modifier2) {
 		var attribute = cache.attribute[attr];
 		if (attribute.modset || !modifier2)
@@ -3922,8 +3921,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		// modmod and standard
 		return (((1 + (modifier1 || 0)) / (1 + modifier2)) - 1);
 	}; // getAttrModifierDifference()
-	
-	
+
+
 	var getModuleLabel = function(module) {
 		return (
 			module.class
@@ -3936,8 +3935,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			+ module.name
 		);
 	}; // getModuleLabel()
-	
-	
+
+
 	var getModuleLabelDOM = function(module, abbrev, icons) {
 		var df = document.createDocumentFragment();
 		if (module.tag && icons)
@@ -3960,8 +3959,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			df.append((df.firstChild ? ' ' : ''), createTranslatedElement('span', key));
 		return df;
 	}; // getModuleLabelDOM()
-	
-	
+
+
 	var getModuleAttrs = function(module) {
 		var attrflag = {};
 		for (var attr in module) {
@@ -3990,8 +3989,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		attrs.sort(sortAttributes);
 		return attrs;
 	}; // getModuleAttrs()
-	
-	
+
+
 	var getModuleAttrModificationIndex = function(module, attr) {
 		var attribute = cache.attribute[attr];
 		if (!module || !attribute)
@@ -4002,13 +4001,13 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			return -1;
 		return modifiable.indexOf(attr);
 	}; // getModuleAttrModificationIndex()
-	
-	
+
+
 	var isModuleAttrModifiable = function(module, attr) {
 		return ((getModuleAttrModificationIndex(module, attr) >= 0) || ((attr === 'rof') && (getModuleAttrModificationIndex(module, 'bstint') >= 0)));
 	}; // isModuleAttrModifiable()
-	
-	
+
+
 	var getModuleAttrValue = function(module, attr, modifier) {
 		if (!module)
 			return undefined;
@@ -4018,7 +4017,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		case 'sfpc':
 			value = getModuleAttrValue(module, 'ammoclip') || getModuleAttrValue(module, 'bstsize');
 			break;
-			
+
 		case 'spc':
 		case 'sspc':
 			var dmgmul = getModuleAttrValue(module, 'dmgmul');
@@ -4036,12 +4035,12 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			}
 			value += max(0, rldtime - duration - bstint);
 			break;
-			
+
 		case 'rof':
 		case 'srof':
 			value = (getModuleAttrValue(module, (attr === 'srof') ? 'sfpc' : 'fpc') / getModuleAttrValue(module, (attr === 'srof') ? 'sspc' : 'spc'));
 			break;
-			
+
 		case 'dps':
 		case 'sdps':
 			var damage = getModuleAttrValue(module, 'damage');
@@ -4050,21 +4049,21 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			var rof = getModuleAttrValue(module, (attr === 'sdps') ? 'srof' : 'rof');
 			value = (damage * dmgmul * rounds * (isFinite(rof) ? rof : 1));
 			break;
-			
+
 		case 'eps':
 		case 'seps':
 			var distdraw = getModuleAttrValue(module, 'distdraw');
 			var rof = getModuleAttrValue(module, (attr === 'seps') ? 'srof' : 'rof');
 			value = (distdraw * (isFinite(rof) ? rof : 1));
 			break;
-			
+
 		case 'hps':
 		case 'shps':
 			var thmload = getModuleAttrValue(module, 'thmload');
 			var rof = getModuleAttrValue(module, (attr === 'shps') ? 'srof' : 'rof');
 			value = (thmload * (isFinite(rof) ? rof : 1));
 			break;
-			
+
 		case 'engminmul':
 		case 'engoptmul':
 		case 'engmaxmul':
@@ -4080,8 +4079,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			value = getModuleAttrValue(module, attribute.default);
 		return getAttrValue(attr, value, modifier);
 	}; // getModuleAttrValue()
-	
-	
+
+
 	var getModuleAttrValueText = function(module, attr, value) {
 		var attribute = cache.attribute[attr];
 		if (!module || !attribute || isNaN(value) || !isFinite(value))
@@ -4099,15 +4098,15 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		if (decimals > 0) {
 			decimals = (parseFloat(value.toFixed(decimals)).toString().split('.')[1] || '').length;
 			var text = formatNumText(value, decimals);
-			
+
 		} else {
 			var step = pow(10, -decimals);
 			var text = formatNumText(((value / step + 0.5) | 0) * step, 0);
 		}
 		return text;
 	}; // getModuleAttrValueText()
-	
-	
+
+
 	var getModuleAttrModifier = function(module, attr, value) {
 		var attribute = cache.attribute[attr];
 		var base = getModuleAttrValue(module, attr);
@@ -4124,8 +4123,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		value = getModuleAttrValue(module, attr, (value / base) - 1);
 		return ((value / base) - 1);
 	}; // getModuleAttrModifier()
-	
-	
+
+
 	var getModuleAttrModifierText = function(module, attr, modifier) {
 		var text = '';
 		var base = getModuleAttrValue(module, attr);
@@ -4143,13 +4142,13 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		return text;
 	}; // getModuleAttrModifierText()
-	
-	
+
+
 	var getModuleAttrModifierHTML = function(module, attr, modifier) {
 		return getModuleAttrModifierText(module, attr, modifier).replace('%', '<small class="semantic">%</small>');
 	}; // getModuleAttrModifierHTML()
-	
-	
+
+
 	var parseModuleAttrModifierText = function(module, attr, text) {
 		var attribute = cache.attribute[attr];
 		text = text.trim();
@@ -4164,8 +4163,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		return getModuleAttrModifier(module, attr, value);
 	}; // parseModuleAttrModifierText()
-	
-	
+
+
 	var getBlueprintGradeRollAttrModifier = function(bpid, bpgrade, bproll, attr) {
 		var blueprint = eddb.blueprint[bpid];
 		if (!blueprint)
@@ -4179,8 +4178,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		var lomod = ((bpgrade > 1) ? blueprint[attr][bpgrade - 2] : ((himod && blueprint[attr][1]) ? (himod - (blueprint[attr][1] - himod)) : 0));
 		return (((himod < 0) === !attribute.bad) ? himod : (lomod + bproll * (himod - lomod))) / (attribute.modmod || ((attribute.modadd || attribute.modset) ? 1 : 100));
 	}; // getBlueprintGradeRollAttrModifier()
-	
-	
+
+
 	var getBlueprintGradeAttrModifierRoll = function(bpid, bpgrade, attr, modifier) {
 		var blueprint = eddb.blueprint[bpid];
 		if (!blueprint)
@@ -4195,38 +4194,38 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		var lomod = ((bpgrade > 1) ? blueprint[attr][bpgrade - 2] : ((himod && blueprint[attr][1]) ? (himod - (blueprint[attr][1] - himod)) : 0));
 		return ((modifier * (attribute.modmod || ((attribute.modadd || attribute.modset) ? 1 : 100))) - lomod) / (himod - lomod);
 	}; // getBlueprintGradeAttrModifierRoll()
-	
-	
+
+
 	/*
 	* DATABASE CACHE INIT
 	*/
-	
-	
+
+
 	var sortObjKeyAsc = function(o1,o2) {
 		return ((o1.key < o2.key) ? -1 : ((o1.key > o2.key) ? 1 : ((o1.key2 < o2.key2) ? -1 : ((o1.key2 > o2.key2) ? 1 : 0))));
 	}; // sortObjKeyAsc()
-	
-	
+
+
 	var sortObjKeyDesc = function(o1,o2) {
 		return ((o1.key < o2.key) ? 1 : ((o1.key > o2.key) ? -1 : ((o1.key2 < o2.key2) ? 1 : ((o1.key2 > o2.key2) ? -1 : 0))));
 	}; // sortObjKeyDesc()
-	
-	
+
+
 	var sortNumbers = function(num1, num2) {
 		return num1 - num2;
 	}; // sortNumbers()
-	
-	
+
+
 	var sortNumbersDesc = function(num1, num2) {
 		return num2 - num1;
 	}; // sortNumbersDesc()
-	
-	
+
+
 	var sortStoreds = function(stored1, stored2) {
 		return ((stored1.name < stored2.name) ? -1 : ((stored1.name > stored2.name) ? 1 : 0));
 	}; // sortStoreds()
-	
-	
+
+
 	var sortAttributes = function(attr1, attr2) {
 		var a1 = cache.attribute[attr1];
 		var a2 = cache.attribute[attr2];
@@ -4240,8 +4239,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		v2 = attr2;
 		return (v1 < v2) ? -1 : ((v1 > v2) ? 1 : 0);
 	}; // sortAttributes()
-	
-	
+
+
 	var sortMaterials = function(mat1, mat2) {
 		var m1 = eddb.material[mat1];
 		var m2 = eddb.material[mat2];
@@ -4250,22 +4249,22 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		var v2 = getTranslation('material-'+mat2) || m2.name;
 		return (v1 < v2) ? -1 : ((v1 > v2) ? 1 : 0);
 	}; // sortMaterials();
-	
-	
+
+
 	var sortShipIDs = function(shipid1, shipid2) {
 		var v1 = getTranslation('ship-'+shipid1) || eddb.ship[shipid1].name;
 		var v2 = getTranslation('ship-'+shipid2) || eddb.ship[shipid2].name;
 		return (v1 < v2) ? -1 : ((v1 > v2) ? 1 : 0);
 	}; // sortShipIDs()
-	
-	
+
+
 	var sortMtypes = function(mtype1, mtype2) {
 		var v1 = (eddb.mtype[mtype1].sortname || getTranslation('mtype-'+mtype1) || eddb.mtype[mtype1].name);
 		var v2 = (eddb.mtype[mtype2].sortname || getTranslation('mtype-'+mtype2) || eddb.mtype[mtype2].name);
 		return (v1 < v2) ? -1 : ((v1 > v2) ? 1 : 0);
 	}; // sortMtypes()
-	
-	
+
+
 	var sortModules = function(m1, m2) {
 		var modid1 = m1.id;
 		var modid2 = m2.id;
@@ -4323,16 +4322,16 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		v1 = 0 - (m1.cost || 0);
 		v2 = 0 - (m2.cost || 0);
 		if (v1 != v2) return v1 - v2;
-		
+
 		return 0;
 	}; // sortModules()
-	
-	
+
+
 	var sortModuleIDs = function(modid1, modid2) {
 		return sortModules(eddb.module[modid1], eddb.module[modid2]);
 	}; // sortModuleIDs()
-	
-	
+
+
 	var sortBuiltinIDs = function(bmodid1, bmodid2) {
 		var modid1 = Slot.getStoredHashModuleID(BUILTIN_STORED_MODULES[bmodid1].modulehash);
 		var modid2 = Slot.getStoredHashModuleID(BUILTIN_STORED_MODULES[bmodid2].modulehash);
@@ -4352,8 +4351,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		var v = sortMtypes(m1.mtype, m2.mtype);
 		return v || sortModules(m1, m2);
 	}; // sortBuiltinIDs()
-	
-	
+
+
 	var sortBlueprints = function(bpid1, bpid2) {
 		var b1 = eddb.blueprint[bpid1];
 		var b2 = eddb.blueprint[bpid2];
@@ -4361,20 +4360,20 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		var v2 = b2 ? (getTranslation('blueprint-'+bpid2) || b2.name) : undefined;
 		return (v1 < v2) ? -1 : ((v1 > v2) ? 1 : (v1 ? -1 : (v2 ? 1 : 0)));
 	}; // sortBlueprints()
-	
-	
+
+
 	var sortExpeffects = function(expid1, expid2) {
 		var v1 = expid1 ? (getTranslation('expeffect-'+expid1) || (eddb.expeffect[expid1] || EMPTY_OBJ).name) : '';
 		var v2 = expid2 ? (getTranslation('expeffect-'+expid2) || (eddb.expeffect[expid2] || EMPTY_OBJ).name) : '';
 		return (v1 < v2) ? -1 : ((v1 > v2) ? 1 : 0);
 	}; // sortExpeffects()
-	
-	
+
+
 	var sortDiscounts = function(db1, db2) {
 		return cache.discountMod[db1] - cache.discountMod[db2];
 	}; // sortDiscounts()
-	
-	
+
+
 	var getClosestDiscount = function(mod) {
 		var a = cache.discounts;
 		var lo = 0;
@@ -4394,8 +4393,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		return (((mod - cache.discountMod[a[lo]]) < (cache.discountMod[a[hi]] - mod)) ? a[lo] : a[hi]);
 	}; // getClosestDiscount()
-	
-	
+
+
 	var sortSlotModules = function(slot1, slot2) {
 		// by emptiness
 		var m1 = slot1.getModule();
@@ -4451,21 +4450,21 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		v1 = slot1.getSlotNum();
 		v2 = slot2.getSlotNum();
 		if (v1 != v2) return v1 - v2;
-		
+
 		return 0;
 	}; // sortSlotModules()
-	
-	
+
+
 	var initCache = function() {
 		// initialize and tag ships
 		cache.ships = Object.keys(eddb.ship);
 		for (var sid in eddb.ship)
 			eddb.ship[sid].id = sid;
-		
+
 		// tag modules
 		for (var mid in eddb.module)
 			eddb.module[mid].id = mid;
-		
+
 		// initialize and tag attributes
 		for (var i = 0;  i < eddb.attributes.length;  i++) {
 			var attribute = eddb.attributes[i];
@@ -4473,7 +4472,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			if (attribute.attr)
 				cache.attribute[attribute.attr] = attribute;
 		}
-		
+
 		// initialize ship-specific modules and stock ship builds and hashes
 		cache.shipModules = {};
 		cache.shipBuild = {};
@@ -4493,7 +4492,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			cache.shipBuild[shipid] = build;
 			cache.shipHash[shipid] = build.getHash();
 		}
-		
+
 		// initialize mtypes for each group
 		cache.groupMtypes = {};
 		cache.mtypeModules = {};
@@ -4521,7 +4520,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 				}
 			}
 		}
-		
+
 		// initialize stock module hashes and reserved modules, and find size gaps
 		cache.moduleHash = {};
 		cache.reservedmods = [];
@@ -4555,7 +4554,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 				}
 			}
 		}
-		
+
 		// initialize mtype builtins, builtin modulehashes, and default builtin options
 		var build = new Build(1);
 		var slot = build.getDetachedSlot();
@@ -4567,7 +4566,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			if (cache.mtypeBuiltins[mtype]) {
 				cache.mtypeBuiltins[mtype].push(bmodid);
 			}
-			
+
 			// get current-version builtinhashes of all builtin stored modules, with and without preeng flags, so that lookups will work
 			cache.modulehashBuiltin[builtinhash] = bmodid;
 			slot.setStoredHash(builtinhash, null, true);
@@ -4576,11 +4575,11 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			slot.setPreEngineered(slot.isModified());
 			cache.modulehashBuiltin[slot.getBuiltinHash()] = bmodid;
 			BUILTIN_STORED_MODULES[bmodid].modulehash = slot.getBuiltinHash();
-			
+
 			var opt = 'builtin' + bmodid;
 			current.option[opt] = ((BUILTIN_STORED_MODULES[bmodid].tag !== 'C') ? true : false);
 		}
-		
+
 		// initialize mtype blueprints and expeffects
 		cache.mtypeBlueprints = {};
 		cache.mtypeExpeffects = {};
@@ -4592,7 +4591,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 				cache.mtypeExpeffects[mtype] = eddb.mtype[mtype].expeffects.slice(0);
 			}
 		}
-		
+
 		// generate and sort discount bits
 		var db = ((1 << DISCOUNTS.length) - 1);
 		cache.discountMod[db] = 0;
@@ -4606,9 +4605,9 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		cache.discounts = Object.keys(cache.discountMod);
 		cache.discounts.sort(sortDiscounts);
-		
+
 		// store default CSS options
-		if (document.title === 'EDSY') { 
+		if (document.title === 'EDSY') {
 			var compStyle = getComputedStyle(document.documentElement);
 			for (var i = 0;  i < CSS_FONTS.length;  i++) {
 				var opt = 'font' + CSS_FONTS[i];
@@ -4627,7 +4626,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 					current.option[opt] = '';
 				}
 			}
-			
+
 			// create DOM templates for each defined SVG icon
 			var div = document.createElement('div');
 			document.getElementById('svg_defs').querySelectorAll('symbol').forEach(function (sym) {
@@ -4639,10 +4638,10 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 					cache.icon[name] = div.removeChild(div.firstChild);
 				}
 			});
-		}	
+		}
 	}; // initCache()
-	
-	
+
+
 	var sortCache = function(onlymodules) {
 		cache.ships.sort(sortShipIDs);
 		if (!onlymodules) {
@@ -4665,13 +4664,13 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			}
 		}
 	}; // sortCache()
-	
-	
+
+
 	/*
 	* PAGE & POPUP UI
 	*/
-	
-	
+
+
 	var setUIPageTab = function(tab) {
 		current.page = tab;
 		document.forms.header.elements.tab.value = tab;
@@ -4679,8 +4678,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		if (tab === 'outfitting')
 			updateUIStatsPanels();
 	}; // setUIPageTab()
-	
-	
+
+
 	var showUIPopup = function(element, trigger, refocus, sticky, onOkay, onCancel) {
 		if (trigger && current.popup.trigger === trigger) {
 			return hideUIPopup();
@@ -4700,8 +4699,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		current.popup.onCancel = onCancel;
 		return true;
 	}; // showUIPopup()
-	
-	
+
+
 	var showUITextPopup = function(html, text, trigger, sticky, onOkay, onCancel) {
 		var popup = document.getElementById('popup_modal');
 		var labelarea = document.getElementById('popup_desc');
@@ -4747,8 +4746,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		return true;
 	}; // showUITextPopup()
-	
-	
+
+
 	var showUITablePopup = function(html, trigger, sticky, onOkay, onCancel) {
 		var popup = document.getElementById('popup_modal');
 		var labelarea = document.getElementById('popup_desc');
@@ -4779,8 +4778,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		return table;
 	}; // showUITablePopup()
-	
-	
+
+
 	var hideUIPopup = function() {
 		if (!current.popup.element)
 			return false;
@@ -4795,13 +4794,13 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		current.popup.onCancel = null;
 		return true;
 	}; // hideUIPopup()
-	
-	
+
+
 	/*
 	* SHIPYARD UI
 	*/
-	
-	
+
+
 	var formatShipyardSlots = function(build, slotgroup, asSize) {
 		var sizes = eddb.ship[build.getShipID()].slots[slotgroup].slice(0);
 		sizes.sort(sortNumbersDesc);
@@ -4812,8 +4811,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			df.append((i ? ' ' : ''), createTranslatedElement('span', 'size-'+sizes[i]+'-abbr'));
 		return df;
 	}; // formatShipyardSlots()
-	
-	
+
+
 	var UI_SHIPYARD_COL = {
 		label           : { header:'ui-shipyard-build-label',         abbr:'ui-shipyard-build-desc',                                               css:'text',                     nochange:1,              render:function(build) { return build.getName(); } },
 		name_ship       : { header:'ui-shipyard-ship-label',          abbr:'ui-shipyard-ship-desc',                                                css:'text',                     nochange:1,              shipattr:'name' },
@@ -4856,7 +4855,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		dps_axe         : { header:'ui-shipyard-dps-antixeno-label',  abbr:'ui-shipyard-dps-antixeno-desc',  colgroup:'ui-shipyard-weapons-label', css:'tar', sortnum:true,                                 render:function(build) { var dps = build.getStat('dps'); return (dps ? formatPctHTML(build.getStat('dps_axe') / dps, 0) : ''); }, sortkey:function(build) { return (build.getStat('dps_axe') || 0) / (build.getStat('dps') || 0.000001); } },
 		dps_cau         : { header:'ui-shipyard-dps-caustic-label',   abbr:'ui-shipyard-dps-caustic-desc',   colgroup:'ui-shipyard-weapons-label', css:'tar', sortnum:true,                                 render:function(build) { var dps = build.getStat('dps'); return (dps ? formatPctHTML(build.getStat('dps_cau') / dps, 0) : ''); }, sortkey:function(build) { return (build.getStat('dps_cau') || 0) / (build.getStat('dps') || 0.000001); } },
 	}; // UI_SHIPYARD_COL{}
-	
+
 	var UI_SHIPYARD_SHIPS_COLS = [
 		'name_ship','cost','szcls','crew','masslock',
 		'mass_unl','jump_unl',
@@ -4865,15 +4864,15 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		'slots_core_1','slots_core_2','slots_core_3','slots_core_4','slots_core_5','slots_core_6','slots_core_7',
 		'slots_military','slots_internal',
 	]; // UI_SHIPYARD_SHIPS_COLS[]
-	
+
 	var UI_SHIPYARD_STOREDBUILD_COLS = [
 		'label','_BUTTONS_','name_ship','cost',
 		'mass_unl','mass_ldn','jump_unl','jump_ldn','range_unl','range_ldn',
 		'topspd','bstspd','shields','armour','fuelcap','cargocap','cabincap',
 		'dps','dps_abs','dps_kin','dps_thm','dps_exp','dps_axe'
 	]; // UI_SHIPYARD_STOREDBUILD_COLS[]
-	
-	
+
+
 	var initUIShipyardShips = function() {
 		var table = document.createElement('table');
 		table.id = 'shipyard_ships_table';
@@ -4895,8 +4894,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		table.appendChild(tbody);
 		document.getElementById('shipyard_ships_container').appendChild(table);
 	}; // initUIShipyardShips()
-	
-	
+
+
 	var initUIShipyardStoredBuilds = function() {
 		var container = document.getElementById('shipyard_storedbuilds_container');
 		var table = document.createElement('table');
@@ -4918,11 +4917,11 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			container.appendChild(div);
 		}
 	}; // initUIShipyardStoredBuilds()
-	
-	
+
+
 	var createUIShipyardHeader = function(columns, tab) {
 		var thead = document.createElement('thead');
-		
+
 		var tr = document.createElement('tr');
 		tr.className = 'colgroup';
 		var colgroup = '';
@@ -4944,7 +4943,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			colspan++;
 		}
 		thead.appendChild(tr);
-		
+
 		var tr = document.createElement('tr');
 		var colgroup = '';
 		for (var c = 0;  c < columns.length;  c++) {
@@ -4976,11 +4975,11 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			tr.appendChild(th);
 		}
 		thead.appendChild(tr);
-		
+
 		return thead;
 	}; // createUIShipyardHeader()
-	
-	
+
+
 	var createUIShipyardRow = function(columns) {
 		var tr = document.createElement('tr');
 		var colgroup = '';
@@ -4993,8 +4992,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		return tr;
 	}; // createUIShipyardRow()
-	
-	
+
+
 	var updateUIShipyardRow = function(columns, tr, build) {
 		var shipslot = (build ? build.getSlot('ship', 'hull') : null);
 		var value, render, sort;
@@ -5025,7 +5024,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 				if (col.sortkey) {
 					sort = col.sortkey(build);
 				}
-				
+
 				if (typeof render === 'string') {
 					tr.cells[c].innerHTML = ''+render;
 				} else {
@@ -5036,11 +5035,11 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		return true;
 	}; // updateUIShipyardRow()
-	
-	
+
+
 	var updateUIShipyardStoredBuilds = function() {
 		var tbody = document.getElementById('shipyard_storedbuilds_tbody');
-		
+
 		// remove all that were deleted
 		var r = tbody.rows.length;
 		while (r-- > 0) {
@@ -5048,18 +5047,18 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			if (namehash && !current.stored.shipNamehashStored[0][namehash])
 				tbody.removeChild(tbody.rows[r]);
 		}
-		
+
 		// add or update all that currently exist
 		var storeds = current.stored.shipStoreds[0];
 		for (var i = 0;  i < storeds.length;  i++) {
 			updateUIShipyardStoredBuild(storeds[i].namehash, null, true);
 		}
 		sortUIShipyardTable(document.getElementById('shipyard_storedbuilds_table'), UI_SHIPYARD_STOREDBUILD_COLS);
-		
+
 		return true;
 	}; // updateUIShipyardStoredBuilds()
-	
-	
+
+
 	var updateUIShipyardStoredBuild = function(namehash, build, sorted) {
 		if (!namehash)
 			return false;
@@ -5104,12 +5103,12 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		return true;
 	}; // updateUIShipyardStoredBuild()
-	
-	
+
+
 	var sortUIShipyardTable = function(table, columns, col) {
 		if (!table || !columns)
 			return null;
-		
+
 		// identify sort column, direction, and mode
 		var desc, alt;
 		var state = (current.tableSort[table.id] || {});
@@ -5137,7 +5136,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			state.desc = desc = !!desc;
 			state.alt = alt = !!alt;
 		}
-		
+
 		// sort rows
 		var sortnum = (UI_SHIPYARD_COL[columns[col]] || EMPTY_OBJ).sortnum;
 		var sortalt = (UI_SHIPYARD_COL[columns[col]] || EMPTY_OBJ).sortalt;
@@ -5159,25 +5158,25 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		for (var r = 0;  r < list.length;  r++) {
 			tbody.appendChild(list[r].row);
 		}
-		
+
 		return state;
 	}; // sortUIShipyardTable()
-	
-	
+
+
 	var setUIShipyardTab = function(tab) {
 		current.shipyard_tab = tab;
 		document.forms.shipyard.elements.tab.value = tab;
 		document.forms.shipyard.className = tab;
 	}; // setUIShipyardTab()
-	
-	
+
+
 	var onUIShipyardTabChange = function(e) {
 		if (e.target.name === 'tab' && e.target.checked) {
 			setUIShipyardTab(e.target.value);
 		}
 	}; // onUIShipyardTabChange()
-	
-	
+
+
 	var onUIShipyardShipsClick = function(e) {
 		var el = e.target;
 		while (el && el.tagName !== 'A' && el.tagName !== 'BUTTON' && el.tagName !== 'INPUT') {
@@ -5213,8 +5212,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			}
 		}
 	}; // onUIShipyardShipsClick()
-	
-	
+
+
 	var onUIShipyardStoredBuildsClick = function(e) {
 		var el = e.target;
 		while (el && el.tagName !== 'A' && el.tagName !== 'BUTTON' && el.tagName !== 'INPUT') {
@@ -5238,11 +5237,11 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 				setCurrentFitNameHash(el.value);
 				setUIPageTab('outfitting');
 				break;
-				
+
 			case 'rename':
 				renameStoredBuild(el.value);
 				break;
-				
+
 			case 'delete':
 				deleteStoredBuild(el.value);
 				break;
@@ -5260,8 +5259,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			}
 		}
 	}; // onUIShipyardStoredBuildsClick()
-	
-	
+
+
 	var onUIShipyardStoredCopyLiveClick = function(e) {
 		e.stopPropagation();
 		e.preventDefault();
@@ -5272,13 +5271,13 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			writeStoredBuilds();
 		}
 	}; // onUIShipyardStoredCopyLiveClick()
-	
-	
+
+
 	/*
 	* OUTFITTING UI
 	*/
-	
-	
+
+
 	var updateUIFullscreen = function() {
 		var doc = window.document;
 		var supported = (cache.feature.requestFullscreen && cache.feature.cancelFullscreen);
@@ -5286,8 +5285,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		document.getElementById('window_maximize').style.display = ((active || !supported) ? 'none' : 'inline-block');
 		document.getElementById('window_minimize').style.display = ((active &&  supported) ? 'inline-block' : 'none');
 	}; // updateUIFullscreen()
-	
-	
+
+
 	var updateUILayout = function() {
 		var divBody = document.getElementById('outfitting_fit_body');
 		var colWidth = max(document.getElementById('slots_column_left').offsetWidth, document.getElementById('slots_column_right').offsetWidth);
@@ -5308,8 +5307,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		return true;
 	}; // updateUILayout()
-	
-	
+
+
 	var getUIOutfittingSlot = function() {
 		switch (current.outfitting_focus) {
 		case 'module':  return current.pickerSlot;
@@ -5317,8 +5316,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		return null;
 	}; // getUIOutfittingSlot()
-	
-	
+
+
 	var setUIOutfittingFocus = function(focus) {
 		if (focus !== 'module' && focus !== 'slot')
 			return false;
@@ -5330,8 +5329,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		el.innerText = mode;
 		return true;
 	}; // setUIOutfittingFocus()
-	
-	
+
+
 	var setUIOutfittingPanels = function(show1, show2a, show2b) {
 		if (show1) {
 			current.outfitting_show1 = show1;
@@ -5353,8 +5352,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		);
 		return true;
 	}; // setUIOutfittingPanels()
-	
-	
+
+
 	var setCurrentDrag = function(modid, namehash, fromgroup, fromslot) {
 		current.drag = (isNaN(modid) ? null : { id:modid, namehash:namehash, group:fromgroup, slot:fromslot });
 		if (!isNaN(modid) && fromgroup) {
@@ -5392,13 +5391,13 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			}
 		}
 	}; // setCurrentDrag()
-	
-	
+
+
 	/*
 	* EXPORT/IMPORT
 	*/
-	
-	
+
+
 	var showUIExportPopup = function() {
 		var trigger = document.getElementById('outfitting_fit_export');
 		var table = showUITablePopup(null, trigger, false, false, false);
@@ -5406,7 +5405,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		while (table.lastChild)
 			table.removeChild(table.lastChild);
 		var tbody = document.createElement('tbody');
-		
+
 		var tr = document.createElement('tr');
 		var td = createTranslatedElement('td', 'ui-export-build');
 		tr.appendChild(td);
@@ -5420,7 +5419,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		td.appendChild(document.createTextNode((shipname ? (' "' + shipname + '"') : '') + (shiptag ? (' ' + shiptag) : '')));
 		tr.appendChild(td);
 		tbody.appendChild(tr);
-		
+
 		var tr = document.createElement('tr');
 		var td = createTranslatedElement('td', 'ui-export-url');
 		tr.appendChild(td);
@@ -5445,7 +5444,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		td.appendChild(button);
 		tr.appendChild(td);
 		tbody.appendChild(tr);
-		
+
 		var tr = document.createElement('tr');
 		var td = createTranslatedElement('td', 'ui-export-text');
 		tr.appendChild(td);
@@ -5470,7 +5469,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		td.appendChild(button);
 		tr.appendChild(td);
 		tbody.appendChild(tr);
-		
+
 		var tr = document.createElement('tr');
 		var td = createTranslatedElement('td', 'ui-export-slef');
 		tr.appendChild(td);
@@ -5495,10 +5494,10 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		td.appendChild(button);
 		tr.appendChild(td);
 		tbody.appendChild(tr);
-		
+
 		var url_inara_search = current.fit.getInaraSearchURL();
 		var url_inara_export = current.fit.getInaraBuildURL();
-		
+
 		var tr = document.createElement('tr');
 		var td = createTranslatedElement('td', 'ui-export-external');
 		tr.appendChild(td);
@@ -5530,14 +5529,14 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		var td = document.createElement('td');
 		tr.appendChild(td);
 		tbody.appendChild(tr);
-		
+
 		table.appendChild(tbody);
 		document.forms.popup.elements.export_url.focus();
 		document.forms.popup.elements.export_url.select();
 		return true;
 	}; // showUIExportPopup()
-	
-	
+
+
 	var showUIImportPopup = function() {
 		var df = document.createDocumentFragment();
 		df.appendChild(createTranslatedElement('span', 'ui-import-footer-desc'));
@@ -5553,7 +5552,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 	var createUIImportedBuildHeader = function() {
 		var thead = document.createElement('thead');
 		var tr = document.createElement('tr');
-		
+
 		var th = document.createElement('th');
 		th.className = 'colgroup stickytopleft';
 		var abbr = createTranslatedElement('abbr', 'ui-import-ship-label');
@@ -5561,7 +5560,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		abbr.title = 'Ship type';
 		th.appendChild(abbr);
 		tr.appendChild(th);
-		
+
 		var th = document.createElement('th');
 		th.className = 'colgroup tac stickytop';
 		var abbr = createTranslatedElement('abbr', 'ui-import-number-label');
@@ -5569,7 +5568,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		abbr.title = 'Ship purchase number';
 		th.appendChild(abbr);
 		tr.appendChild(th);
-		
+
 		var th = document.createElement('th');
 		th.className = 'colgroup stickytop';
 		var abbr = createTranslatedElement('abbr', 'ui-import-name-label');
@@ -5577,7 +5576,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		abbr.title = 'Ship name';
 		th.appendChild(abbr);
 		tr.appendChild(th);
-		
+
 		var th = document.createElement('th');
 		th.className = 'colgroup stickytop';
 		var abbr = createTranslatedElement('abbr', 'ui-import-id-label');
@@ -5585,7 +5584,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		abbr.title = 'Ship ID tag';
 		th.appendChild(abbr);
 		tr.appendChild(th);
-		
+
 		var th = document.createElement('th');
 		th.className = 'colgroup stickytop tac';
 		var abbr = createTranslatedElement('abbr', 'ui-import-errors-label');
@@ -5593,7 +5592,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		abbr.title = 'Import errors';
 		th.appendChild(abbr);
 		tr.appendChild(th);
-		
+
 		var th = document.createElement('th');
 		th.className = 'colgroup first stickytop';
 		var actions = ['ignore','save','saveas'];
@@ -5610,7 +5609,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		abbr.title = 'Stored build label';
 		th.appendChild(abbr);
 		tr.appendChild(th);
-		
+
 		var th = document.createElement('th');
 		th.className = 'colgroup first stickytop';
 		var button = document.createElement('button');
@@ -5619,12 +5618,12 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		button.addEventListener('click', onUIPopupImportButtonClick);
 		th.appendChild(button);
 		tr.appendChild(th);
-		
+
 		thead.appendChild(tr);
 		return thead;
 	}; // createUIImportedBuildHeader()
-	
-	
+
+
 	var createUIImportedBuildRow = function(importobj, multiple) {
 		var index = importobj.index;
 		var fleetid = importobj.fleetid;
@@ -5633,27 +5632,27 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		var builderrors = importobj.builderrors;
 		var namehash = importobj.namehash || '';
 		var defaultaction = ((build && namehash) ? ((current.stored.shipNamehashStored[shipid] || EMPTY_OBJ)[namehash] ? 'save' : (multiple ? 'saveas' : 'ignore')) : 'ignore');
-		
+
 		var tr = document.createElement('tr');
-		
+
 		var td = createTranslatedElement('td', (build ? ('ship-'+shipid) : ''));
 		td.className = 'colgroup text stickyleft';
 		tr.appendChild(td);
-		
+
 		var td = createTranslatedElement('td', 'interp-number', {'number':(fleetid || undefined)});
 		td.className = 'colgroup tac';
 		tr.appendChild(td);
-		
+
 		var td = document.createElement('td');
 		td.className = 'colgroup';
 		td.innerHTML = (build ? encodeHTML(build.getName()) : '');
 		tr.appendChild(td);
-		
+
 		var td = document.createElement('td');
 		td.className = 'colgroup';
 		td.innerHTML = (build ? encodeHTML(build.getNameTag()) : '');
 		tr.appendChild(td);
-		
+
 		var td = document.createElement('td');
 		td.className = 'colgroup tac';
 		if (builderrors.length > 0) {
@@ -5664,7 +5663,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			td.innerHTML = formatNumHTML(0);
 		}
 		tr.appendChild(td);
-		
+
 		// prepare the select now, so we can make sure it has entries
 		var select = document.createElement('select');
 		select.className = 'import_save_label';
@@ -5678,7 +5677,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			if (defaultaction === 'save')
 				defaultaction = 'saveas';
 		}
-		
+
 		var td = document.createElement('td');
 		td.className = 'colgroup first import_store';
 		var div = document.createElement('div');
@@ -5718,7 +5717,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		div.appendChild(abbr);
 		td.appendChild(div);
 		tr.appendChild(td);
-		
+
 		var td = document.createElement('td');
 		td.className = 'colgroup first';
 		var input = document.createElement('input');
@@ -5735,18 +5734,18 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		label.appendChild(createIcon('import'));
 		td.appendChild(label);
 		tr.appendChild(td);
-		
+
 		return tr;
 	}; // createUIImportedBuildRow()
-	
-	
+
+
 	var importData = function(text, msieURLtrunc) {
 		text = text.trim();
 		if (!text)
 			return true;
 		if (current.dev)
 			console.log(text);
-		
+
 		// initialize storage for possibly decoding multiple builds
 		var errors = [];
 		var importdata = {
@@ -5756,7 +5755,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			warning: document.createDocumentFragment(),
 		};
 		var curindex = -1;
-		
+
 		// identify the format by the first line
 		var eol = text.indexOf('\n');
 		var line1 = text.slice(0, (eol < 0) ? 100 : eol).trim();
@@ -5900,7 +5899,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		} else {
 			errors.push(getTranslation('ui-import-error-unrecognized'));
 		}
-		
+
 		// see what we got
 		var imported = false;
 		if (importdata.buildlist.length > 0 || importdata.imports || importdata.modules) {
@@ -5931,7 +5930,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			var el = document.getElementById('import_load_' + curindex);
 			if (el && !el.disabled)
 				el.checked = true;
-			
+
 			var numModules=0, numModulesOW=0, extras=false;
 			extras = importdata.imports || importdata.modules || importdata.options;
 			for (var namehash in (importdata.modules || EMPTY_OBJ)) {
@@ -5941,7 +5940,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 					numModulesOW += (current.stored.moduleNamehashStored[0][namehash] ? 1 : 0);
 				}
 			}
-			
+
 			var status = document.getElementById('popup_status');
 			if (extras) {
 				var label = document.createElement('label');
@@ -5964,7 +5963,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 				status.appendChild(div);
 			}
 			updateTranslations(status);
-			
+
 			imported = true;
 		/* always use bulk import window
 		} else if (importdata.buildlist.length == 1) {
@@ -5994,12 +5993,12 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 					} catch (exc) {
 						b64text = text;
 					}
-					
+
 				}
 		*/
 	}; // importData()
-	
-	
+
+
 	var importDataOkay = function() {
 		var ok = true;
 		var namehashIndex = {};
@@ -6139,13 +6138,13 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			showUITablePopup(html, trigger, true, importDataOkay, importDataCancel);
 		}
 	}; // importDataOkay()
-	
-	
+
+
 	var importDataCancel = function() {
 		current.importdata = null;
 	}; // importDataCancel()
-	
-	
+
+
 	var getFdevImportMap = function() {
 		if (!cache.fdevmap) {
 			var fdevmap = {
@@ -6178,7 +6177,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 				fdevmap.slotGroup[CORE_SLOT_FDNAME[s].toUpperCase()] = 'component';
 				fdevmap.slotNum[CORE_SLOT_FDNAME[s].toUpperCase()] = s;
 			}
-			
+
 			// current ship and ship-module mappings
 			for (var shipid in eddb.ship) {
 				var ship = eddb.ship[shipid];
@@ -6188,7 +6187,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 				var fdname = (ship.fdname || '').trim().toUpperCase();
 				if (fdname)
 					fdevmap.ship[fdname] = shipid;
-				
+
 				fdevmap.shipModule[shipid] = {};
 				for (var modid in ship.module) {
 					var fdid = ship.module[modid].fdid || eddb.module[modid].fdid;
@@ -6199,7 +6198,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 						fdevmap.shipModule[shipid][fdname] = modid;
 				}
 			}
-			
+
 			// current module mappings
 			for (var modid in eddb.module) {
 				var module = eddb.module[modid];
@@ -6210,12 +6209,12 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 				if (fdname)
 					fdevmap.module[fdname] = modid;
 			}
-			
+
 			// obsolete modules
 			fdevmap.module['INT_STELLARBODYDISCOVERYSCANNER_STANDARD'] = -1;
 			fdevmap.module['INT_STELLARBODYDISCOVERYSCANNER_INTERMEDIATE'] = -1;
 			fdevmap.module['INT_STELLARBODYDISCOVERYSCANNER_ADVANCED'] = -1;
-			
+
 			// blueprint mappings are per-mtype
 			for (var mtypeid in eddb.mtype) {
 				// current blueprint mappings
@@ -6228,7 +6227,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 						fdevmap.mtypeBlueprint[mtypeid][fdname] = bpid;
 					}
 				}
-				
+
 				// renamed blueprint mappings
 				for (var bpname in { LIGHTWEIGHT:1, REINFORCED:1, SHIELDED:1 }) {
 					if (fdevmap.mtypeBlueprint[mtypeid]['MISC_' + bpname]) {
@@ -6255,14 +6254,14 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 				}
 				fdevmap.mtypeBlueprint[mtypeid]['GUARDIANWEAPON_STURDY'] = fdevmap.mtypeBlueprint[mtypeid]['GUARDIANMODULE_STURDY'];
 			}
-			
+
 			// expeffect mappings are (now) bi-directional
 			for (var expid in eddb.expeffect) {
 				var fdexpid = eddb.expeffect[expid].fdname;
 				if (fdexpid)
 					fdevmap.expeffect[fdexpid.toUpperCase()] = expid;
 			}
-			
+
 			// attr mappings are (now) bi-directional, except for some special cases
 			for (var i = 0;  i < eddb.attributes.length;  i++) {
 				var attribute = eddb.attributes[i];
@@ -6275,18 +6274,18 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 				var attr = eddb.fdfieldattr[fdattr];
 				fdevmap.fieldAttr[fdattr] = attr;
 			}
-			
+
 			cache.fdevmap = fdevmap;
 		}
 		return cache.fdevmap;
 	}; // getFdevImportMap()
-	
-	
+
+
 	/*
 	* OUTFITTING PICKER UI
 	*/
-	
-	
+
+
 	var initUIModulePicker = function() {
 		// (re)build picker DOM
 		var divPicker = document.getElementById('outfitting_modules_picker');
@@ -6297,7 +6296,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			divPicker = document.createElement('div');
 			divPicker.id = 'outfitting_modules_picker';
 		}
-		
+
 		var divRow = document.createElement('div');
 		divRow.className = 'row empty';
 		var label = document.createElement('label');
@@ -6316,28 +6315,28 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		divRow.appendChild(label);
 		divPicker.appendChild(divRow);
 		divRow = null;
-		
+
 		for (var g = 0;  g < GROUPS.length;  g++) {
 			var group = GROUPS[g];
 			if (!cache.groupMtypes[group] || cache.groupMtypes[group].length < 1)
 				continue;
-			
+
 			var divGroup = document.createElement('div');
 			divGroup.id = 'outfitting_modules_group_' + group;
 			divGroup.className = 'group ' + group;
 			var header = createTranslatedElement('header', 'ui-slotgroup-'+GROUPS[g]);
 			divGroup.appendChild(header);
-			
+
 			for (var t = 0;  t < cache.groupMtypes[group].length;  t++) {
 				var mtype = cache.groupMtypes[group][t];
-				
+
 				var typeSizeMin = MAX_SLOT_CLASS;
 				var typeSizeMax = 0;
 				var divType = document.createElement('div');
 				divType.id = 'outfitting_modules_mtype_' + mtype;
 				var header = createTranslatedElement('header', 'mtype-'+mtype);
 				divType.appendChild(header);
-				
+
 				var divRow, divFlex, moduleSize, moduleAbbrev;
 				for (var m = 0;  m <= cache.mtypeModules[mtype].length;  m++) {
 					var mID = cache.mtypeModules[mtype][m];
@@ -6394,8 +6393,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		document.getElementById('outfitting_modules_container').appendChild(divPicker);
 	}; // initUIModulePicker()
-	
-	
+
+
 	var updateUIModulePickerStoredModules = function() {
 		// clear all group/mtype stored flags
 		for (var group in cache.groupMtypes) {
@@ -6408,7 +6407,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 					divType.classList.remove('stored');
 			}
 		}
-		
+
 		// update all stored module picker buttons that previously or currently exist
 		var nameNamehash = current.pickerNameNamehash;
 		current.pickerNameNamehash = {};
@@ -6420,11 +6419,11 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		for (var n = 0;  n < names.length;  n++) {
 			updateUIModulePickerStoredModule(nameNamehash[names[n]], true);
 		}
-		
+
 		return true;
 	}; // updateUIModulePickerStoredModules()
-	
-	
+
+
 	var updateUIModulePickerStoredModule = function(namehash, sorted) {
 		if (!namehash)
 			return false;
@@ -6485,14 +6484,14 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		return true;
 	}; // updateUIModulePickerStoredModule()
-	
-	
+
+
 	var updateUIModulePickerWarnings = function() {
 		if (!current.fit)
 			return;
 		var shipid = current.fit.getShipID();
 		var ship = eddb.ship[shipid];
-		
+
 		// get attributes
 		var slot = current.fit.getSlot('ship', 'hull');
 		var crew = slot.getEffectiveAttrValue('crew');
@@ -6500,7 +6499,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		var boostcost = slot.getEffectiveAttrValue('boostcost');
 		var pwrdraw_ret = current.fit.getStat('pwrdraw_ret');
 		var pwrbst = current.fit.getStat('pwrbst') / 100.0;
-		
+
 		// mark hidden modules, but only stock versions (stored/builtin/preeng need to still show up for i.e. the CG anti-corrosion cargo racks)
 		for (var m = 0;  m < cache.hiddenmods.length;  m++) {
 			var modid = cache.hiddenmods[m];
@@ -6513,7 +6512,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 				el.classList.toggle('hidden', !!module.hidden);
 			}
 		}
-		
+
 		// mark disallowed modules
 		for (var m = 0;  m < cache.reservedmods.length;  m++) {
 			var modid = cache.reservedmods[m];
@@ -6527,7 +6526,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 				el.classList.toggle('notallowed', !!notallowed);
 			}
 		}
-		
+
 		// mark undersized modules
 		for (var mtype in { cpp:1, ct:1, cpd:1, isg:1 }) {
 			for (var m = 0;  m < cache.mtypeModules[mtype].length;  m++) {
@@ -6546,15 +6545,15 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 					case 'cpp':
 						notenough = ((current.tempSlot.getEffectiveAttrValue('pwrcap') * (1 + pwrbst)) < pwrdraw_ret[0]);
 						break;
-						
+
 					case 'ct':
 						notenough = (current.tempSlot.getEffectiveAttrValue('engmaxmass') < mass);
 						break;
-						
+
 					case 'cpd':
 						notenough = (current.tempSlot.getEffectiveAttrValue('engcap') < (boostcost + BOOST_MARGIN));
 						break;
-					
+
 					case 'isg':
 						notenough = (current.tempSlot.getEffectiveAttrValue('genmaxmass') < mass);
 						break;
@@ -6565,15 +6564,15 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			}
 		}
 	}; // updateUIModulePickerWarnings()
-	
-	
+
+
 	var setUIModuleTab = function(tab) {
 		current.tab = tab;
 		document.forms.modules.elements.tab.value = tab;
 		document.forms.modules.className = tab;
 	}; // setUIModuleTab()
-	
-	
+
+
 	var setUIPickerModule = function(modid, namehash, scroll) {
 		if (isNaN(modid)) {
 			var tokens = document.forms.modules.elements.module.value.split('.');
@@ -6608,38 +6607,38 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		return true;
 	}; // setUIPickerModule()
-	
-	
+
+
 	/*
 	* BUILD UI
 	*/
-	
-	
+
+
 	var initUIFitSlots = function() {
 		var tableLeft = document.createElement('table');
 		tableLeft.id = 'slots_table_left';
-		
+
 		var thead = document.createElement('thead');
 		thead.appendChild(createUIFitHeaderRow());
 		tableLeft.appendChild(thead);
-		
+
 		var tbody = document.createElement('tbody');
 		tbody.id = 'outfitting_fit_ship_hull';
 		tbody.appendChild(createUIFitSlotRow('ship', 'hull'));
 		tableLeft.appendChild(tbody);
-		
+
 		var tableRight = document.createElement('table');
 		tableRight.id = 'slots_table_right';
-		
+
 		var thead = document.createElement('thead');
 		thead.appendChild(createUIFitHeaderRow());
 		tableRight.appendChild(thead);
-		
+
 		var tbody = document.createElement('tbody');
 		tbody.id = 'outfitting_fit_ship_hatch';
 		tbody.appendChild(createUIFitSlotRow('ship', 'hatch'));
 		tableRight.appendChild(tbody);
-		
+
 		for (var g = 0;  g < GROUPS.length;  g++) {
 			var slotgroup = GROUPS[g];
 			var tbody = document.createElement('tbody');
@@ -6647,19 +6646,19 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			tbody.appendChild(createUIFitHeaderRow(slotgroup));
 			((slotgroup === 'hardpoint' || slotgroup === 'component') ? tableLeft : tableRight).appendChild(tbody);
 		}
-		
+
 		document.getElementById('slots_column_left').appendChild(tableLeft);
 		document.getElementById('slots_column_right').appendChild(tableRight);
 	}; // initUIFitSlots()
-	
-	
+
+
 	var createUIFitHeaderRow = function(group) {
 		var tr = document.createElement('tr');
 		if (group) {
 			var th = document.createElement('th');
 			th.className = 'outfitting_fit_class';
 			tr.appendChild(th);
-			
+
 			var th = document.createElement('th');
 			th.className = 'outfitting_fit_module';
 			var div = document.createElement('div');
@@ -6667,15 +6666,15 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			div.appendChild(span);
 			th.appendChild(div);
 			tr.appendChild(th);
-			
+
 			var th = document.createElement('th');
 			th.className = 'outfitting_fit_mass';
 			tr.appendChild(th);
-			
+
 			var th = document.createElement('th');
 			th.className = 'outfitting_fit_pwrdraw';
 			tr.appendChild(th);
-			
+
 			var th = document.createElement('th');
 			th.className = 'outfitting_fit_attrs';
 			if (group === 'hardpoint') {
@@ -6693,7 +6692,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 				}
 			}
 			tr.appendChild(th);
-			
+
 			var th = document.createElement('th');
 			th.className = 'outfitting_fit_price';
 			tr.appendChild(th);
@@ -6705,13 +6704,13 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			abbr.title = 'Slot size class';
 			th.appendChild(abbr);
 			tr.appendChild(th);
-			
+
 			var th = document.createElement('th');
 			th.className = 'outfitting_fit_module';
 			var div = createTranslatedElement('div', 'ui-slots-module-abbr');
 			th.appendChild(div);
 			tr.appendChild(th);
-			
+
 			var th = document.createElement('th');
 			th.className = 'outfitting_fit_mass';
 			var abbr = createTranslatedElement('abbr', 'ui-slots-mass-abbr');
@@ -6719,7 +6718,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			abbr.title = 'Hull or module mass (in tons)';
 			th.appendChild(abbr);
 			tr.appendChild(th);
-			
+
 			var th = document.createElement('th');
 			th.className = 'outfitting_fit_pwrdraw';
 			var abbr = createTranslatedElement('abbr', 'ui-slots-power-abbr');
@@ -6727,7 +6726,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			abbr.title = 'Module power output or draw (in megawatts), powered status, and power priority group';
 			th.appendChild(abbr);
 			tr.appendChild(th);
-			
+
 			var th = document.createElement('th');
 			th.className = 'outfitting_fit_attrs';
 			var abbr = createTranslatedElement('abbr', 'ui-slots-attributes-abbr');
@@ -6735,7 +6734,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			abbr.title = 'Important attributes of each module type';
 			th.appendChild(abbr);
 			tr.appendChild(th);
-			
+
 			var th = document.createElement('th');
 			th.className = 'outfitting_fit_price';
 			var abbr = createTranslatedElement('abbr', 'ui-slots-price-abbr');
@@ -6746,18 +6745,18 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		return tr;
 	}; // createUIFitHeaderRow()
-	
-	
+
+
 	var createUIFitSlotRow = function(group, slot) {
 		var group_slot = group + '_' + slot;
 		var tr = document.createElement('tr');
 		tr.id = 'outfitting_fit_slot_' + group_slot;
-		
+
 		var td = document.createElement('td');
 		td.className = 'outfitting_fit_class';
 		td.id = 'outfitting_fit_class_' + group_slot;
 		tr.appendChild(td);
-		
+
 		var td = document.createElement('td');
 		td.id = 'outfitting_fit_module_' + group_slot;
 		td.className = 'outfitting_fit_module'; // dynamic 'notallowed', 'notenough', 'overlimit'
@@ -6780,7 +6779,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		label.addEventListener('touchstart', onUIFitSlotsTouchStart);
 		td.appendChild(label);
 		tr.appendChild(td);
-		
+
 		var td = document.createElement('td');
 		td.className = 'outfitting_fit_mass';
 		var span = document.createElement('span');
@@ -6788,7 +6787,7 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		span.className = ''; // modgood/modbad
 		td.appendChild(span);
 		tr.appendChild(td);
-		
+
 		var td = document.createElement('td');
 		td.className = 'outfitting_fit_pwrdraw';
 		td.id = 'outfitting_fit_power_' + group_slot;
@@ -6823,21 +6822,21 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		button.innerHTML = formatNumHTML(0);
 		td.appendChild(button);
 		tr.appendChild(td);
-		
+
 		var td = document.createElement('td');
 		td.id = 'outfitting_fit_attrs_' + group_slot;
 		td.className = 'outfitting_fit_attrs';
 		tr.appendChild(td);
-		
+
 		var td = document.createElement('td');
 		td.id = 'outfitting_fit_price_' + group_slot;
 		td.className = 'outfitting_fit_price';
 		tr.appendChild(td);
-		
+
 		return tr;
 	}; // createUIFitSlotRow()
-	
-	
+
+
 	var updateUIFitColumns = function() {
 		document.getElementById('outfitting_fit').className = (
 			(document.forms.fit.elements.outfitting_show_mass.checked ? '' : 'no') + 'mass ' +
@@ -6846,8 +6845,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			(document.forms.fit.elements.outfitting_show_price.checked ? '' : 'no') + 'price'
 		);
 	}; // updateUIFitColumns()
-	
-	
+
+
 	var updateUIFitTitle = function() {
 		var fit = current.fit;
 		var hullname = (getTranslation('ship-'+fit.getShipID()) || eddb.ship[fit.getShipID()].name).trim();
@@ -6860,21 +6859,21 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		document.title = "EDSY" + (title ? (": " + title) : "");
 		return true;
 	}; // updateUIFitTitle()
-	
-	
+
+
 	var updateUIFitHash = function(buildhash) {
 		updateUIFitTitle();
 		return true;
 	}; // updateUIFitHash()
-	
-	
+
+
 	var setCurrentFit = function(fit, namehash) {
 		if (!fit || !(fit instanceof Build))
 			return false;
 		current.fit = fit;
 		current.pickerSlot = fit.getDetachedSlot();
 		current.tempSlot = fit.getDetachedSlot();
-		
+
 		setUIPickerModule();
 		updateUIFitStoredBuilds();
 		updateUIFitStoredBuildControls(true, namehash);
@@ -6900,8 +6899,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		setCurrentSlot('ship', 'hull');
 		return true;
 	}; // setCurrentFit()
-	
-	
+
+
 	var setCurrentFitHash = function(buildhash, namehash) {
 		var errors = [];
 		var build = Build.fromHash(buildhash, errors);
@@ -6915,17 +6914,15 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		return ok;
 	}; // setCurrentFitHash()
-	
-	
+
+
 	var setCurrentFitNameHash = function(namehash) {
 		var ok = false;
 		if (namehash) {
 			var stored = current.stored.shipNamehashStored[0][namehash];
 			if (!stored)
 				return false;
-			current.hashlock = true;
 			ok = setCurrentFitHash(stored.buildhash, namehash);
-			current.hashlock = false;
 			if (ok)
 				updateUIFitHash(stored.buildhash);
 		} else {
@@ -6934,9 +6931,9 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		return ok;
 	}; // setCurrentFitNameHash()
-	
-	
-	var processURLHash = function(location, hashlock) {
+
+
+	var processURLHash = function(location) {
 		var urlhash = location.hash;
 		var msieURLtrunc = (location.href.length == 2083 || location.pathname.length == 2048);
 		var blocks = urlhash.split('/');
@@ -6945,26 +6942,22 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		for (var b = 1;  b < blocks.length;  b++) {
 			switch (blocks[b].slice(0,2)) {
 			case 'L=':
-				if (hashlock)
-					current.hashlock = true;
 				var ok = setCurrentFitHash(blocks[b].slice(2));
-				if (hashlock)
-					current.hashlock = false;
 				if (ok)
 					setUIPageTab('outfitting');
 				return ok;
-				
+
 			case 'I=':
 				return importData(blocks[b].slice(2), msieURLtrunc);
 			}
 		}
 	}; // processURLHash()
-	
-	
+
+
 	var readStoredOptions = function() {
 		if (!cache.feature.storage)
 			return false;
-		
+
 		try {
 			var item = 'edsy_options' + (current.beta ? '_beta' : '');
 			var data = JSON.parse(window.localStorage.getItem(item) || '{}');
@@ -6978,26 +6971,26 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		return true;
 	}; // readStoredOptions()
-	
-	
+
+
 	var writeStoredOptions = function() {
 		if (!cache.feature.storage)
 			return false;
-		
+
 		var data = JSON.stringify(current.option);
 		var item = 'edsy_options' + (current.beta ? '_beta' : '');
 		window.localStorage.setItem(item, data);
 		return true;
 	}; // writeStoredOptions()
-	
-	
+
+
 	var readStoredBuilds = function(overrideLive) {
 		current.stored.shipNamehashStored = { 0:{} };
 		current.stored.shipStoreds = { 0:[] };
-		
+
 		if (!cache.feature.storage)
 			return false;
-		
+
 		var item = 'edsy_loadouts' + (current.beta ? '_beta' : '');
 		var data = (window.localStorage.getItem(item) || '').split('/');
 		if (current.beta && overrideLive) {
@@ -7028,15 +7021,15 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			current.stored.shipStoreds[shipid] = Object.values(current.stored.shipNamehashStored[shipid]);
 			current.stored.shipStoreds[shipid].sort(sortStoreds);
 		}
-		
+
 		return true;
 	}; // readStoredBuilds()
-	
-	
+
+
 	var writeStoredBuilds = function() {
 		if (!cache.feature.storage)
 			return false;
-		
+
 		var data = [];
 		for (var namehash in current.stored.shipNamehashStored[0]) {
 			data.push(namehash + '=' + current.stored.shipNamehashStored[0][namehash].buildhash);
@@ -7045,8 +7038,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		window.localStorage.setItem(item, data.join('/'));
 		return true;
 	}; // writeStoredBuilds()
-	
-	
+
+
 	var setStoredImport = function(importhash, namehash) {
 		var namehashOld = current.importLabel[importhash];
 		if (namehashOld) {
@@ -7065,15 +7058,15 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		current.labelImports[namehash][importhash] = true;
 		return true;
 	}; // setStoredImport()
-	
-	
+
+
 	var readStoredImports = function() {
 		current.importLabel = {};
 		current.labelImports = {};
-		
+
 		if (!cache.feature.storage)
 			return false;
-		
+
 		var item = 'edsy_imports' + (current.beta ? '_beta' : '');
 		var data = (window.localStorage.getItem(item) || '').split('/');
 		for (var i = 0;  i < data.length;  i++) {
@@ -7090,12 +7083,12 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		return true;
 	}; // readStoredImports()
-	
-	
+
+
 	var writeStoredImports = function() {
 		if (!cache.feature.storage)
 			return false;
-		
+
 		var data = [];
 		for (var importhash in current.importLabel) {
 			data.push(importhash + '=' + current.importLabel[importhash]);
@@ -7104,8 +7097,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		window.localStorage.setItem(item, data.join('/'));
 		return true;
 	}; // writeStoredImports()
-	
-	
+
+
 	var updateUIFitStoredBuilds = function() {
 		var select = document.forms.fit.elements.outfitting_fit_stored;
 		var shipid = (current.fit ? current.fit.getShipID() : -1);
@@ -7113,8 +7106,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		updateUIFitTitle();
 		return ok;
 	}; // updateUIFitStoredBuilds()
-	
-	
+
+
 	var updateUIFitStoredBuildControls = function(setfit, namehash) {
 		var select = document.forms.fit.elements.outfitting_fit_stored;
 		if (setfit) {
@@ -7137,8 +7130,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		updateUIFitTitle();
 		return true;
 	}; // updateUIFitStoredBuildControls()
-	
-	
+
+
 	var saveCurrentStoredBuild = function(saveas) {
 		if (!current.fit)
 			return false;
@@ -7177,8 +7170,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		}
 		updateUIFitStoredBuildControls(true, namehash);
 	}; // saveCurrentStoredBuild()
-	
-	
+
+
 	var renameStoredBuild = function(namehash) {
 		var stored = current.stored.shipNamehashStored[0][namehash];
 		if (!namehash || !stored)
@@ -7211,8 +7204,8 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		if (select.value === oldnamehash)
 			select.value = namehash;
 	}; // renameStoredBuild()
-	
-	
+
+
 	var deleteStoredBuild = function(namehash) {
 		var stored = current.stored.shipNamehashStored[0][namehash];
 		if (!namehash || !stored)
@@ -7236,18 +7229,18 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 			select.selectedIndex = -1;
 		}
 	}; // deleteStoredBuild()
-	
-	
+
+
 	var updateUIFitShip = function() {
 		var shipid = current.fit.getShipID();
 		var ship = eddb.ship[shipid];
-		
+
 		// get attributes
 		var slot = current.fit.getSlot('ship', 'hull');
 		var crew = slot.getEffectiveAttrValue('crew');
 		var mass = slot.getEffectiveAttrValue('mass');
 		var boostcost = slot.getEffectiveAttrValue('boostcost');
-		
+
 		// update displays
 		document.getElementById('outfitting_fit_crewdist_avl').disabled = (crew < 2);
 		document.getElementById('outfitting_fit_crewdist_sys').disabled = (crew < 2);
@@ -7255,10 +7248,10 @@ if (true && current.dev) console.log(json.Ship+' '+modulejson.Item+' leftover '+
 		document.getElementById('outfitting_fit_crewdist_wep').disabled = (crew < 2);
 		document.getElementById('outfitting_fit_class_ship_hull').setAttribute('edsy-text', 'size-'+(ship.class || 0)+'-abbr');
 		document.getElementById('outfitting_fit_class_ship_hull').innerHTML = '?SML'[ship.class || 0];
-		
+
 		// mark undersized or reserved modules
 		updateUIModulePickerWarnings();
-		
+
 		// create or update slot rows
 		for (var sg = 0;  sg < GROUPS.length;  sg++) {
 			var slotgroup = GROUPS[sg];
@@ -7300,8 +7293,8 @@ if(false && current.dev) console.log("updateUIFitShip(): slot "+slotgroup+ "#"+s
 			}
 		}
 	}; // updateUIFitShip()
-	
-	
+
+
 	var updateUIFitDiscounts = function(discounts) {
 		var slot;
 		for (var sg = 0;  sg < GROUPS.length;  sg++) {
@@ -7319,8 +7312,8 @@ if(false && current.dev) console.log("updateUIFitShip(): slot "+slotgroup+ "#"+s
 		updateUIDetailsCost();
 		return true;
 	}; // updateUIFitDiscounts()
-	
-	
+
+
 	var updateUIFitPowerDist = function() {
 		var maxcrew = (current.fit.getSlot('ship', 'hull').getEffectiveAttrValue('crew') - 1);
 		var crew = current.fit.getCrewDist();
@@ -7333,8 +7326,8 @@ if(false && current.dev) console.log("updateUIFitShip(): slot "+slotgroup+ "#"+s
 		document.getElementById('outfitting_fit_powerdist_eng').className = ('crew' + crew.eng + ' dist' + dist.eng);
 		document.getElementById('outfitting_fit_powerdist_wep').className = ('crew' + crew.wep + ' dist' + dist.wep);
 	}; // updateUIFitPowerDist()
-	
-	
+
+
 	var emptyUIFitLimitedSlots = function(limit, slotgroup, slotnum) {
 		var slot = current.fit.getSlot(slotgroup, slotnum);
 		if (!limit)
@@ -7355,8 +7348,8 @@ if(false && current.dev) console.log("updateUIFitShip(): slot "+slotgroup+ "#"+s
 		updateUIFitLimitedSlots(limitSlots);
 		return true;
 	}; // emptyUIFitLimitedSlots()
-	
-	
+
+
 	var updateUIFitLimitedSlots = function(limitSlots) {
 		if (!limitSlots)
 			limitSlots = current.fit.getLimitedSlots();
@@ -7370,17 +7363,17 @@ if(false && current.dev) console.log("updateUIFitShip(): slot "+slotgroup+ "#"+s
 			}
 		}
 	}; // updateUIFitLimitedSlots()
-	
-	
+
+
 	var updateUIFitSlot = function(slotgroup, slotnum) {
 		var group_slot = slotgroup + '_' + slotnum;
 		var slot = current.fit.getSlot(slotgroup, slotnum);
 		var modid = slot.getModuleID();
-		
+
 		var el = document.getElementById('outfitting_fit_module_' + group_slot);
 		el.classList.toggle('notallowed', !slot.isModuleIDAllowed(modid));
 		el.classList.toggle('notenough', !slot.isEnough());
-		
+
 		var el = document.getElementById('outfitting_fit_name_' + group_slot);
 		if (group_slot === 'ship_hull') {
 			el.setAttribute('edsy-text', 'ship-'+modid);
@@ -7392,12 +7385,12 @@ if(false && current.dev) console.log("updateUIFitShip(): slot "+slotgroup+ "#"+s
 		}
 		if (slot.isModified())
 			el.prepend(createIcon('engineer'));
-		
+
 		var value = slot.getEffectiveAttrValue('mass') || 0;
 		var direction = getAttrModifierDirection('mass', slot.getEffectiveAttrModifier('mass'));
 		document.getElementById('outfitting_fit_mass_' + group_slot).innerHTML = (value ? formatAttrHTML('mass', value) : '');
 		document.getElementById('outfitting_fit_mass_' + group_slot).className = (direction > 0 ? 'modgood' : (direction < 0 ? 'modbad' : ''));
-		
+
 		document.getElementById('outfitting_fit_power_' + group_slot).className = 'priority' + slot.getPriority() + ' priority' + slot.getPriority() + ((slotgroup === 'hardpoint' || (slotgroup === 'utility' && !(eddb.module[modid] || EMPTY_OBJ).passive)) ? 'dep' : 'ret') + (slot.getPowerLock() ? ' powerlock' : '');
 		var value = slot.getEffectiveAttrValue('pwrdraw') || 0;
 		var direction = getAttrModifierDirection('pwrdraw', slot.getEffectiveAttrModifier('pwrdraw'));
@@ -7416,7 +7409,7 @@ if(false && current.dev) console.log("updateUIFitShip(): slot "+slotgroup+ "#"+s
 			document.getElementById('outfitting_fit_priority_' + group_slot).innerHTML = '';
 		}
 		document.getElementById('outfitting_fit_pwrdraw_' + group_slot).className = (direction > 0 ? 'modgood' : (direction < 0 ? 'modbad' : ''));
-		
+
 		var attrs = (group_slot === 'ship_hull') ? ['masslock','crew'] : ((eddb.mtype[(eddb.module[modid] || EMPTY_OBJ).mtype] || EMPTY_OBJ).keyattrs || EMPTY_ARR);
 		var hardpoint_attrs = {};
 		hardpoint_attrs[document.forms.fit.elements.hardpoint_attr1.value] = true;
@@ -7440,7 +7433,7 @@ if(false && current.dev) console.log("updateUIFitShip(): slot "+slotgroup+ "#"+s
 					}
 				}
 				break;
-				
+
 			case 'distdraw':
 				if (slotgroup === 'hardpoint') {
 					attr = 'eps';
@@ -7456,7 +7449,7 @@ if(false && current.dev) console.log("updateUIFitShip(): slot "+slotgroup+ "#"+s
 					}
 				}
 				break;
-				
+
 			case 'thmload':
 				if (slotgroup === 'hardpoint') {
 					attr = 'hps';
@@ -7472,7 +7465,7 @@ if(false && current.dev) console.log("updateUIFitShip(): slot "+slotgroup+ "#"+s
 					}
 				}
 				break;
-				
+
 			case 'maximumrng':
 				if (hardpoint_attrs['maximumrng']) {
 					var value = slot.getEffectiveAttrValue(attr);
@@ -7494,7 +7487,7 @@ if(false && current.dev) console.log("updateUIFitShip(): slot "+slotgroup+ "#"+s
 					attr = null;
 				}
 				break;
-				
+
 			case 'ammoclip':
 			case 'ammomax':
 				attr = null;
@@ -7517,7 +7510,7 @@ if(false && current.dev) console.log("updateUIFitShip(): slot "+slotgroup+ "#"+s
 					}
 				}
 				break;
-				
+
 			case 'kinres':
 			case 'thmres':
 			case 'expres':
@@ -7538,7 +7531,7 @@ if(false && current.dev) console.log("updateUIFitShip(): slot "+slotgroup+ "#"+s
 				}
 				attr = null;
 				break;
-				
+
 			case 'shieldrnfps':
 				var value = slot.getEffectiveAttrValue(attr) * slot.getEffectiveAttrValue('scbdur');
 				var value2 = slot.getBaseAttrValue(attr) * slot.getBaseAttrValue('scbdur');
@@ -7548,7 +7541,7 @@ if(false && current.dev) console.log("updateUIFitShip(): slot "+slotgroup+ "#"+s
 				}
 				attr = null;
 				break;
-				
+
 			case 'thmdrain':
 				var value = slot.getEffectiveAttrValue(attr) * slot.getEffectiveAttrValue('hsdur');
 				var value2 = slot.getBaseAttrValue(attr) * slot.getBaseAttrValue('hsdur');
@@ -7558,7 +7551,7 @@ if(false && current.dev) console.log("updateUIFitShip(): slot "+slotgroup+ "#"+s
 				}
 				attr = null;
 				break;
-				
+
 			case 'afmrepcap':
 			case 'lmprepcap':
 				var value = slot.getEffectiveAttrValue(attr) * slot.getEffectiveAttrValue('repairrtg');
@@ -7569,7 +7562,7 @@ if(false && current.dev) console.log("updateUIFitShip(): slot "+slotgroup+ "#"+s
 				}
 				attr = null;
 				break;
-				
+
 			case 'syscap':
 			case 'engcap':
 			case 'wepcap':
@@ -7602,7 +7595,7 @@ if(false && current.dev) console.log("updateUIFitShip(): slot "+slotgroup+ "#"+s
 				}
 				attr = null;
 				break;
-				
+
 			case 'syschg':
 			case 'engchg':
 			case 'wepchg':
@@ -7618,7 +7611,7 @@ if(false && current.dev) console.log("updateUIFitShip(): slot "+slotgroup+ "#"+s
 			}
 		}
 		document.getElementById('outfitting_fit_attrs_' + group_slot).innerHTML = attrhtml.join(' ');
-		
+
 		var el = document.getElementById('outfitting_fit_price_' + group_slot);
 		var value = slot.getCost();
 		var base = slot.getBaseCost();
@@ -7628,8 +7621,8 @@ if(false && current.dev) console.log("updateUIFitShip(): slot "+slotgroup+ "#"+s
 		el.classList.toggle('modbad', direction < 0);
 		updateTranslations(document.getElementById('outfitting_fit_slot_' + group_slot));
 	}; // updateUIFitSlot()
-	
-	
+
+
 	var setCurrentSlot = function(slotgroup, slotnum) {
 		current.group = slotgroup;
 		current.slot = slotnum;
@@ -7647,9 +7640,9 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		for (var mtype in cache.mtypeModules) {
 			document.getElementById('outfitting_modules_mtype_' + mtype).classList.toggle('reserved', !!(reserved && reserved[mtype]));
 		}
-		
+
 		var slot = current.fit.getSlot(slotgroup, slotnum);
-		
+
 		for (var m = 0;  m < cache.reservedmods.length;  m++) {
 			var modid = cache.reservedmods[m];
 			var notallowed = !slot.isModuleIDAllowed(modid);
@@ -7661,7 +7654,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 				el.classList.toggle('notallowed', !!notallowed);
 			}
 		}
-		
+
 		var modid = slot.getModuleID();
 		if (GROUPS.indexOf(slotgroup) >= 0) {
 			var modulehash = slot.getStoredHash();
@@ -7675,8 +7668,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIDetailsStoredModuleControls(true);
 		updateUIDetailsModule();
 	}; // setCurrentSlot()
-	
-	
+
+
 	var setCurrentFitSlotModule = function(slotgroup, slotnum, modid, namehash, storedhash) {
 		var slot = current.fit.getSlot(slotgroup, slotnum);
 		var module = slot.getModule();
@@ -7712,8 +7705,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIDetailsStoredModuleControls(true, namehash);
 		return true;
 	}; // setCurrentFitSlotModule()
-	
-	
+
+
 	var swapCurrentFitSlotModules = function(slotgroup1, slotnum1, slotgroup2, slotnum2) {
 		if (!current.fit.swapSlots(slotgroup1, slotnum1, slotgroup2, slotnum2))
 			return false;
@@ -7731,8 +7724,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		setCurrentSlot(slotgroup2, slotnum2);
 		return true;
 	}; // swapCurrentFitSlotModules()
-	
-	
+
+
 	var copyCurrentFitSlotModule = function(slotgroup1, slotnum1, slotgroup2, slotnum2) {
 		var module1 = current.fit.getSlot(slotgroup2, slotnum2).getModule();
 		var limitOld = (module1 || EMPTY_OBJ).limit;
@@ -7757,8 +7750,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		setCurrentSlot(slotgroup2, slotnum2);
 		return true;
 	}; // copyCurrentFitSlotModule()
-	
-	
+
+
 	var changeCurrentFitCrewDist = function(to, delta) {
 		if (!current.fit.changeCrewDist(to, delta))
 			return false;
@@ -7767,8 +7760,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIStats();
 		return true;
 	}; // changeCurrentFitCrewDist()
-	
-	
+
+
 	var resetCurrentFitPowerDist = function() {
 		var v = TOTAL_POWER_DIST / 3;
 		if (!current.fit.setPowerDist(v,v,v))
@@ -7778,8 +7771,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIStats();
 		return true;
 	}; // resetCurrentFitPowerDist()
-	
-	
+
+
 	var changeCurrentFitPowerDist = function(to, delta) {
 		if (!current.fit.changePowerDist(to, delta))
 			return false;
@@ -7788,8 +7781,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIStats();
 		return true;
 	}; // changeCurrentFitPowerDist()
-	
-	
+
+
 	var setCurrentFitSlotPowered = function(slotgroup, slotnum, powered) {
 		if (!current.fit.getSlot(slotgroup, slotnum).setPowered(powered))
 			return false;
@@ -7798,8 +7791,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIStats();
 		return true;
 	}; // setCurrentFitSlotPowered()
-	
-	
+
+
 	var changeCurrentFitSlotPriority = function(slotgroup, slotnum, delta) {
 		if (!current.fit.getSlot(slotgroup, slotnum).changePriority(delta))
 			return false;
@@ -7808,13 +7801,13 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIStats();
 		return true;
 	}; // changeCurrentFitSlotPriority()
-	
-	
+
+
 	/*
 	* DETAILS UI
 	*/
-	
-	
+
+
 	var initUIDetails = function() {
 		var container = document.getElementById('details_cost_discounts');
 		while (container.lastElementChild)
@@ -7831,33 +7824,33 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			}
 			container.appendChild(label);
 		}
-		
+
 		var table = document.createElement('table');
 		table.id = 'outfitting_details_table';
-		
+
 		var tbody = document.createElement('tbody');
 		tbody.id = 'outfitting_details_attrs';
 		addUIDetailsAttrRow(tbody);
 		table.appendChild(tbody);
-		
+
 		document.getElementById('outfitting_details_module').appendChild(table);
 	}; // initUIDetails()
-	
-	
+
+
 	var addUIDetailsAttrRow = function(tbody) {
 		tbody = tbody || document.getElementById('outfitting_details_attrs');
 		if (!tbody)
 			return false;
-		
+
 		var r = tbody.rows.length;
 		var tr = document.createElement('tr');
-		
+
 		var td = document.createElement('td');
 		var abbr = document.createElement('abbr');
 		abbr.id = 'outfitting_details_abbr_' + r;
 		td.appendChild(abbr);
 		tr.appendChild(td);
-		
+
 		var td = document.createElement('td');
 		var div = document.createElement('div');
 		div.className = 'outfitting_details_input';
@@ -7868,33 +7861,33 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		div.appendChild(input);
 		td.appendChild(div);
 		tr.appendChild(td);
-		
+
 		var td = document.createElement('td');
 		var span = document.createElement('span');
 		span.id = 'outfitting_details_unit_' + r;
 		span.className = 'outfitting_details_unit';
 		td.appendChild(span);
 		tr.appendChild(td);
-		
+
 		var td = document.createElement('td');
 		var span = document.createElement('span');
 		span.id = 'outfitting_details_mod_' + r;
 		td.appendChild(span);
 		tr.appendChild(td);
-		
+
 		tbody.appendChild(tr);
 		return true;
 	}; // addUIDetailsAttrRow()
-	
-	
+
+
 	var readStoredModules = function() {
 		current.stored.moduleNamehashStored = { 0:{} };
 		current.stored.moduleStoreds = { 0:[] };
 		current.stored.modulehashStored = {};
-		
+
 		if (!cache.feature.storage)
 			return false;
-		
+
 		// load regular stored modules
 		var item = 'edsy_modules' + (current.beta ? '_beta' : '');
 		var data = (window.localStorage.getItem(item) || '').split('/');
@@ -7915,7 +7908,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 				current.stored.modulehashStored[stored.modulehash] = stored;
 			}
 		}
-		
+
 		// populate builtin stored modules (which are specially named with leading spaces)
 		if (current.option.builtin !== 'none') {
 			for (var bmodid in BUILTIN_STORED_MODULES) {
@@ -7936,7 +7929,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 				}
 			}
 		}
-		
+
 		for (var namehash in current.stored.moduleNamehashStored[0]) {
 			var stored = current.stored.moduleNamehashStored[0][namehash];
 			if (!current.stored.moduleNamehashStored[stored.modid])
@@ -7947,15 +7940,15 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			current.stored.moduleStoreds[modid] = Object.values(current.stored.moduleNamehashStored[modid]);
 			current.stored.moduleStoreds[modid].sort(sortStoreds);
 		}
-		
+
 		return true;
 	}; // readStoredModules()
-	
-	
+
+
 	var writeStoredModules = function() {
 		if (!cache.feature.storage)
 			return false;
-		
+
 		var data = [];
 		for (var namehash in current.stored.moduleNamehashStored[0]) {
 			// skip builtins
@@ -7966,11 +7959,11 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		window.localStorage.setItem(item, data.join('/'));
 		return true;
 	}; // writeStoredModules()
-	
-	
+
+
 	var updateUIDetailsStoredModules = function() {
 		var select = document.forms.details.elements.outfitting_details_stored;
-		
+
 		if (current.outfitting_focus === 'module') {
 			var tokens = document.forms.modules.elements.module.value.split('.');
 			var namehash = tokens[1];
@@ -7997,11 +7990,11 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		} else {
 			return false;
 		}
-		
+
 		return true;
 	}; // updateUIDetailsStoredModules()
-	
-	
+
+
 	var updateUIDetailsStoredModuleControls = function(setmodule, namehash) {
 		var select = document.forms.details.elements.outfitting_details_stored;
 		var slot = getUIOutfittingSlot();
@@ -8027,7 +8020,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		namehash = select.value || '';
 		var storedhash = (namehash ? current.stored.moduleNamehashStored[0][namehash].modulehash : stockhash);
 		var builtin = hashDecodeS(namehash).startsWith(" ");
-		
+
 		select.disabled = (current.outfitting_focus === 'module' || current.group === 'ship' || !modid);
 		document.getElementById('outfitting_details_stored_reload').disabled = (!namehash || modulehash === storedhash);
 		document.getElementById('outfitting_details_stored_save').disabled = (!namehash || modulehash === storedhash || builtin)
@@ -8036,8 +8029,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		document.getElementById('outfitting_details_stored_delete').disabled = (!namehash || builtin);
 		return true;
 	}; // updateUIDetailsStoredModuleControls()
-	
-	
+
+
 	var saveCurrentStoredModule = function(saveas) {
 		var slot = getUIOutfittingSlot();
 		if (!slot)
@@ -8089,8 +8082,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIDetailsStoredModuleControls(true, namehash);
 		return true;
 	}; // saveCurrentStoredModule()
-	
-	
+
+
 	var renameStoredModule = function(namehash) {
 		var stored = current.stored.moduleNamehashStored[0][namehash];
 		if (!namehash || !stored || stored.name.startsWith(" "))
@@ -8129,8 +8122,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			updateUIDetailsStoredModules();
 		}
 	}; // renameStoredModule()
-	
-	
+
+
 	var deleteStoredModule = function(namehash) {
 		var stored = current.stored.moduleNamehashStored[0][namehash];
 		if (!namehash || !stored || stored.name.startsWith(" "))
@@ -8156,8 +8149,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			updateUIDetailsStoredModules();
 		}
 	}; // deleteStoredModule()
-	
-	
+
+
 	var setUIDetailsNameHash = function(namehash) {
 		if (current.outfitting_focus === 'slot') {
 			if (namehash)
@@ -8165,7 +8158,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			var modid = current.fit.getSlot(current.group, current.slot).getModuleID();
 			return setCurrentFitSlotModule(current.group, current.slot, modid);
 		}
-		
+
 		var slot = current.pickerSlot;
 		var ok;
 		if (namehash) {
@@ -8183,15 +8176,15 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIDetailsModule();
 		return true;
 	}; // setUIDetailsNameHash()
-	
-	
+
+
 	var updateUIDetailsModule = function() {
 		var slot = getUIOutfittingSlot();
 		if (!slot)
 			return false;
 		var modid = slot.getModuleID();
 		var module = slot.getModule();
-		
+
 		// set displayed label
 		var el = document.getElementById('outfitting_details_label');
 		if (module) {
@@ -8224,15 +8217,15 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 				')'
 			);
 		}
-		
+
 		// show or hide sections
 		document.getElementById('details_cost').style.display = (module ? 'block' : 'none');
 		document.getElementById('details_engineering').style.display = ((module && slot.isModifiable()) ? 'block' : 'none');
 		document.getElementById('outfitting_details_table').style.display = (module ? '' : 'none');
-		
+
 		if (!module)
 			return true;
-		
+
 		// rebuild blueprint selector
 		var select = document.forms.details.elements.blueprint;
 		var idlist = cache.mtypeBlueprints[module.mtype];
@@ -8250,7 +8243,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		}
 		while (select.options.length > o)
 			select.options.remove(select.options.length - 1);
-		
+
 		// rebuild experimental selector
 		var select = document.forms.details.elements.expeffect;
 		var idlist = cache.mtypeExpeffects[module.mtype];
@@ -8268,7 +8261,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		}
 		while (select.options.length > o)
 			select.options.remove(select.options.length - 1);
-		
+
 		// rebuild attribute rows
 		var attrs = getModuleAttrs(module);
 		var tbody = document.getElementById('outfitting_details_attrs');
@@ -8278,35 +8271,35 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		for (var r = 0;  r < attrs.length;  r++) {
 			var attr = attrs[r];
 			var attribute = cache.attribute[attr];
-			
+
 			var abbr = document.getElementById('outfitting_details_abbr_' + r);
 			abbr.setAttribute('edsy-text', 'attr-'+attr);
 			abbr.innerHTML = attribute.name;
 			abbr.setAttribute('edsy-title', 'attr-'+attr+'-desc');
 			abbr.title = (attribute.desc || '');
-			
+
 			var input = document.getElementById('outfitting_details_input_' + r);
 			input.name = attr;
-			
+
 			var unit = document.getElementById('outfitting_details_unit_' + r);
 			unit.setAttribute('edsy-text', (UNIT_ABBR_TRANSLATIONS[attribute.unit || ''] || ''));
 			unit.innerHTML = (attribute.unit || '');
-			
+
 			tbody.rows[r].style.display = '';
 		}
 		for (var r = attrs.length;  r < tbody.rows.length;  r++) {
 			document.getElementById('outfitting_details_input_' + r).name = '_disabled_' + r;
 			tbody.rows[r].style.display = 'none';
 		}
-		
+
 		// set displayed cost and modification data
 		updateUIDetailsCost();
 		updateUIDetailsModifications();
 		updateTranslations(document.getElementById('outfitting_details_module'));
 		return true;
 	}; // updateUIDetailsModule()
-	
-	
+
+
 	var updateUIDetailsCost = function() {
 		var slot = getUIOutfittingSlot();
 		if (!slot)
@@ -8334,8 +8327,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		}
 		return true;
 	}; // updateUIDetailsCost()
-	
-	
+
+
 	var setUIDetailsCost = function(cost) {
 		var slot = getUIOutfittingSlot();
 		if (!slot)
@@ -8351,8 +8344,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIDetailsCost();
 		return true;
 	}; // setUIDetailsCost()
-	
-	
+
+
 	var setUIDetailsDiscounts = function(discounts) {
 		var slot = getUIOutfittingSlot();
 		if (!slot)
@@ -8368,8 +8361,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIDetailsCost();
 		return true;
 	}; // setUIDetailsDiscounts()
-	
-	
+
+
 	var updateUIDetailsModifications = function() {
 		var slot = getUIOutfittingSlot();
 		if (!slot)
@@ -8382,9 +8375,9 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		var bpgrade = slot.getBlueprintGrade();
 		var bproll = slot.getBlueprintRoll();
 		var expid = slot.getExpeffectID();
-		
+
 		document.forms.details.elements.pre_engineered.checked = !!preeng;
-		
+
 		var select = document.forms.details.elements.blueprint;
 		select.disabled = (preeng || !((modifiable && cache.mtypeBlueprints[mtypeid]) || bpid));
 		if (cache.mtypeBlueprints[mtypeid]) {
@@ -8392,7 +8385,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		} else {
 			select.selectedIndex = -1;
 		}
-		
+
 		var select = document.forms.details.elements.expeffect;
 		select.disabled = !((modifiable && cache.mtypeExpeffects[mtypeid] && (bpid || current.option.experimental)) || expid);
 		if (cache.mtypeExpeffects[mtypeid]) {
@@ -8403,7 +8396,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		var special = (eddb.expeffect[expid] || EMPTY_OBJ).special;
 		document.getElementById('details_special').setAttribute('edsy-text', (special ? ('expeffect-'+expid+'-special') : ''));
 		document.getElementById('details_special').innerHTML = special || '';
-		
+
 		var maxgrade = ((bpid && !preeng) ? eddb.blueprint[bpid].maxgrade : 0);
 		for (var g = 1;  g <= MAX_BLUEPRINT_GRADE;  g++) {
 			document.getElementById('blueprint_grade_' + g).disabled = (g > maxgrade);
@@ -8415,9 +8408,9 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			if (icon)
 				icon.checked = false;
 		}
-		
+
 		updateUIDetailsBlueprintRoll();
-		
+
 		var module = slot.getModule();
 		if (module) {
 			var input;
@@ -8438,8 +8431,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateTranslations(document.getElementById('outfitting_details_module'));
 		return true;
 	}; // updateUIDetailsModifications()
-	
-	
+
+
 	var updateUIDetailsBlueprintRoll = function(bproll) {
 		var slot = getUIOutfittingSlot();
 		if (!slot)
@@ -8448,7 +8441,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		if (bproll === undefined)
 			bproll = (bpid ? slot.getBlueprintRoll() : 0);
 		var preeng = slot.getPreEngineered();
-		
+
 		var className, disabled, value;
 		if (!bpid || preeng) {
 			className = 'disabled';
@@ -8476,8 +8469,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		document.forms.details.elements.blueprint_roll_preset2.disabled = disabled;
 		document.forms.details.elements.blueprint_roll_preset3.disabled = disabled;
 	}; // updateUIDetailsBlueprintRoll()
-	
-	
+
+
 	var setUIDetailsPreEngineered = function(preeng) {
 		var slot = getUIOutfittingSlot();
 		if (!slot)
@@ -8493,8 +8486,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIDetailsModifications();
 		return true;
 	}; // setUIDetailsPreEngineered()
-	
-	
+
+
 	var setUIDetailsBlueprintID = function(bpid) {
 		var slot = getUIOutfittingSlot();
 		if (!slot)
@@ -8516,8 +8509,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIDetailsModifications();
 		return true;
 	}; // setUIDetailsBlueprintID()
-	
-	
+
+
 	var setUIDetailsBlueprintGrade = function(bpgrade) {
 		var slot = getUIOutfittingSlot();
 		if (!slot)
@@ -8533,8 +8526,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIDetailsModifications();
 		return true;
 	}; // setUIDetailsBlueprintGrade()
-	
-	
+
+
 	var setUIDetailsBlueprintRoll = function(bproll) {
 		var slot = getUIOutfittingSlot();
 		if (!slot)
@@ -8550,8 +8543,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIDetailsModifications();
 		return true;
 	}; // setUIDetailsBlueprintRoll()
-	
-	
+
+
 	var setUIDetailsExpeffect = function(expid) {
 		var slot = getUIOutfittingSlot();
 		if (!slot)
@@ -8567,8 +8560,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIDetailsModifications();
 		return true;
 	}; // setUIDetailsExpeffect()
-	
-	
+
+
 	var setUIDetailsAttrText = function(attr, text) {
 		var slot = getUIOutfittingSlot();
 		if (!slot)
@@ -8601,27 +8594,27 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIDetailsModifications();
 		return true;
 	}; // setUIDetailsAttrText()
-	
-	
+
+
 	/*
 	* STATS UI
 	*/
-	
-	
+
+
 	var setStatsCurFuel = function(value) {
 		value = min(max(value, 0), current.fit.getStat('fuelcap'));
 		document.forms.stats.elements.stats_cur_fuel.value = formatNumText(value, (value % 1) ? 1 : 0);
 		updateUIStats();
 	}; // setStatsCurFuel()
-	
-	
+
+
 	var setStatsCurCargo = function(value) {
 		value = min(max((value + 0.5) | 0, 0), current.fit.getStat('cargocap'));
 		document.forms.stats.elements.stats_cur_cargo.value = formatNumText(value, 0);
 		updateUIStats();
 	}; // setStatsCurCargo()
-	
-	
+
+
 	var updateUIStatsPanels = function(enabledPanel) {
 		var space = document.getElementById('outfitting_stats_wrapper').clientWidth * 0.95;
 		var next = 0;
@@ -8652,22 +8645,22 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			}
 		}
 	}; // updateUIStatsPanels()
-	
-	
+
+
 	var updateUIStats = function() {
 		// mark undersized fitted power plant
 		var pwrdraw_ret = current.fit.getStat('pwrdraw_ret');
 		var pwrbst = current.fit.getStat('pwrbst') / 100.0;
 		var slot = current.fit.getSlot('component', CORE_ABBR_SLOT.PP);
 		document.getElementById('outfitting_fit_module_component_' + CORE_ABBR_SLOT.PP).classList.toggle('notenough', (slot.getEffectiveAttrValue('pwrcap') * (1 + pwrbst)) < pwrdraw_ret[0]);
-		
+
 		// mark undersized fitted thruster
 		var massBase = current.fit.getStat('mass') + current.fit.getStat('fuelcap') + current.fit.getStat('cargocap');
 		var slot = current.fit.getSlot('component', CORE_ABBR_SLOT.TH);
 		document.getElementById('outfitting_fit_module_component_' + CORE_ABBR_SLOT.TH).classList.toggle('notenough', slot.getEffectiveAttrValue('engmaxmass') < massBase);
 		document.getElementById('outfitting_stats_max_mass').classList.toggle('error', slot.getEffectiveAttrValue('engmaxmass') < massBase);
 		massBase -= slot.getEffectiveAttrValue('mass');
-		
+
 		// mark undersized power plant and thruster options
 		for (var mtype in { cpp:1, ct:1 }) {
 			for (var m = 0;  m < cache.mtypeModules[mtype].length;  m++) {
@@ -8686,7 +8679,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 					case 'ct':
 						notenough = (current.tempSlot.getEffectiveAttrValue('engmaxmass') < (massBase + current.tempSlot.getEffectiveAttrValue('mass')));
 						break;
-						
+
 					case 'cpp':
 						notenough = ((current.tempSlot.getEffectiveAttrValue('pwrcap') * (1 + pwrbst)) < pwrdraw_ret[0]);
 						break;
@@ -8695,7 +8688,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 				}
 			}
 		}
-		
+
 		updateUIStatsTotals();
 		updateUIStatsPower();
 		updateUIStatsNavFSD();
@@ -8705,12 +8698,12 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIStatsArm();
 		updateUIStatsWpn();
 		current.fit.clearPrevStats();
-		
+
 		updateUIFitHash();
 		updateTranslations(document.getElementById('outfitting_stats_container'));
 	}; // updateUIStats()
-	
-	
+
+
 	var updateUIStatsTotals = function() {
 		// get primary stats
 		var rebuy = 1 - (parseFloat(current.option.insurance) / 10000.0);
@@ -8722,7 +8715,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		var cargocap = current.fit.getStat('cargocap');
 		var cargocapPrev = current.fit.getPrevStat('cargocap');
 		var cabincap = current.fit.getStat('cabincap');
-		
+
 		// limit current fuel and cargo to maximums and calculate derived stats
 		var curTtlFuel = min(max(parseNumText(document.forms.stats.elements.stats_cur_fuel.value) || 0, 0), fuelcap);
 		if (fuelcapPrev && fuelcapPrev != fuelcap) {
@@ -8737,14 +8730,14 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		// in-game, fuelres is included when displaying current mass but not max mass
 		var curTtlMass = mass + curTtlFuel + fuelres + curTtlCrgo;
 		var maxTtlMass = mass + fuelcap              + cargocap;
-		
+
 		// update displays
 		document.getElementById('outfitting_stats_cur_mass').innerHTML = formatAttrHTML('mass', curTtlMass, 1);
 		document.getElementById('outfitting_stats_max_mass').innerHTML = formatAttrHTML('mass', maxTtlMass, 1);
 		document.getElementById('outfitting_stats_max_fuel').innerHTML = formatAttrHTML('fuelcap', fuelcap, 0);
 		document.getElementById('outfitting_stats_max_cargo').innerHTML = formatAttrHTML('cargocap', cargocap, 0);
 		document.getElementById('outfitting_stats_max_psgr').innerHTML = formatAttrHTML('cabincap', cabincap, 0);
-		
+
 		// TODO: prices in a separate function
 		var htmlNA = '<small class="semantic" edsy-text="n-a">N/A</small>';
 		var cost_vehicle = current.fit.getStat('cost_vehicle');
@@ -8758,15 +8751,15 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		document.getElementById('outfitting_stats_rebuy').innerHTML = formatPriceHTML(cost_rebuy, cost_rebuy > 999999);
 		document.getElementById('outfitting_stats_price').innerHTML = formatPriceHTML(cost, cost > 999999);
 	}; // updateUIStatsTotals()
-	
-	
+
+
 	var updateUIStatsPower = function() {
 		// get primary stats
 		var pwrcap = current.fit.getStat('pwrcap');
 		var pwrcap_pwrbst = pwrcap * (1 + (current.fit.getStat('pwrbst') / 100.0));
 		var pwrdraw_ret = current.fit.getStat('pwrdraw_ret');
 		var pwrdraw_dep = current.fit.getStat('pwrdraw_dep');
-		
+
 		// update displays
 		// pwrbst does not increase the displayed MW output of the plant, so %usage remains the same
 		// instead, %usage is allowed to go to (e.g.) 104% before overloading
@@ -8783,7 +8776,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			abbr.style.display = (width > 0.0) ? '' : 'none';
 			abbr.style.width = width.toFixed(3) + '%';
 			abbr.className = ((pwrdraw_ret_ttl > pwrcap_pwrbst) ? 'err' : ((pwrdraw_ret_ttl <= MAX_MALFUNCTION_PWRCAP * pwrcap_pwrbst) ? 'mfn' : ((pwrdraw_ret_ttl <= MAX_DAMAGED_PWRCAP * pwrcap_pwrbst) ? 'dmg' : '')));
-			
+
 			pwrdraw_dep_ttl += pwrdraw_dep[p];
 			var width = (90.0 * pwrdraw_dep[p] / pwrcap);
 			var abbr = document.getElementById('outfitting_stats_power_dep_' + p);
@@ -8793,7 +8786,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			abbr.style.display = (width > 0.0) ? '' : 'none';
 			abbr.style.width = width.toFixed(3) + '%';
 			abbr.className = ((pwrdraw_dep_ttl > pwrcap_pwrbst) ? 'err' : ((pwrdraw_dep_ttl <= MAX_MALFUNCTION_PWRCAP * pwrcap_pwrbst) ? 'mfn' : ((pwrdraw_dep_ttl <= MAX_DAMAGED_PWRCAP * pwrcap_pwrbst) ? 'dmg' : '')));
-			
+
 			if (pwrdraw_ret_ttl <= MAX_MALFUNCTION_PWRCAP * pwrcap_pwrbst) {
 				classes += ' priority' + p + 'mfnret';
 			} else if (pwrdraw_ret_ttl <= MAX_DAMAGED_PWRCAP * pwrcap_pwrbst) {
@@ -8801,7 +8794,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			} else if (pwrdraw_ret_ttl > pwrcap_pwrbst) {
 				classes += ' priority' + p + 'errret';
 			}
-			
+
 			if (pwrdraw_dep_ttl <= MAX_MALFUNCTION_PWRCAP * pwrcap_pwrbst) {
 				classes += ' priority' + p + 'mfndep';
 			} else if (pwrdraw_dep_ttl <= MAX_DAMAGED_PWRCAP * pwrcap_pwrbst) {
@@ -8832,8 +8825,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		abbr.innerHTML = formatPctHTML(pwrdraw_dep[0] / pwrcap, 1);
 		document.getElementById('outfitting_stats_power_dep').replaceChildren(abbr);
 	}; // updateUIStatsPower()
-	
-	
+
+
 	var updateUIStatsNavFSD = function() {
 		// get primary stats
 		var fuelres = eddb.ship[current.fit.getShipID()].fuelreserve;
@@ -8847,7 +8840,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		var fsdfuel = slot.getEffectiveAttrValue('maxfuel');
 		var fsdmul = slot.getEffectiveAttrValue('fuelmul');
 		var fsdpower = slot.getEffectiveAttrValue('fuelpower');
-		
+
 		// get or compute derived stats
 		var curTtlFuel = min(max(parseNumText(document.forms.stats.elements.stats_cur_fuel.value) || 0, 0), fuelcap);
 		var curTtlCrgo = min(max(parseNumText(document.forms.stats.elements.stats_cur_cargo.value) || 0, 0), cargocap);
@@ -8860,7 +8853,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		var unlNavRng = current.fit.getStat('_range_unladen');
 		var scpNavJmp = min(fuelcap, fsdfuel) / scooprate;
 		var scpNavRng = fuelcap / scooprate;
-		
+
 		// update displays
 		var htmlNA = '<small class="semantic" edsy-text="n-a">N/A</small>';
 		var htmlLY = '<small edsy-text"unit-lightyears-abbr">LY</small';
@@ -8875,8 +8868,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		document.getElementById('outfitting_stats_scoop_range').innerHTML = (scooprate ? formatTimeHTML(scpNavRng, true) : htmlNA);
 		document.getElementById('outfitting_stats_scoop_speed').innerHTML = (scooprate ? formatAttrHTML('scooprate', scooprate) : htmlNA);
 	}; // updateUIStatsNavFSD()
-	
-	
+
+
 	var updateUIStatsNavThr = function() {
 		// get primary stats
 		var fuelres = eddb.ship[current.fit.getShipID()].fuelreserve;
@@ -8884,7 +8877,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		var fuelcap = current.fit.getStat('fuelcap');
 		var cargocap = current.fit.getStat('cargocap');
 		var powerdist_eng = current.fit.getEffectivePowerDist('eng');
-		
+
 		var slot = current.fit.getSlot('ship', 'hull');
 		var minthrust = slot.getEffectiveAttrValue('minthrust') / 100.0;
 		var boostcost = slot.getEffectiveAttrValue('boostcost');
@@ -8897,11 +8890,11 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		var minpitch = slot.getEffectiveAttrValue('minpitch');
 		var minroll = slot.getEffectiveAttrValue('minroll');
 		var minyaw = slot.getEffectiveAttrValue('minyaw');
-		
+
 		var slot = current.fit.getSlot('component', CORE_ABBR_SLOT.PD);
 		var engcap = slot.getEffectiveAttrValue('engcap');
 		var engchg = slot.getEffectiveAttrValue('engchg');
-		
+
 		var slot = current.fit.getSlot('component', CORE_ABBR_SLOT.TH);
 		var minmass = slot.getEffectiveAttrValue('engminmass');
 		var optmass = slot.getEffectiveAttrValue('engoptmass');
@@ -8912,7 +8905,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		var minmulrot = slot.getEffectiveAttrValue('minmulrot');
 		var optmulrot = slot.getEffectiveAttrValue('optmulrot');
 		var maxmulrot = slot.getEffectiveAttrValue('maxmulrot');
-		
+
 		// compute derived stats
 		var curTtlFuel = min(max(parseNumText(document.forms.stats.elements.stats_cur_fuel.value) || 0, 0), fuelcap);
 		var curTtlCrgo = min(max(parseNumText(document.forms.stats.elements.stats_cur_cargo.value) || 0, 0), cargocap);
@@ -8926,7 +8919,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		var maxNavFrq = (boostcost / engchg);
 		var curHndRotMul = getMassCurveMultiplier(mass + curTtlFuel + fuelres + curTtlCrgo, minmass, optmass, maxmass, minmulrot, optmulrot, maxmulrot) / 100;
 		var maxHndRotMul = getMassCurveMultiplier(mass                                    , minmass, optmass, maxmass, minmulrot, optmulrot, maxmulrot) / 100;
-		
+
 		// update nav displays
 		var htmlErrorTH = '<abbr class="error" edsy-title="ui-stats-nav-error-thruster" title="Thruster has insufficient maximum mass" edsy-text="ui-stats-nav-error-abbr">ERR</abbr>';
 		var htmlErrorPD = '<abbr class="error" edsy-title="ui-stats-nav-error-distributor" title="Power distributor has insufficient ENG capacitor to boost" edsy-text="ui-stats-nav-error-abbr">ERR</abbr>';
@@ -8946,7 +8939,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		document.getElementById('outfitting_stats_max_boost'    ).innerHTML = (isNaN(maxNavSpdMul) ? htmlErrorTH : (!engcapEnough ? htmlErrorPD : formatAttrHTML('bstspd', maxNavSpdMul * bstspd)));
 		document.getElementById('outfitting_stats_cur_boostfreq').innerHTML = (isNaN(curNavSpdMul) ? htmlErrorTH : (!engcapEnough ? htmlErrorPD : htmlCurNavFrq));
 		document.getElementById('outfitting_stats_max_boostfreq').innerHTML = (isNaN(maxNavSpdMul) ? htmlErrorTH : (!engcapEnough ? htmlErrorPD : htmlMaxNavFrq));
-		
+
 		// update hnd displays
 		document.getElementById('outfitting_stats_cur_pitch'    ).innerHTML = (isNaN(curHndRotMul) ? htmlErrorTH : formatAttrHTML('pitch', curHndRotMul * (pitch * powerdistEngMul + minpitch * (1 - powerdistEngMul))));
 		document.getElementById('outfitting_stats_cur_roll'     ).innerHTML = (isNaN(curHndRotMul) ? htmlErrorTH : formatAttrHTML('roll' , curHndRotMul * (roll  * powerdistEngMul + minroll  * (1 - powerdistEngMul))));
@@ -8961,8 +8954,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		document.getElementById('outfitting_stats_max_rolltime' ).innerHTML = (isNaN(maxHndRotMul) ? htmlErrorTH : formatTimeHTML(180.0 / (curHndRotMul * roll), true));
 		document.getElementById('outfitting_stats_max_yawtime'  ).innerHTML = (isNaN(maxHndRotMul) ? htmlErrorTH : formatTimeHTML(180.0 / (curHndRotMul * yaw), true));
 	}; // updateUIStatsNavThr()
-	
-	
+
+
 	var updateUIStatsThm = function() {
 		// get primary stats
 		var pwrcap = current.fit.getStat('pwrcap');
@@ -8976,14 +8969,14 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		var thmload_iscb = current.fit.getStat('thmload_iscb');
 		var spinup_iscb = current.fit.getStat('spinup_iscb');
 		var wepchg_sustain_cur = current.fit.getStat('wepchg_sustain_cur');
-		
+
 		var slot = current.fit.getSlot('ship', 'hull');
 		var heatcap = slot.getEffectiveAttrValue('heatcap');
 		var heatdismax = slot.getEffectiveAttrValue('heatdismax');
-		
+
 		var slot = current.fit.getSlot('component', CORE_ABBR_SLOT.PP);
 		var heateff = slot.getEffectiveAttrValue('heateff');
-		
+
 		// compute derived stats
 		// pwrbst does not increase the displayed MW output of the plant, so %usage remains the same
 		// instead, %usage is allowed to go to (e.g.) 104% before overloading
@@ -8999,7 +8992,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		thmload_pwrdraw_dep *= heateff;
 		thmload_hardpoint_wepfull *= wepchg_sustain_cur;
 		thmload_hardpoint_wepempty *= wepchg_sustain_cur;
-		
+
 		// update displays
 		updateUIStatsThmLevel('outfitting_stats_idl_heat'     , thmload_pwrdraw_ret       , 0                               , heatdismax, heatcap);
 		updateUIStatsThmLevel('outfitting_stats_thr_heat'     , thmload_ct                , thmload_pwrdraw_ret             , heatdismax, heatcap);
@@ -9008,8 +9001,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIStatsThmLevel('outfitting_stats_wpnempty_heat', thmload_hardpoint_wepempty, thmload_pwrdraw_dep + thmload_ct, heatdismax, heatcap);
 		updateUIStatsThmLevel('outfitting_stats_scb_heat'     , thmload_iscb              , thmload_pwrdraw_dep + thmload_ct, heatdismax, heatcap, spinup_iscb);
 	}; // updateUIStatsThm()
-	
-	
+
+
 	var updateUIStatsThmLevel = function(elementid, thmload, thmloadBase, heatdismax, heatcap, duration) {
 		var el = document.getElementById(elementid);
 		el.className = '';
@@ -9047,8 +9040,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			el.innerHTML = '<small class="semantic" edsy-text="n-a">N/A</small>';
 		}
 	}; // updateUIStatsThmLevel()
-	
-	
+
+
 	var updateUIStatsShd = function() {
 		// get primary stats
 		var shieldrnfps = current.fit.getStat('shieldrnfps');
@@ -9067,7 +9060,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		var bgenrate = slot ? slot.getEffectiveAttrValue('bgenrate') : 0;
 		var genrate = slot ? slot.getEffectiveAttrValue('genrate') : 0;
 		var distdraw_mj = slot ? slot.getEffectiveAttrValue('genpwr') : 0;
-		
+
 		// get or compute derived stats
 		var hasSG = !!slot;
 		var isEnough = (maxmass >= mass_hull);
@@ -9086,7 +9079,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		//var genSlowTime = (rawShdStr / 2 - genrate * genFastTime) / min(genrate, (syschg * powerdistSysMul) / distdraw_mj);
 		var genFastTime = 0;
 		var genSlowTime = (rawShdStr / 2) / min(genrate, (syschg * powerdistSysMul) / distdraw_mj);
-		
+
 		// update displays
 		var htmlNA = '<small class="semantic" edsy-text="n-a">N/A</small>';
 		var htmlErrorSG = '<abbr class="error" edsy-title="ui-stats-shield-error-generator" title="Shield Generator has insufficient maximum mass" edsy-text="ui-stats-shield-error-abbr">ERR</abbr>';
@@ -9099,11 +9092,11 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		document.getElementById('outfitting_stats_kin_shield_strength').innerHTML = (!hasSG ? htmlNA : (!isEnough ? htmlErrorSG : formatAttrHTML('shields', rawShdStr / (1 - absShdRes) / (1 - kinShdRes), 1)));
 		document.getElementById('outfitting_stats_thm_shield_strength').innerHTML = (!hasSG ? htmlNA : (!isEnough ? htmlErrorSG : formatAttrHTML('shields', rawShdStr / (1 - absShdRes) / (1 - thmShdRes), 1)));
 		document.getElementById('outfitting_stats_exp_shield_strength').innerHTML = (!hasSG ? htmlNA : (!isEnough ? htmlErrorSG : formatAttrHTML('shields', rawShdStr / (1 - absShdRes) / (1 - expShdRes), 1)));
-	//	document.getElementById('outfitting_stats_raw_shield_regen').innerHTML = (!hasSG ? htmlNA : (!isEnough ? htmlErrorSG : formatAttrHTML('genrate', genrate)));
-	//	document.getElementById('outfitting_stats_abs_shield_regen').innerHTML = (!hasSG ? htmlNA : (!isEnough ? htmlErrorSG : formatAttrHTML('genrate', genrate / (1 - absShdRes))));
-	//	document.getElementById('outfitting_stats_kin_shield_regen').innerHTML = (!hasSG ? htmlNA : (!isEnough ? htmlErrorSG : formatAttrHTML('genrate', genrate / (1 - absShdRes) / (1 - kinShdRes))));
-	//	document.getElementById('outfitting_stats_thm_shield_regen').innerHTML = (!hasSG ? htmlNA : (!isEnough ? htmlErrorSG : formatAttrHTML('genrate', genrate / (1 - absShdRes) / (1 - thmShdRes))));
-	//	document.getElementById('outfitting_stats_exp_shield_regen').innerHTML = (!hasSG ? htmlNA : (!isEnough ? htmlErrorSG : formatAttrHTML('genrate', genrate / (1 - absShdRes) / (1 - expShdRes))));
+	//  document.getElementById('outfitting_stats_raw_shield_regen').innerHTML = (!hasSG ? htmlNA : (!isEnough ? htmlErrorSG : formatAttrHTML('genrate', genrate)));
+	//  document.getElementById('outfitting_stats_abs_shield_regen').innerHTML = (!hasSG ? htmlNA : (!isEnough ? htmlErrorSG : formatAttrHTML('genrate', genrate / (1 - absShdRes))));
+	//  document.getElementById('outfitting_stats_kin_shield_regen').innerHTML = (!hasSG ? htmlNA : (!isEnough ? htmlErrorSG : formatAttrHTML('genrate', genrate / (1 - absShdRes) / (1 - kinShdRes))));
+	//  document.getElementById('outfitting_stats_thm_shield_regen').innerHTML = (!hasSG ? htmlNA : (!isEnough ? htmlErrorSG : formatAttrHTML('genrate', genrate / (1 - absShdRes) / (1 - thmShdRes))));
+	//  document.getElementById('outfitting_stats_exp_shield_regen').innerHTML = (!hasSG ? htmlNA : (!isEnough ? htmlErrorSG : formatAttrHTML('genrate', genrate / (1 - absShdRes) / (1 - expShdRes))));
 		document.getElementById('outfitting_stats_raw_shield_reinf').innerHTML = (!(hasSG && shieldrnfps) ? htmlNA : (!isEnough ? htmlErrorSG : (ammomaxHTML + '<small class="semantic">&times;</small>' + formatAttrHTML('shieldrnfps', shieldrnfps))));
 		document.getElementById('outfitting_stats_abs_shield_reinf').innerHTML = (!(hasSG && shieldrnfps) ? htmlNA : (!isEnough ? htmlErrorSG : formatAttrHTML('shieldrnfps', shieldrnfps_ammomax / (1 - absShdRes))));
 		document.getElementById('outfitting_stats_kin_shield_reinf').innerHTML = (!(hasSG && shieldrnfps) ? htmlNA : (!isEnough ? htmlErrorSG : formatAttrHTML('shieldrnfps', shieldrnfps_ammomax / (1 - absShdRes) / (1 - kinShdRes))));
@@ -9112,18 +9105,18 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		document.getElementById('outfitting_stats_shield_build').innerHTML = (!hasSG ? htmlNA : (!isEnough ? htmlErrorSG : formatTimeHTML(16 + bgenFastTime + bgenSlowTime)));
 		document.getElementById('outfitting_stats_shield_regen').innerHTML = (!hasSG ? htmlNA : (!isEnough ? htmlErrorSG : formatTimeHTML(genFastTime + genSlowTime)));
 	}; // updateUIStatsShd();
-	
-	
+
+
 	var updateUIStatsArm = function() {
 		// get primary stats
 		var integ_imrp = current.fit.getStat('integ_imrp');
 		var dmgprot = current.fit.getStat('dmgprot');
 		var lmprepcap_max = current.fit.getStat('lmprepcap_max');
 		var cargocap = current.fit.getStat('cargocap');
-		
+
 		var slot = current.fit.getSlot('ship', 'hull');
 		var hardness = slot.getEffectiveAttrValue('hardness');
-		
+
 		// get or compute derived stats
 		var mrpArmRes = (1 - dmgprot) * 100;
 		var kinArmRes = current.fit.getStat('_akinres')
@@ -9140,7 +9133,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		var thmArmRep = (rawArmRep / (1 - thmArmRes / 100));
 		var expArmRep = (rawArmRep / (1 - expArmRes / 100));
 		var cauArmRep = (rawArmRep / (1 - cauArmRes / 100));
-		
+
 		// update displays
 		var htmlNA = '<small class="semantic" edsy-text="n-a">N/A</small>';
 		document.getElementById('outfitting_stats_raw_armour_hardness').innerHTML = formatNumHTML(hardness, 0);
@@ -9161,8 +9154,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		document.getElementById('outfitting_stats_exp_armour_repair').innerHTML = (rawArmRep ? formatNumHTML(expArmRep, 1) : htmlNA);
 		document.getElementById('outfitting_stats_cau_armour_repair').innerHTML = (rawArmRep ? formatNumHTML(cauArmRep, 1) : htmlNA);
 	}; // updateUIStatsArm()
-	
-	
+
+
 	var updateUIStatsWpn = function() {
 		// get primary stats
 		var dps = current.fit.getStat('dps');
@@ -9180,12 +9173,12 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		var wepcap_burst_max = current.fit.getStat('wepcap_burst_max');
 		var wepchg_sustain_cur = current.fit.getStat('wepchg_sustain_cur');
 		var wepchg_sustain_max = current.fit.getStat('wepchg_sustain_max');
-		
+
 		// compute derived stats
 		var curWpnSus = ((dps_nodistdraw + (dps_distdraw ? (dps_distdraw * wepchg_sustain_cur) : 0)) / dps);
 		var maxWpnSus = ((dps_nodistdraw + (dps_distdraw ? (dps_distdraw * wepchg_sustain_max) : 0)) / dps);
 		var ammWpnDur = min(ammotime_nocap, ((ammotime_wepcap <= wepcap_burst_max) ? ammotime_wepcap : (wepcap_burst_max + (ammotime_wepcap - wepcap_burst_max) / maxWpnSus)));
-		
+
 		// update displays
 		var htmlNA = '<small class="semantic" edsy-text="n-a">N/A</small>';
 		document.getElementById('outfitting_stats_wpn_raw_burst').innerHTML = (dps ? formatAttrHTML('dps', dps, 1) : htmlNA);
@@ -9200,13 +9193,13 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		document.getElementById('outfitting_stats_wpn_cur_sus').innerHTML = (dps ? formatPctHTML(curWpnSus, 1) : htmlNA);
 		document.getElementById('outfitting_stats_wpn_max_sus').innerHTML = (dps ? formatPctHTML(maxWpnSus, 1) : htmlNA);
 	}; // updateUIStatsWpn()
-	
-	
+
+
 	/*
 	* OPTIONS UI
 	*/
-	
-	
+
+
 	var initUIOptions = function() {
 		var rows = document.getElementById('options_insurance').getElementsByTagName('DD');
 		for (var i = 0;  i < rows.length;  i++) {
@@ -9214,7 +9207,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			var span = rows[i].getElementsByTagName('SPAN')[0];
 			span.innerText = span.innerText.replace(/[0-9\.]+ *%/, formatPctText(parseFloat(input.value) / 10000, 1));
 		}
-		
+
 		var container = document.getElementById('options_discounts_bits');
 		while (container.lastElementChild)
 			cache.template.options_discounts_bits_label = container.removeChild(container.lastElementChild);
@@ -9230,7 +9223,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			container.appendChild(label);
 			container.appendChild(document.createTextNode(' '));
 		}
-		
+
 		var divBuiltinHardpoints = document.getElementById('options_builtin_hardpoints');
 		divBuiltinHardpoints.replaceChildren();
 		var divBuiltinOther = document.getElementById('options_builtin_other');
@@ -9265,7 +9258,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 				}
 			}
 		}
-		
+
 		var select = document.forms.options.elements.language;
 		for (var l = 0;  l < LANGS.length;  l++) {
 			var option = document.createElement('option');
@@ -9279,8 +9272,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			select.options.add(option);
 		}
 	}; // initUIOptions()
-	
-	
+
+
 	var sortUIOptionsBuiltins = function() {
 		var divBuiltinHardpoints = document.getElementById('options_builtin_hardpoints');
 		var divBuiltinOther = document.getElementById('options_builtin_other');
@@ -9296,8 +9289,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			}
 		}
 	}; // sortUIOptionsBuiltins()
-	
-	
+
+
 	var updateUIOptions = function() {
 		// validate options settings
 		current.option.insurance = parseInt(current.option.insurance);
@@ -9334,7 +9327,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		}
 		if (!LANG_NAMES[current.option.language])
 			current.option.language = '';
-		
+
 		// apply options settings
 		document.body.classList.toggle('mostlybest', current.option.onlybest == 'some');
 		document.body.classList.toggle('onlybest', current.option.onlybest == 'all');
@@ -9362,7 +9355,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		current.lang = current.option.language || (current.locale ? current.locale.substr(0,2) : undefined);
 		if (!LANG_NAMES[current.lang])
 			current.lang = LANG_DEFAULT;
-		
+
 		// update options controls
 		var elements = document.forms.options.elements;
 		elements.insurance.value = current.option.insurance;
@@ -9400,21 +9393,21 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		}
 		elements.language.value = current.option.language;
 	}; // updateUIOptions()
-	
-	
+
+
 	/*
 	* UI EVENT HANDLERS
 	*/
-	
-	
+
+
 	var onWindowResize = function(e) {
 		if (current.resize)
 			clearTimeout(current.resize);
 		current.resize = setTimeout(onWindowResizeTimeout, TIMEOUT_RESIZE);
 		updateUIFullscreen();
 	}; // onWindowResize()
-	
-	
+
+
 	var onWindowResizeTimeout = function() {
 		if (current.resize) {
 			clearTimeout(current.resize);
@@ -9423,8 +9416,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUILayout();
 		updateUIStatsPanels();
 	}; // onWindowResizeTimeout()
-	
-	
+
+
 	var onBodyClickCapture = function(e) {
 		var input;
 		// if any popout is open, and we didn't click inside it, close it
@@ -9437,8 +9430,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 				input.checked = false;
 		}
 	}; // onBodyClickCapture()
-	
-	
+
+
 	var onDocumentClickFocus = function(e) {
 		if (!current.popup.element)
 			return;
@@ -9456,24 +9449,24 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			}
 		}
 	}; // onDocumentClickFocus()
-	
-	
+
+
 	var onDocumentDragEnter = function(e) {
 		if (contains(e.dataTransfer.types, 'Files')) {
 			e.preventDefault();
 			e.dataTransfer.dropEffect = 'copy';
 		}
 	}; // onDocumentDragEnter()
-	
-	
+
+
 	var onDocumentDragOver = function(e) {
 		if (contains(e.dataTransfer.types, 'Files')) {
 			e.preventDefault();
 			e.dataTransfer.dropEffect = 'copy';
 		}
 	}; // onDocumentDragOver()
-	
-	
+
+
 	var onDocumentDrop = function(e) {
 		var file = e.dataTransfer.files[0]; // TODO: handle multiple files
 		if (file) {
@@ -9484,14 +9477,14 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			reader.readAsText(file);
 		}
 	}; // onDocumentDrop()
-	
-	
+
+
 	var onDocumentDrop_FilereaderLoad = function(e) {
 		hideUIPopup();
 		importData(e.target.result);
 	}; // onDocumentDrop_FilereaderLoad()
-	
-	
+
+
 	var onUIModalKeydownCapture = function(e) {
 		if ((e.key === 'Escape') || ((e.keyCode || e.which) === 27)) {
 			e.preventDefault();
@@ -9507,8 +9500,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			}
 		}
 	}; // onUIModalKeydownCapture()
-	
-	
+
+
 	var onUIModalClick = function(e) {
 		var el = e.target;
 		while (el && el.tagName !== 'DIV')
@@ -9526,8 +9519,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			}
 		}
 	}; // onUIModalClick()
-	
-	
+
+
 	var onUIPopupButtonClick = function(e) {
 		e.preventDefault();
 		var trigger = current.popup.trigger;
@@ -9545,8 +9538,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 				onCancel(value);
 		}
 	}; // onUIPopupButtonClick()
-	
-	
+
+
 	var onUIPopupImportButtonClick = function(e) {
 		e.preventDefault();
 		switch (e.currentTarget.name) {
@@ -9561,7 +9554,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			}
 			e.stopPropagation();
 			return false;
-			
+
 		case 'import_load_none':
 			var i = document.forms.popup.elements.import_load.value;
 			var el = document.getElementById('import_load_' + i);
@@ -9578,8 +9571,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		if (e.target.select)
 			e.target.select();
 	}; // onUIPopupExportFieldFocus()
-	
-	
+
+
 	var onUIPopupExportCopyButtonClick = function(e) {
 		e.preventDefault();
 		e.stopPropagation();
@@ -9600,27 +9593,27 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			}
 		}
 	}; // onUIPopupExportCopyButtonClick()
-	
-	
+
+
 	var onUIMaximizeButtonClick = function(e) {
 		if (cache.feature.requestFullscreen && cache.feature.cancelFullscreen) {
 			cache.feature.requestFullscreen.call(window.document.documentElement);
 		}
 	}; // onUIMaximizeButtonClick()
-	
-	
+
+
 	var onUIMinimizeButtonClick = function(e) {
 		if (cache.feature.cancelFullscreen) {
 			cache.feature.cancelFullscreen.call(window.document);
 		}
 	}; // onUIMinimizeButtonClick()
-	
-	
+
+
 	var onUIPageHeaderChange = function(e) {
 		setUIPageTab(e.target.value);
 	}; // onUIPageHeaderChange()
-	
-	
+
+
 	var onUIQueryMouseDown = function(e) {
 		e.preventDefault();
 		e.stopPropagation();
@@ -9628,20 +9621,20 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		document.addEventListener('mouseup', onUIQueryMouseUp, true);
 		startQueryDrag(e.clientX, e.clientY);
 	}; // onUIQueryMouseDown()
-	
-	
+
+
 	var onUIQueryMouseMove = function(e) {
 		updateQueryPosition(e.clientX, e.clientY);
 	}; // onUIQueryMouseMove()
-	
-	
+
+
 	var onUIQueryMouseUp = function(e) {
 		document.removeEventListener('mousemove', onUIQueryMouseMove, true);
 		document.removeEventListener('mouseup', onUIQueryMouseUp, true);
 		stopQueryDrag();
 	}; // onUIQueryMouseUp()
-	
-	
+
+
 	var onUIQueryTouchStart = function(e) {
 		e.stopPropagation();
 		if (e.touches.length >= 1) {
@@ -9651,8 +9644,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			startQueryDrag(e.touches[0].clientX, e.touches[0].clientY);
 		}
 	}; // onUIQueryTouchStart()
-	
-	
+
+
 	var onUIQueryTouchMove = function(e) {
 		if (current.query && e.touches.length >= 1) {
 			updateQueryPosition(e.touches[0].clientX, e.touches[0].clientY);
@@ -9660,21 +9653,21 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			return onUIQueryTouchEnd(e);
 		}
 	}; // onUIQueryTouchMove()
-	
-	
+
+
 	var onUIQueryTouchEnd = function(e) {
 		document.removeEventListener('touchmove', onUIQueryTouchMove, true);
 		document.removeEventListener('touchend', onUIQueryTouchEnd, true);
 		document.removeEventListener('touchcancel', onUIQueryTouchCancel, true);
 		stopQueryDrag();
 	}; // onUIQueryTouchEnd()
-	
-	
+
+
 	var onUIQueryTouchCancel = function(e) {
 		return onUIQueryTouchEnd(e);
 	}; // onUIQueryTouchCancel()
-	
-	
+
+
 	var startQueryDrag = function(cx, cy) {
 		var glow = document.getElementById('query_glow');
 		glow.style.display = 'none';
@@ -9684,8 +9677,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		info.style.display = 'none';
 		updateQueryPosition(cx, cy);
 	}; // startQueryDrag()
-	
-	
+
+
 	var updateQueryPosition = function(cx, cy) {
 		var query = document.getElementById('query_tool');
 		query.style.top = parseInt(cy - query.offsetHeight / 2) + 'px';
@@ -9699,14 +9692,14 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			current.query.timeout = setTimeout(updateQueryPositionTimeout, 50);
 		}
 	}; // updateQueryPosition()
-	
-	
+
+
 	var updateQueryPositionTimeout = function() {
 		if (!current.query) return;
 		current.query.timeout = null;
 		var cx = current.query.x;
 		var cy = current.query.y;
-		
+
 		var glow = document.getElementById('query_glow');
 		var info = document.getElementById('query_info');
 		var els = document.elementsFromPoint(cx, cy);
@@ -9740,8 +9733,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		glow.style.display = 'none';
 		info.style.display = 'none';
 	}; // updateQueryPositionTimeout()
-	
-	
+
+
 	var stopQueryDrag = function() {
 		current.query = null;
 		var glow = document.getElementById('query_glow');
@@ -9751,22 +9744,22 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		var info = document.getElementById('query_info');
 		info.style.display = 'none';
 	}; // stopQueryDrag()
-	
-	
+
+
 	var onUIContextMenu = function(e) {
 		e.preventDefault();
 		e.stopPropagation();
 		return false;
 	}; // onUIContextMenu()
-	
-	
+
+
 	var onUIModuleTabChange = function(e) {
 		if (e.target.name === 'tab' && e.target.checked) {
 			setUIModuleTab(e.target.value);
 		}
 	}; // onUIModuleTabChange()
-	
-	
+
+
 	var onUIModulePickerChange = function(e) {
 		if (e.target.name === 'module' && e.target.checked) {
 			var tokens = e.target.value.split('.');
@@ -9779,8 +9772,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			updateUIDetailsModule();
 		}
 	}; // onUIModulePickerChange()
-	
-	
+
+
 	var onUIModulePickerClick = function(e) {
 		var el = e.target;
 		while (el && el.tagName !== 'LABEL' && el.tagName !== 'INPUT') {
@@ -9811,8 +9804,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			}
 		}
 	}; // onUIModulePickerClick()
-	
-	
+
+
 	var onUIModulePickerClickTimeout = function(modtag) {
 		if (current.pickerClick[modtag]) {
 			clearTimeout(current.pickerClick[modtag]);
@@ -9825,8 +9818,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			}
 		}
 	}; // onUIModulePickerClickTimeout()
-	
-	
+
+
 	var onUIModulePickerDblClick = function(e) {
 		var el = e.target;
 		while (el && el.tagName !== 'LABEL' && el.tagName !== 'INPUT') {
@@ -9838,8 +9831,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			return false;
 		}
 	}; // onUIModulePickerDblClick()
-	
-	
+
+
 	var onUIModulePickerLabelTouchStart = function(e) {
 		e.stopPropagation();
 		var label = e.currentTarget;
@@ -9862,8 +9855,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		label.addEventListener('touchcancel', onUIModulePickerLabelTouchCancel);
 		return true;
 	}; // onUIModulePickerLabelTouchStart()
-	
-	
+
+
 	var onUIModulePickerLabelTouchMove = function(e) {
 		e.stopPropagation();
 		var label = e.currentTarget;
@@ -9876,8 +9869,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			e.preventDefault();
 		return false;
 	}; // onUIModulePickerLabelTouchMove()
-	
-	
+
+
 	var onUIModulePickerLabelTouchEnd = function(e) {
 		var label = e.currentTarget;
 		var inputID = label.htmlFor;
@@ -9903,8 +9896,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			e.preventDefault();
 		return false;
 	}; // onUIModulePickerLabelTouchEnd()
-	
-	
+
+
 	var onUIModulePickerLabelTouchCancel = function(e, label) {
 		if (e) {
 			e.stopPropagation();
@@ -9922,8 +9915,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		label.removeEventListener('touchcancel', onUIModulePickerLabelTouchCancel);
 		return true;
 	}; // onUIModulePickerLabelTouchCancel()
-	
-	
+
+
 	var onUIModulePickerLabelTouchTimeout = function(inputID) {
 		var input = document.getElementById(inputID);
 		var label = input.parentNode;
@@ -9939,8 +9932,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		setUIOutfittingPanels('slots',  'modules', 'slots');
 		return false;
 	}; // onUIModulePickerLabelTouchTimeout()
-	
-	
+
+
 	var onUIModuleButtonsClick = function(e) {
 		var el = e.target;
 		while (el && el.tagName !== 'BUTTON')
@@ -9960,8 +9953,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			}
 		}
 	}; // onUIModuleButtonsClick()
-	
-	
+
+
 	var onUIModulePickerDragStart = function(e) {
 		if (e.target && e.target.tagName === 'LABEL') {
 			var inputs = e.target.getElementsByTagName('INPUT');
@@ -9975,13 +9968,13 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			setCurrentDrag(modid, namehash);
 		}
 	}; // onUIModulePickerDragStart()
-	
-	
+
+
 	var onUIModulePickerDragEnd = function(e) {
 		setCurrentDrag();
 	}; // onUIModulePickerDragEnd()
-	
-	
+
+
 	var onUIModulePickerDragEnter = function(e) {
 		if (contains(e.dataTransfer.types, 'edsy/slot')) {
 			e.preventDefault();
@@ -9991,8 +9984,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			onDocumentDragEnter(e);
 		}
 	}; // onUIModulePickerDragEnter()
-	
-	
+
+
 	var onUIModulePickerDragOver = function(e) {
 		if (contains(e.dataTransfer.types, 'edsy/slot')) {
 			e.preventDefault();
@@ -10001,13 +9994,13 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			onDocumentDragOver(e);
 		}
 	}; // onUIModulePickerDragOver()
-	
-	
+
+
 	var onUIModulePickerDragLeave = function(e) {
 		// TODO: .dragready highlighting?
 	}; // onUIModulePickerDragLeave()
-	
-	
+
+
 	var onUIModulePickerDrop = function(e) {
 		var group = e.dataTransfer.getData('edsy/group');
 		var slot = e.dataTransfer.getData('edsy/slot');
@@ -10019,44 +10012,44 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			onDocumentDrop(e);
 		}
 	}; // onUIModulePickerDrop()
-	
-	
+
+
 	var onUIFitSettingsStoredClick = function(e) {
 		var el = e.target;
 		while (el && el.tagName !== 'BUTTON')
 			el = el.parentNode;
 		if (!el || el.disabled)
 			return;
-		
+
 		e.preventDefault();
 		var namehash = document.forms.fit.elements.outfitting_fit_stored.value;
 		switch (el.id) {
 		case 'outfitting_fit_stored_reload':
 			setCurrentFitNameHash(namehash);
 			break;
-			
+
 		case 'outfitting_fit_stored_save':
 			saveCurrentStoredBuild(false);
 			break;
-			
+
 		case 'outfitting_fit_stored_saveas':
 			saveCurrentStoredBuild(true);
 			break;
-			
+
 		case 'outfitting_fit_stored_rename':
 			renameStoredBuild(namehash);
 			break;
-			
+
 		case 'outfitting_fit_stored_delete':
 			deleteStoredBuild(namehash);
 			break;
-		
+
 		default:
 			console.log('onUIFitSettingsStoredClick({target.id="'+el.id+'"})');
 		}
 	}; // onUIFitSettingsStoredClick()
-	
-	
+
+
 	var onUIFitSettingsStoredChange = function(e) {
 		if (e.target.name === 'outfitting_fit_stored') {
 			var inaraAcct = current.fit.inaraAcct;
@@ -10071,41 +10064,41 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			}
 		}
 	}; // onUIFitSettingsStoredChange()
-	
-	
+
+
 	var onUIFitSettingsColsChange = function(e) {
 		updateUIFitColumns();
 		// let the changes finish rendering
 		setTimeout(updateUILayout, 1);
 	}; // onUIFitSettingsColsChange()
-	
-	
+
+
 	var onUIFitSettingsOpsClick = function(e) {
 		var el = e.target;
 		while (el && el.tagName !== 'BUTTON')
 			el = el.parentNode;
 		if (!el || el.disabled)
 			return;
-		
+
 		e.preventDefault();
 		document.getElementById('outfitting_ops_toggle').checked = false;
 		switch (el.id) {
 		case 'outfitting_fit_import':
 			showUIImportPopup();
 			break;
-			
+
 		case 'outfitting_fit_export':
 			showUIExportPopup();
 			break;
-			
+
 		case 'outfitting_fit_discounts':
 			var discounts = current.fit.getSlot(current.group, current.slot).getDiscounts();
 			updateUIFitDiscounts(discounts);
 			break;
 		}
 	}; // onUIFitSettingsOpsClick()
-	
-	
+
+
 	var onUIFitSlotsMouseDown = function(e) {
 		if (e.button != 2 && e.which != 3)
 			return true;
@@ -10118,7 +10111,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			var inputs = el.getElementsByTagName('INPUT');
 			if (inputs.length > 0 && inputs[0].name === 'slot') {
 				e.preventDefault();
-				var slottag =inputs[0].value; 
+				var slottag =inputs[0].value;
 				var tokens = slottag.split('_');
 				var slotgroup = tokens[0];
 				var slotnum = tokens[1];
@@ -10129,8 +10122,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		}
 		return true;
 	}; // onUIFitSlotsMouseDown()
-	
-	
+
+
 	var onUIFitSlotsChange = function(e) {
 		if (e.target.name === 'slot') {
 			var tokens = e.target.value.split('_');
@@ -10154,8 +10147,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			}
 		}
 	}; // onUIFitSlotsChange()
-	
-	
+
+
 	var onUIFitSlotsClick = function(e) {
 		var el = e.target;
 		while (el && el.tagName !== 'LABEL' && el.tagName !== 'INPUT' && el.tagName !== 'BUTTON') {
@@ -10201,8 +10194,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			}
 		}
 	}; // onUIFitSlotsClick()
-	
-	
+
+
 	var onUIFitSlotsClickTimeout = function(slottag) {
 		if (current.slotsClick[slottag]) {
 			clearTimeout(current.slotsClick[slottag]);
@@ -10231,8 +10224,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		} else if (el.tagName === 'INPUT') {
 		}
 	}; // onUIFitSlotsContextMenu()
-	
-	
+
+
 	var onUIFitExportInaraButtonClick = function(e) {
 		e.preventDefault();
 		e.stopPropagation();
@@ -10251,8 +10244,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		form.submit();
 		document.body.removeChild(form);
 	}; // onUIFitExportInaraButtonClick()
-	
-	
+
+
 	var onUIPowerDistClick = function(e) {
 		var el = e.target;
 		while (el && el.tagName !== 'BUTTON') {
@@ -10275,14 +10268,14 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			}
 		}
 	}; // onUIPowerDistClick()
-	
-	
+
+
 	var onUIFitSlotsDblClick = function(e) {
 		e.preventDefault();
 		return false;
 	}; // onUIFitSlotsDblClick()
-	
-	
+
+
 	var onUIFitSlotsTouchStart = function(e) {
 		e.stopPropagation();
 		var label = e.currentTarget;
@@ -10305,8 +10298,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		label.addEventListener('touchcancel', onUIFitSlotsTouchCancel);
 		return true;
 	}; // onUIFitSlotsTouchStart()
-	
-	
+
+
 	var onUIFitSlotsTouchMove = function(e) {
 		e.stopPropagation();
 		var label = e.currentTarget;
@@ -10319,8 +10312,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			e.preventDefault();
 		return false;
 	}; // onUIFitSlotsTouchMove()
-	
-	
+
+
 	var onUIFitSlotsTouchEnd = function(e) {
 		var label = e.currentTarget;
 		var inputID = label.htmlFor;
@@ -10341,8 +10334,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			e.preventDefault();
 		return false;
 	}; // onUIFitSlotsTouchEnd()
-	
-	
+
+
 	var onUIFitSlotsTouchCancel = function(e, label) {
 		if (e) {
 			e.stopPropagation();
@@ -10360,8 +10353,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		label.removeEventListener('touchcancel', onUIFitSlotsTouchCancel);
 		return true;
 	}; // onUIFitSlotsTouchCancel()
-	
-	
+
+
 	var onUIFitSlotsTouchTimeout = function(inputID) {
 		var input = document.getElementById(inputID);
 		var label = input.parentNode;
@@ -10381,8 +10374,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		setUIOutfittingPanels('modules',  'modules', 'slots');
 		return false;
 	}; // onUIFitSlotsTouchTimeout()
-	
-	
+
+
 	var onUIFitSlotsDragStart = function(e) {
 		if (e.target && e.target.tagName === 'LABEL') {
 			var inputs = e.target.getElementsByTagName('INPUT');
@@ -10402,13 +10395,13 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			setCurrentDrag(modid, null, slotgroup, slotnum);
 		}
 	}; // onUIFitSlotsDragStart()
-	
-	
+
+
 	var onUIFitSlotsDragEnd = function(e) {
 		setCurrentDrag();
 	}; // onUIFitSlotsDragEnd()
-	
-	
+
+
 	var onUIFitSlotsDragEnter = function(e) {
 		if (contains(e.dataTransfer.types, 'edsy/mid')) {
 			e.preventDefault();
@@ -10417,8 +10410,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			onDocumentDragEnter(e);
 		}
 	}; // onUIFitSlotsDragEnter()
-	
-	
+
+
 	var onUIFitSlotsDragOver = function(e) {
 		if (contains(e.dataTransfer.types, 'edsy/mid')) {
 			e.preventDefault();
@@ -10426,13 +10419,13 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			onDocumentDragOver(e);
 		}
 	}; // onUIFitSlotsDragOver()
-	
-	
+
+
 	var onUIFitSlotsDragLeave = function(e) {
 		// TODO: .dragready highlighting?
 	}; // onUIFitSlotsDragLeave()
-	
-	
+
+
 	var onUIFitSlotsDrop = function(e) {
 		var tr = e.target;
 		while (tr && tr.tagName !== 'TR')
@@ -10462,15 +10455,15 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			onDocumentDrop(e);
 		}
 	}; // onUIFitSlotsDrop()
-	
-	
+
+
 	var onUIDetailsSettingsChange = function(e) {
 		if (e.target.name === 'outfitting_details_stored') {
 			setUIDetailsNameHash(e.target.value);
 		}
 	}; // onUIDetailsSettingsChange()
-	
-	
+
+
 	var onUIDetailsSettingsClick = function(e) {
 		var el = e.target;
 		while (el && el.tagName !== 'BUTTON')
@@ -10481,24 +10474,24 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			if (tokens[2] === 'stored') {
 				e.preventDefault();
 				var namehash = document.forms.details.elements.outfitting_details_stored.value;
-				
+
 				switch (tokens[3]) {
 				case 'reload':
 					setUIDetailsNameHash(namehash);
 					break;
-					
+
 				case 'save':
 					saveCurrentStoredModule(false);
 					break;
-					
+
 				case 'saveas':
 					saveCurrentStoredModule(true);
 					break;
-					
+
 				case 'rename':
 					renameStoredModule(namehash);
 					break;
-					
+
 				case 'delete':
 					deleteStoredModule(namehash);
 					break;
@@ -10506,8 +10499,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			}
 		}
 	}; // onUIDetailsSettingsClick()
-	
-	
+
+
 	var onUIDetailsModuleChange = function(e) {
 		if (e.target.name === 'cost') {
 			if (e.target.value) {
@@ -10533,7 +10526,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 				} else {
 					setUIDetailsDiscounts(slot.getDiscounts());
 				}
-			} 
+			}
 		} else if (e.target.name === 'pre_engineered') {
 			setUIDetailsPreEngineered(e.target.checked ? 1 : 0);
 		} else if (e.target.name === 'blueprint') {
@@ -10554,8 +10547,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			setUIDetailsAttrText(e.target.name, e.target.value);
 		}
 	}; // onUIDetailsModuleChange()
-	
-	
+
+
 	var onUIDetailsRollTouchStart = function(e) {
 		var el = e.target;
 		while (el && el !== e.currentTarget) {
@@ -10581,8 +10574,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		el.addEventListener('touchcancel', onUIDetailsRollTouchCancel);
 		return onUIDetailsRollTouchMove(e);
 	}; // onUIDetailsRollTouchStart()
-	
-	
+
+
 	var onUIDetailsRollTouchMove = function(e) {
 		var touchdata = current.bprollTouch;
 		if (!touchdata || e.touches.length !== 1)
@@ -10595,8 +10588,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		var bproll = (((abs(dx) <= touchdata.rx) && (abs(dy) <= touchdata.ry)) ? -1 : (ceil((0.5 - atan2(dx,dy) / PI / 2) * 20) / 20));
 		updateUIDetailsBlueprintRoll(bproll);
 	}; // onUIDetailsRollTouchMove()
-	
-	
+
+
 	var onUIDetailsRollTouchEnd = function(e) {
 		e.preventDefault();
 		e.stopPropagation();
@@ -10604,8 +10597,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		var value = parseNumText(document.forms.details.elements.blueprint_roll.value);
 		setUIDetailsBlueprintRoll(isNaN(value) ? null : (value / 100.0));
 	}; // onUIDetailsRollTouchEnd()
-	
-	
+
+
 	var onUIDetailsRollTouchCancel = function(e) {
 		current.bprollTouch = null;
 		var el = document.getElementById('engineering_roll');
@@ -10613,8 +10606,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		el.removeEventListener('touchend', onUIDetailsRollTouchEnd);
 		el.removeEventListener('touchcancel', onUIDetailsRollTouchCancel);
 	}; // onUIDetailsRollTouchCancel()
-	
-	
+
+
 	var onUIDetailsRollMouseDown = function(e) {
 		var el = e.target;
 		while (el && el !== e.currentTarget) {
@@ -10636,8 +10629,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		document.addEventListener('mouseup', onUIDetailsRollMouseUp, true);
 		return onUIDetailsRollMouseMove(e);
 	}; // onUIDetailsRollMouseDown()
-	
-	
+
+
 	var onUIDetailsRollMouseMove = function(e) {
 		var clickdata = current.bprollClick;
 		if (!clickdata)
@@ -10648,8 +10641,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		var bproll = ((e.target === document.forms.details.elements.blueprint_roll) ? -1 : (ceil((0.5 - atan2(dx,dy) / PI / 2) * 20.0) / 20.0));
 		updateUIDetailsBlueprintRoll(bproll);
 	}; // onUIDetailsRollMouseMove()
-	
-	
+
+
 	var onUIDetailsRollMouseUp = function(e) {
 		current.bprollClick = null;
 		document.removeEventListener('mousemove', onUIDetailsRollMouseMove, true);
@@ -10657,15 +10650,15 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		var value = parseNumText(document.forms.details.elements.blueprint_roll.value);
 		setUIDetailsBlueprintRoll(isNaN(value) ? null : (value / 100.0));
 	}; // onUIDetailsRollMouseUp()
-	
-	
+
+
 	var onUIDetailsRollButtonClick = function(e) {
 		e.preventDefault();
 		e.stopPropagation();
 		setUIDetailsBlueprintRoll(e.target.value);
 	}; // onUIDetailsRollButtonClick()
-	
-	
+
+
 	var onUIDetailsButtonsClick = function(e) {
 		var el = e.target;
 		while (el && el.tagName !== 'BUTTON')
@@ -10690,8 +10683,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			}
 		}
 	}; // onUIDetailsButtonsClick()
-	
-	
+
+
 	var onUIBottomChange = function(e) {
 		var tokens = e.target.id.split('_'); // stats_toggle_(#)
 		if (tokens[0] === 'stats' && tokens[1] === 'toggle' && e.target.checked) {
@@ -10699,8 +10692,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			setTimeout(updateUIStatsPanels, 1, tokens[2]);
 		}
 	}; // onUIBottomChange()
-	
-	
+
+
 	var onUIStatsInputWheel = function(e) {
 		e.preventDefault();
 		var mod;
@@ -10721,8 +10714,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		case 'stats_cur_cargo':  setStatsCurCargo(value);  break;
 		}
 	}; // onUIStatsInputWheel()
-	
-	
+
+
 	var onUIStatsInputChange = function(e) {
 		e.stopPropagation();
 		switch (e.target.name) {
@@ -10730,8 +10723,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		case 'stats_cur_cargo':  setStatsCurCargo(parseNumText(e.target.value) || 0);  break;
 		}
 	}; // onUIStatsInputChange()
-	
-	
+
+
 	var onUIOptionsChange = function(e) {
 		var elements = document.forms.options.elements;
 		current.option.insurance = parseInt(elements.insurance.value);
@@ -10768,7 +10761,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		}
 		current.option.language = elements.language.value;
 		updateUIOptions();
-		
+
 		updateUILayout();
 		readStoredModules();
 		sortCache(true);
@@ -10781,13 +10774,13 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		updateUIStatsPanels();
 		updateUIStatsTotals();
 		current.fit.clearPrevStats();
-		
+
 		writeStoredOptions();
-		
+
 		loadTranslations(true); // async
 	}; // onUIOptionsChange()
-	
-	
+
+
 	var onUIOptionsClick = function(e) {
 		var el = e.target;
 		while (el && el.tagName !== 'BUTTON')
@@ -10843,15 +10836,15 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			onUIOptionsChange(e);
 		}
 	}; // onUIOptionsClick()
-	
-	
+
+
 	var onUIOptionsBackupClick = function(e) {
 		e.preventDefault();
 		e.stopPropagation();
 		var obj = {
 			format: 'edsy',
 			version: VERSIONS[3],
-		//	imports: current.importLabel, // no need to migrate this; it's a minor convenience, easy enough to re-populate, and may get bloated over time
+		//  imports: current.importLabel, // no need to migrate this; it's a minor convenience, easy enough to re-populate, and may get bloated over time
 			builds: {},
 			modules: {},
 		};
@@ -10870,31 +10863,31 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 				true, false
 		);
 	}; // onUIOptionsBackupClick()
-	
-	
+
+
 	var onUIOptionsRestoreClick = function(e) {
 		e.preventDefault();
 		e.stopPropagation();
 		showUIImportPopup();
 	}; // onUIOptionsRestoreClick()
-	
-	
+
+
 	var onWindowHashChange = function(e) {
-		processURLHash(window.location, true);
+		processURLHash(window.location);
 	}; // onWindowHashChange()
-	
-	
+
+
 	var onBodyFocus = function(e) {
 		if (e.target.tagName === 'INPUT' && e.target.type === 'text' && e.target.select)
 			e.target.select();
 	}; // onBodyFocus()
-	
-	
+
+
 	var onFormSubmit = function(e) {
 		e.preventDefault();
 	}; // onFormSubmit()
-	
-	
+
+
 	var onStorageEvent = function(e) {
 		readStoredOptions();
 		updateUIOptions();
@@ -10913,8 +10906,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 	/*
 	* UI INIT
 	*/
-	
-	
+
+
 	var verifyVersionSync = function() {
 		var vH,vC,vD,vJ;
 		var dH,dC,dD,dJ;
@@ -10959,7 +10952,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			vJ = [ 0,0,0,0 ];
 			dJ = 0;
 		}
-		
+
 		// fill in the current version and update date
 		var v = ('0000000000' + max(vH[0], vC[1], vD[2], vJ[3])).slice(-10);
 		var d = '' + max(dH, dC, dD, dJ) + '00000000';
@@ -10975,7 +10968,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		document.getElementById('version_label').innerHTML = ('v' + parseInt(v.slice(0,2)) + '.' + parseInt(v.slice(2,4)) + '.' + parseInt(v.slice(4,6)) + (['-','a','b','rc'][parseInt(v.slice(6,8))] || '.') + parseInt(v.slice(8,10)));
 		document.getElementById('version_label').setAttribute('edsy-title', 'interp-updated-date');
 		document.getElementById('version_label').title = ('updated ' + d.slice(0,4) + '-' + d.slice(4,6) + '-' + d.slice(6,8));
-		
+
 		// cross check expected versions
 		var vM = [
 			max(vC[0], max(vD[0], vJ[0])),
@@ -11002,8 +10995,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		}
 		return ok;
 	}; // verifyVersionSync()
-	
-	
+
+
 	var initBrowser = function() {
 		// sniff env and locale
 		current.dev = (window.location.protocol === 'file:') || (window.location.pathname.indexOf('/dev/') >= 0);
@@ -11012,7 +11005,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		current.lang = (current.locale ? current.locale.substr(0,2) : undefined);
 		if (!LANG_NAMES[current.lang])
 			current.lang = LANG_DEFAULT;
-		
+
 		// test for browser features
 		cache.feature.history = (window.history && window.history.replaceState);
 		cache.feature.file = (window.File && window.FileReader && window.FileList);
@@ -11032,13 +11025,13 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		cache.feature.requestFullscreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
 		cache.feature.cancelFullscreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
 	}; // initBrowser()
-	
-	
+
+
 	var loadTranslations = async function(update) {
 		var lang = current.lang;
 		if (cache.lang == lang)
 			return;
-		
+
 		var file = "lang-" + lang + ".json";
 		var response = await fetch(file);
 		if (!response.ok) {
@@ -11057,18 +11050,18 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		cache.translation = translation;
 		// 'en' should be the first one loaded
 		cache.translationDefault = cache.translationDefault || translation;
-		
+
 		if (update)
 			await updateTranslations(); // async
 	}; // loadTranslations()
-	
-	
+
+
 	var getTranslation = function(key, values) {
 		var text = cache.translation[key];
 		if (text === undefined) {
 			text = cache.translationDefault[key];
 			if (text === undefined && current.dev) console.log("WARNING: no default translation for '" + key + "'");
- 		}
+		 }
 		if (text && values) {
 			text = text.replaceAll(cache.reTranslationValue, function(match, group1) {
 				var v = values[group1];
@@ -11079,8 +11072,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		}
 		return text;
 	}; // getTranslation()
-	
-	
+
+
 	var createTranslatedElement = function(name, key, values) {
 		var el = document.createElement(name || 'span');
 		if (values)
@@ -11089,8 +11082,8 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		el.innerHTML = encodeHTML(getTranslation(key, values) || '');
 		return el;
 	}; // createTranslatedElement()
-	
-	
+
+
 	var updateTranslations = function(doc) {
 		var t0 = Date.now();
 
@@ -11118,7 +11111,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 				}
 			});
 		}
-		
+
 		// if updating the whole page, re-sort cache using new translations and re-draw UI elements based on those sorts
 		if (!doc) {
 			document.documentElement.style.setProperty('--textempty', "'"+getTranslation('note-empty')+"'");
@@ -11130,12 +11123,12 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			sortUIOptionsBuiltins();
 			updateUIDetailsModule();
 		}
-		
+
 		var t1 = Date.now();
 		if (!doc && current.dev) console.log("updateTranslations(): '" + cache.lang + "' completed in " + (t1-t0) + "ms");
 	}; // updateTranslations()
-	
-	
+
+
 	var initUIEventHandlers = function() {
 		window.addEventListener('resize', onWindowResize);
 		if (cache.feature.history)
@@ -11203,15 +11196,15 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		document.getElementById('options_backup').addEventListener('click', onUIOptionsBackupClick);
 		document.getElementById('options_restore').addEventListener('click', onUIOptionsRestoreClick);
 	}; // initUIEventHandlers()
-	
-	
+
+
 	var initUIFinal = function() {
 		// set initial UI state
 		setUIPageTab('shipyard');
 		setUIShipyardTab('ships');
 		setUIModuleTab('SLOT');
 		updateUIFitColumns();
-		
+
 		// check for initial import or build hash
 		var buffer_storage, buffer_cookie;
 		if (buffer_storage = (window.sessionStorage && window.sessionStorage.getItem('edsy_import_buffer'))) {
@@ -11221,21 +11214,19 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			document.cookie = 'edsy_import_buffer=; domain=.edsy.org; path=' + (current.dev ? '/dev' : '/');
 			document.cookie = 'edsy_import_buffer=; domain=.edsy.org; path=' + (current.dev ? '/dev' : '/') + '; max-age=0; expires=Thu, 01 Jan 1970 00:00:01 GMT';
 		}
-		current.hashlock = true;
 		setCurrentFit(new Build(1, true), '');
-		current.hashlock = false;
 		if (buffer_storage && importData(buffer_storage)) {
 		} else if (buffer_cookie && importData(buffer_cookie)) {
-		} else if (window.location.hash.length > 0 && processURLHash(window.location, true)) {
+		} else if (window.location.hash.length > 0 && processURLHash(window.location)) {
 		}
 		setUIOutfittingPanels('slots',  'slots', 'details');
-		
+
 		// after all the current content is finished rendering, check the layout
 		updateUIFullscreen();
 		setTimeout(updateUILayout, 1);
 		setTimeout(updateUIStatsPanels, 2);
 	}; // initUIFinal()
-	
+
 
 	var onDOMContentLoaded = function(e) {
 		// add popup events now, in case we need them for the version sync
@@ -11243,21 +11234,21 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		document.getElementById('popup_modal').addEventListener('click', onUIModalClick);
 		document.getElementById('popup_cancel').addEventListener('click', onUIPopupButtonClick);
 		document.getElementById('popup_okay').addEventListener('click', onUIPopupButtonClick);
-		
+
 		verifyVersionSync();
-		
+
 		// process remaining initialization asynchronously so that the loading animation can run
 		var steps = [
 			initCache,
 			initBrowser,
-			
+
 			// initialize UI
 			initUIShipyardShips,
 			initUIShipyardStoredBuilds,
 			initUIFitSlots,
 			initUIDetails,
 			initUIOptions,
-			
+
 			// initialize storage
 			readStoredOptions,
 			updateUIOptions,
@@ -11267,7 +11258,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			updateUIShipyardStoredBuilds,
 			readStoredModules,
 			updateUIModulePickerStoredModules,
-			
+
 			// finalize and launch UI
 			initUIEventHandlers,
 			loadTranslations,
@@ -11288,14 +11279,14 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		};
 		setTimeout(init, 0);
 	}; // onDOMContentLoaded()
-	
+
 	// initialize browser features
 	cache.feature.history = false;
 	cache.feature.file = false;
 	cache.feature.storage = false;
 	cache.feature.requestFullscreen = false;
 	cache.feature.cancelFullscreen = false;
-	
+
 	// if we're in interactive mode, queue the remaining UI init
 	if (document.title === 'EDSY') {
 		window.addEventListener('DOMContentLoaded', function() { loadTranslations(false).then(onDOMContentLoaded); });
