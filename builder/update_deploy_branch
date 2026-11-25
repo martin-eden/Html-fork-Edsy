@@ -1,0 +1,25 @@
+#!/bin/sh
+
+#
+# Apply commits to deploy branch
+#
+
+#
+# Author: Martin Eden
+# Last mod.: 2026-11-25
+#
+
+# Should be called from root dir of repo
+
+set -e -u
+
+cd "$(dirname "$0")"
+cd ..
+
+git switch master
+git branch deploy "$(git subtree split master --prefix=deploy)" --force
+git push origin deploy --force
+
+git push origin master --force
+
+# 2026-11-25
