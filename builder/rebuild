@@ -1,0 +1,19 @@
+#!/bin/sh
+
+#
+# Rebuild deploy/edsy.js from src/ parts
+#
+
+#
+# Author: Martin Eden
+# Last mod.: 2026-11-25
+#
+
+set -e -u
+
+cd "$(dirname "$0")"
+
+./concat_edsy
+./adjust_text_files
+
+# 2026-11-25
