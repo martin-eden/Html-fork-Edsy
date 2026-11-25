@@ -12,7 +12,7 @@ Frontier Customer Services (https://forums.frontier.co.uk/threads/elite-dangerou
 :root {
 	--edsy-versions-css: v-424019901-424019901-424019901-424019901; /* HTML,CSS,DB,JS */
 	--edsy-lastmodified-css: d-20260829;
-	
+
 	--colorblack: black;
 	--colorwhite: white;
 	--colorgrey5: #d9d9d9; /* hsl(0,0%,85%); */
@@ -45,11 +45,11 @@ Frontier Customer Services (https://forums.frontier.co.uk/threads/elite-dangerou
 	--coloryellow3: #b88100; /* hsl(42,100%,36%); */
 	--coloryellow2: #5c4000; /* hsl(42,100%,18%); */
 	--coloryellow1: #3d2b00; /* hsl(42,100%,12%); */
-	
+
 	--fontcaps: 1rem 'EuroCaps', 'Verdana', 'Geneva', sans-serif;
 	--fonttext: 0.875rem 'Sintony', 'Helvetica', 'Arial', sans-serif;
 	--fontfixed: 0.875rem 'Telegrama', 'Courier New', 'Courier', monospace;
-	
+
 	--textempty: '(empty)';
 }
 
@@ -3072,7 +3072,7 @@ BODY.onlybest.experimental #outfitting_modules.SLOT #outfitting_modules_picker.s
 	#page_tabs SPAN {
 		display: none;
 	}
-	
+
 	BODY.show1 #outfitting_modules,
 	BODY.show2 #outfitting_modules,
 	BODY.show1 #outfitting_details,
@@ -3080,7 +3080,7 @@ BODY.onlybest.experimental #outfitting_modules.SLOT #outfitting_modules_picker.s
 		flex: 0 2 32em;
 		max-width: 32em;
 	}
-	
+
 	#outfitting_modules,
 	#outfitting_fit,
 	#outfitting_details {
@@ -3112,7 +3112,7 @@ BODY.onlybest.experimental #outfitting_modules.SLOT #outfitting_modules_picker.s
 	BODY.show1 #outfitting_top.show1details #outfitting_details {
 		display: flex;
 	}
-	
+
 	#outfitting_modules_buttons,
 	#outfitting_details_buttons {
 		display: none;
@@ -3127,7 +3127,7 @@ BODY.onlybest.experimental #outfitting_modules.SLOT #outfitting_modules_picker.s
 	BODY.show1 #outfitting_details_buttons {
 		display: flex;
 	}
-	
+
 	#outfitting_modules_button_back,
 	#outfitting_modules_button_details,
 	#outfitting_details_button_back,
@@ -3154,15 +3154,15 @@ BODY.onlybest.experimental #outfitting_modules.SLOT #outfitting_modules_picker.s
 	BODY.show1.show1 #outfitting_top #outfitting_details_button_replace {
 		display: block;
 	}
-	
+
 	#outfitting_fit_settings .togglebutton INPUT + DIV {
 		margin: 1px;
 	}
-	
+
 	#outfitting_fit_settings .popout > LABEL SPAN {
 		display: none;
 	}
-	
+
 	#outfitting_bottom .stats_show_label {
 		display: none;
 	}
@@ -3178,11 +3178,11 @@ BODY.onlybest.experimental #outfitting_modules.SLOT #outfitting_modules_picker.s
 	#page_tabs SPAN {
 		display: inline;
 	}
-	
+
 	BODY:not(.show2) #outfitting_top {
 		justify-content: center;
 	}
-	
+
 	BODY.show2 #outfitting_top:not(.show2modules) #outfitting_modules,
 	BODY.show2 #outfitting_top:not(.show2slots) #outfitting_fit,
 	BODY.show2 #outfitting_top:not(.show2details) #outfitting_details {
@@ -3193,7 +3193,7 @@ BODY.onlybest.experimental #outfitting_modules.SLOT #outfitting_modules_picker.s
 	BODY.show2 #outfitting_top.show2details #outfitting_details {
 		display: flex;
 	}
-	
+
 	/* redundant BODY.classes to match specificity */
 	BODY.show2 #outfitting_top:not(.show2details) #outfitting_modules_button_back,
 	BODY.show2 #outfitting_top:not(.show2slots) #outfitting_modules_button_details,
@@ -3222,7 +3222,7 @@ BODY.onlybest.experimental #outfitting_modules.SLOT #outfitting_modules_picker.s
 	#outfitting_bottom .stats_show_label {
 		display: block;
 	}
-	
+
 	#outfitting_bottom #stats_show:not(:checked) ~ DIV .stats_toggles,
 	#outfitting_bottom #stats_show:not(:checked) ~ DIV #outfitting_stats_container {
 		display: none;
@@ -3233,20 +3233,20 @@ BODY.onlybest.experimental #outfitting_modules.SLOT #outfitting_modules_picker.s
 	BODY:not(.show3) #outfitting_top {
 		justify-content: center;
 	}
-	
+
 	BODY.show3 #outfitting_modules,
 	BODY.show3 #outfitting_details {
 		flex: 0 1 26em;
 		max-width: 26em;
 	}
-	
+
 	/* redundant BODY.classes to match specificity */
 	BODY.show3.show3 #outfitting_top #outfitting_modules,
 	BODY.show3.show3 #outfitting_top #outfitting_fit,
 	BODY.show3.show3 #outfitting_top #outfitting_details {
 		display: flex;
 	}
-	
+
 	BODY.show3 #outfitting_modules_buttons,
 	BODY.show3 #outfitting_details_buttons {
 		display: none;
@@ -3390,7 +3390,7 @@ BODY.onlybest.experimental #outfitting_modules.SLOT #outfitting_modules_picker.s
 	height: 100%;
 	z-index: 10;
 	display: none;
-    background-color: rgba(32, 32, 32, 0.75);
+		background-color: rgba(32, 32, 32, 0.75);
 	font: var(--fontcaps);
 }
 
