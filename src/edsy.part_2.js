@@ -7066,7 +7066,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 	*/
 
 
-	var verifyVersionSync = function() {
+	var updateVersionLabel = function() {
 		var vH,vC,vD,vJ;
 		var dH,dC,dD,dJ;
 		try {
@@ -7126,33 +7126,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 		document.getElementById('version_label').innerHTML = ('v' + parseInt(v.slice(0,2)) + '.' + parseInt(v.slice(2,4)) + '.' + parseInt(v.slice(4,6)) + (['-','a','b','rc'][parseInt(v.slice(6,8))] || '.') + parseInt(v.slice(8,10)));
 		document.getElementById('version_label').setAttribute('edsy-title', 'interp-updated-date');
 		document.getElementById('version_label').title = ('updated ' + d.slice(0,4) + '-' + d.slice(4,6) + '-' + d.slice(6,8));
-
-		// cross check expected versions
-		var vM = [
-			max(vC[0], max(vD[0], vJ[0])),
-			max(vH[1], max(vD[1], vJ[1])),
-			max(vH[2], max(vC[2], vJ[2])),
-			max(vH[3], max(vC[3], vD[3])),
-		];
-		var ok = true;
-		if (vH[0] < vM[0]) {
-			ok = false;
-			console.log('ERROR: EDSY HTML version mismatch: (' + vH[0] + ') / ' + vC[0] + ' / ' + vD[0] + ' / ' + vJ[0]);
-		}
-		if (vC[1] < vM[1]) {
-			ok = false;
-			console.log('ERROR: EDSY CSS version mismatch: ' + vH[1] + ' / (' + vC[1] + ') / ' + vD[1] + ' / ' + vJ[1]);
-		}
-		if (vD[2] < vM[2]) {
-			ok = false;
-			console.log('ERROR: EDSY DB version mismatch: ' + vH[2] + ' / ' + vC[2] + ' / (' + vD[2] + ') / ' + vJ[2]);
-		}
-		if (vJ[3] < vM[3]) {
-			ok = false;
-			console.log('ERROR: EDSY JS version mismatch: ' + vH[3] + ' / ' + vC[3] + ' / ' + vD[3] + ' / (' + vJ[3] + ')');
-		}
-		return ok;
-	}; // verifyVersionSync()
+	}; // updateVersionLabel()
 
 
 	var initBrowser = function() {
@@ -7387,13 +7361,12 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 
 
 	var onDOMContentLoaded = function(e) {
-		// add popup events now, in case we need them for the version sync
 		document.getElementById('popup_modal').addEventListener('keydown', onUIModalKeydownCapture, true);
 		document.getElementById('popup_modal').addEventListener('click', onUIModalClick);
 		document.getElementById('popup_cancel').addEventListener('click', onUIPopupButtonClick);
 		document.getElementById('popup_okay').addEventListener('click', onUIPopupButtonClick);
 
-		verifyVersionSync();
+		updateVersionLabel();
 
 		// process remaining initialization asynchronously so that the loading animation can run
 		var steps = [
