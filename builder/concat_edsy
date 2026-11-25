@@ -1,0 +1,18 @@
+#!/bin/sh
+
+#
+# Concatenate edsy.js source parts into deploy/edsy.js
+#
+
+#
+# Author: Martin Eden
+# Last mod.: 2026-11-25
+#
+
+set -e -u
+
+cd "$(dirname "$0")"
+
+cat ../src/edsy.part_1.js ../src/edsy.part_2.js > ../deploy/edsy.js
+
+# 2026-11-25
