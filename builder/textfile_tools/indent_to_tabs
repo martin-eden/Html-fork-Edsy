@@ -1,0 +1,28 @@
+#!/usr/bin/awk -f
+
+#
+# Replace leading spaces with tabs
+#
+
+#
+# Author: Martin Eden
+# Last mod.: 2026-11-25
+#
+
+{
+  line = $0;
+  buffer = "";
+  i = 1;
+
+  while (i <= length(line)) {
+    if (substr(line, i, 2) == "  ") {
+      buffer = buffer "\t";
+      i += 2;
+    } else {
+      buffer = buffer substr(line, i);
+      break;
+    }
+  }
+
+  print buffer;
+}

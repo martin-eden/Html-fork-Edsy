@@ -1,0 +1,17 @@
+#!/usr/bin/awk -f
+
+#
+# Trim trailing whitespaces
+#
+
+#
+# Author: Martin Eden
+# Last mod.: 2026-11-25
+#
+
+{
+    sub(/[[:space:]]+$/, "", $0);
+    print;
+}
+
+# 2026-11-25

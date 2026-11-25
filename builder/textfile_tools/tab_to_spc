@@ -1,0 +1,17 @@
+#!/usr/bin/awk -f
+
+#
+# Replace tabs with two spaces
+#
+
+#
+# Author: Martin Eden
+# Last mod.: 2026-11-25
+#
+
+{
+    gsub(/\t/, "  ", $0);
+    print;
+}
+
+# 2026-11-25
