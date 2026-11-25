@@ -220,7 +220,6 @@ window.edsy = new (function() {
 		},
 		drag: null,
 		resize: null,
-		query: null,
 		pickerClick: {},
 		pickerTouch: {},
 		slotsClick: {},
