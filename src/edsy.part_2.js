@@ -1,4 +1,3 @@
-
 	/*
 	* MODULES & ATTRIBUTES
 	*/
@@ -3081,9 +3080,7 @@
 			var stored = current.stored.shipNamehashStored[0][namehash];
 			if (!stored)
 				return false;
-			current.hashlock = true;
 			ok = setCurrentFitHash(stored.buildhash, namehash);
-			current.hashlock = false;
 			if (ok)
 				updateUIFitHash(stored.buildhash);
 		} else {
@@ -3094,7 +3091,7 @@
 	}; // setCurrentFitNameHash()
 
 
-	var processURLHash = function(location, hashlock) {
+	var processURLHash = function(location) {
 		var urlhash = location.hash;
 		var msieURLtrunc = (location.href.length == 2083 || location.pathname.length == 2048);
 		var blocks = urlhash.split('/');
@@ -3103,11 +3100,7 @@
 		for (var b = 1;  b < blocks.length;  b++) {
 			switch (blocks[b].slice(0,2)) {
 			case 'L=':
-				if (hashlock)
-					current.hashlock = true;
 				var ok = setCurrentFitHash(blocks[b].slice(2));
-				if (hashlock)
-					current.hashlock = false;
 				if (ok)
 					setUIPageTab('outfitting');
 				return ok;
@@ -7038,7 +7031,7 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 
 
 	var onWindowHashChange = function(e) {
-		processURLHash(window.location, true);
+		processURLHash(window.location);
 	}; // onWindowHashChange()
 
 
@@ -7379,12 +7372,10 @@ if(false && current.dev) console.log("setCurrentSlot(): slot "+slotgroup+ " #"+s
 			document.cookie = 'edsy_import_buffer=; domain=.edsy.org; path=' + (current.dev ? '/dev' : '/');
 			document.cookie = 'edsy_import_buffer=; domain=.edsy.org; path=' + (current.dev ? '/dev' : '/') + '; max-age=0; expires=Thu, 01 Jan 1970 00:00:01 GMT';
 		}
-		current.hashlock = true;
 		setCurrentFit(new Build(1, true), '');
-		current.hashlock = false;
 		if (buffer_storage && importData(buffer_storage)) {
 		} else if (buffer_cookie && importData(buffer_cookie)) {
-		} else if (window.location.hash.length > 0 && processURLHash(window.location, true)) {
+		} else if (window.location.hash.length > 0 && processURLHash(window.location)) {
 		}
 		setUIOutfittingPanels('slots',  'slots', 'details');
 

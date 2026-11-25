@@ -205,7 +205,6 @@ window.edsy = new (function() {
 		beta: false,
 		locale: undefined,
 		lang: LANG_DEFAULT,
-		hashlock: false,
 		popup: {
 			element: null,
 			trigger: null,
